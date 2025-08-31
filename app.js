@@ -1,4 +1,4 @@
-const API_BASE = "https://build-better-backend.onrender.com";
+const API_BASE = "https://build-better.onrender.com";
 
 
 // -------------------- PROFESSIONAL REGISTRATION --------------------
@@ -86,11 +86,12 @@ document.getElementById("loginForm")?.addEventListener("submit", async (e) => {
   const password = e.target.querySelector("input[type='password']").value;
 
   try {
-    const res = await fetch(`${API_BASE}/login`, {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ email, password }),
-    });
+  const res = await fetch(`${API_BASE}/api/auth/login`, {
+  method: "POST",
+  headers: { "Content-Type": "application/json" },
+  body: JSON.stringify({ email, password }),
+});
+
     const data = await res.json();
 
     if (res.ok) {
@@ -117,11 +118,12 @@ document.getElementById("signupForm")?.addEventListener("submit", async (e) => {
   };
 
   try {
-    const res = await fetch(`${API_BASE}/register`, {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify(user),
-    });
+    const res = await fetch(`${API_BASE}/api/auth/register`, {
+  method: "POST",
+  headers: { "Content-Type": "application/json" },
+  body: JSON.stringify(user),
+});
+
     const data = await res.json();
 
     if (res.ok) {
