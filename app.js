@@ -1,4 +1,5 @@
-const API_BASE = "http://localhost:5000"; // 🔑 change this when you deploy
+const API_BASE = "https://build-better-backend.onrender.com";
+
 
 // -------------------- PROFESSIONAL REGISTRATION --------------------
 document.getElementById("professionalForm")?.addEventListener("submit", async (e) => {
