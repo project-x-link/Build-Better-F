@@ -144,9 +144,6 @@
             </div>
         </div>
     </nav>
-    <a href="#post-project" class="hover:text-blue-600">Post Project</a>
-    <a href="#my-projects" class="hover:text-blue-600">My Projects</a>
-
 
     <!-- HOME PAGE -->
     <div id="home" class="page active">
@@ -265,19 +262,19 @@
                         <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
                             <div>
                                 <label class="block text-sm font-medium text-gray-700 mb-2">Service Category *</label>
-                                <select id="category" required>
-                                    <option value="plumbers">Plumber</option>
-                                    <option value="electricians">Electrician</option>
-                                    <option value="contractors">Contractor</option>
-                                    <option value="civilengineers">Civil Engineer</option>
+                                <select id="category" required class="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent">
+                                    <option value="">Select Category</option>
+                                    <option value="plumber">Plumber</option>
+                                    <option value="electrician">Electrician</option>
+                                    <option value="contractor">Contractor</option>
+                                    <option value="civilengineer">Civil Engineer</option>
                                     <option value="skilledlabor">Skilled Labor</option>
                                     <option value="unskilledlabor">Unskilled Labor</option>
-                                    <option value="painters">Painter</option>
-                                    <option value="carpenters">Carpenter</option>
+                                    <option value="painter">Painter</option>
+                                    <option value="carpenter">Carpenter</option>
                                     <option value="machinery">Machinery Operator</option>
-                                    <option value="workshops">Workshop Owner</option>
+                                    <option value="workshop">Workshop Owner</option>
                                 </select>
-
                             </div>
                             <div>
                                 <label class="block text-sm font-medium text-gray-700 mb-2">Years of Experience *</label>
@@ -317,37 +314,6 @@
             </div>
         </section>
     </div>
-     <!-- Post Project -->
-    <section id="post-project" class="py-10 bg-gray-50">
-  <div class="max-w-2xl mx-auto p-6 bg-white shadow rounded">
-    <h2 class="text-2xl font-bold mb-4 text-center">Post a Project</h2>
-    <form id="projectForm" class="space-y-4">
-      <input id="projectTitle" type="text" placeholder="Project Title" class="w-full border p-2 rounded" required>
-      <textarea id="projectDescription" placeholder="Project Description" class="w-full border p-2 rounded" required></textarea>
-      <input id="projectBudget" type="number" placeholder="Budget (optional)" class="w-full border p-2 rounded">
-      <input id="projectLocation" type="text" placeholder="Location" class="w-full border p-2 rounded">
-      <button type="submit" class="w-full bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700">Submit Project</button>
-    </form>
-  </div>
-</section>
- <!-- Browse Projects (ADD HERE) -->
-<section id="browse-projects" class="py-10 bg-gray-50">
-  <div class="max-w-6xl mx-auto">
-    <h2 class="text-2xl font-bold mb-6 text-center">Browse Projects</h2>
-    <div id="projectsGrid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-      <!-- Projects will be injected here -->
-    </div>
-  </div>
-</section>
-<section id="my-projects" class="py-10 bg-gray-50">
-  <div class="max-w-6xl mx-auto">
-    <h2 class="text-2xl font-bold mb-6 text-center">My Projects</h2>
-    <div id="myProjectsGrid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-      <!-- User’s projects will appear here -->
-    </div>
-  </div>
-</section>
-
 
     <!-- SERVICE PAGES -->
     <div id="plumbers" class="page">
@@ -1058,23 +1024,111 @@
     </div>
 
     <script>
-        // Empty professional data - ready for real registrations
+        // API Configuration
+        const API_BASE_URL = 'https://build-better.onrender.com/api';
+        
+        // Authentication state
+        let currentUser = null;
+        let authToken = localStorage.getItem('authToken');
+        
+        // Professional data - will be loaded from API
         const professionalData = {
-            plumbers: [],
-            electricians: [],
-            contractors: [],
-            civilengineers: [],
+            plumber: [],
+            electrician: [],
+            contractor: [],
+            civilengineer: [],
             skilledlabor: [],
             unskilledlabor: [],
-            painters: [],
-            carpenters: [],
+            painter: [],
+            carpenter: [],
             machinery: [],
-            workshops: []
+            workshop: []
         };
 
         // Current filters and data
         let currentFilters = {};
         let filteredData = {};
+        
+        // Category mapping for API
+        const categoryMapping = {
+            'plumbers': 'plumber',
+            'electricians': 'electrician',
+            'contractors': 'contractor',
+            'civilengineers': 'civilengineer',
+            'skilledlabor': 'skilledlabor',
+            'unskilledlabor': 'unskilledlabor',
+            'painters': 'painter',
+            'carpenters': 'carpenter',
+            'machinery': 'machinery',
+            'workshops': 'workshop'
+        };
+
+        // API Helper Functions
+        async function apiCall(endpoint, options = {}) {
+            const url = `${API_BASE_URL}${endpoint}`;
+            const config = {
+                headers: {
+                    'Content-Type': 'application/json',
+                    ...options.headers
+                },
+                ...options
+            };
+            
+            if (authToken) {
+                config.headers.Authorization = `Bearer ${authToken}`;
+            }
+            
+            try {
+                const response = await fetch(url, config);
+                const data = await response.json();
+                
+                if (!response.ok) {
+                    throw new Error(data.message || 'API request failed');
+                }
+                
+                return data;
+            } catch (error) {
+                console.error('API Error:', error);
+                throw error;
+            }
+        }
+
+        // Check authentication status
+        function checkAuth() {
+            if (authToken) {
+                // Update UI for logged in user
+                updateAuthUI(true);
+            }
+        }
+
+        function updateAuthUI(isLoggedIn) {
+            const loginBtn = document.querySelector('button[onclick="showLoginModal()"]');
+            const signupBtn = document.querySelector('button[onclick="showSignupModal()"]');
+            
+            if (isLoggedIn) {
+                loginBtn.textContent = 'Dashboard';
+                loginBtn.onclick = () => showDashboard();
+                signupBtn.textContent = 'Logout';
+                signupBtn.onclick = () => logout();
+            } else {
+                loginBtn.textContent = 'Login';
+                loginBtn.onclick = () => showLoginModal();
+                signupBtn.textContent = 'Sign Up';
+                signupBtn.onclick = () => showSignupModal();
+            }
+        }
+
+        function logout() {
+            localStorage.removeItem('authToken');
+            authToken = null;
+            currentUser = null;
+            updateAuthUI(false);
+            showPage('home');
+        }
+
+        function showDashboard() {
+            alert('Dashboard feature coming soon! You can create projects and manage your profile.');
+        }
 
         // Page navigation
         function showPage(pageId) {
@@ -1101,11 +1155,54 @@
         }
 
         // Load professionals for a category
-        function loadProfessionals(category) {
-            const data = professionalData[category] || [];
-            filteredData[category] = [...data];
-            renderProfessionals(category);
-            updateCount(category);
+        async function loadProfessionals(category) {
+            try {
+                const apiCategory = categoryMapping[category];
+                if (!apiCategory) {
+                    console.error('Invalid category:', category);
+                    return;
+                }
+                
+                // Show loading state
+                const grid = document.getElementById(category + 'Grid');
+                grid.innerHTML = '<div class="col-span-full text-center py-8"><div class="text-2xl">Loading professionals...</div></div>';
+                
+                // Fetch professionals from API
+                const data = await apiCall(`/professionals/${apiCategory}`);
+                
+                // Transform API data to match our frontend format
+                const transformedData = data.map(professional => ({
+                    id: professional._id,
+                    name: professional.name,
+                    category: professional.category,
+                    location: professional.location,
+                    experience: professional.experience || '2-5 years',
+                    experienceNum: parseInt(professional.experience) || 3,
+                    rating: professional.rating || 4.5,
+                    reviews: professional.reviews || 12,
+                    rate: professional.rate || 500,
+                    rateDisplay: professional.rateDisplay || '₹500/day',
+                    phone: professional.phone || '+91 98765 43210',
+                    specialties: professional.specialties || ['General Work'],
+                    description: professional.description || 'Experienced professional ready to help with your project.',
+                    availability: professional.availability || 'Available',
+                    verified: professional.verified || false,
+                    emergency: professional.emergency || false
+                }));
+                
+                professionalData[apiCategory] = transformedData;
+                filteredData[category] = [...transformedData];
+                renderProfessionals(category);
+                updateCount(category);
+                
+            } catch (error) {
+                console.error('Error loading professionals:', error);
+                // Show empty state on error
+                const data = [];
+                filteredData[category] = [...data];
+                renderProfessionals(category);
+                updateCount(category);
+            }
         }
 
         // Render professionals
@@ -1294,22 +1391,108 @@
             document.getElementById('signupModal').classList.add('hidden');
         }
 
+        // Authentication Functions
+        async function handleLogin(email, password) {
+            try {
+                const response = await apiCall('/auth/login', {
+                    method: 'POST',
+                    body: JSON.stringify({ email, password })
+                });
+                
+                authToken = response.token;
+                currentUser = response.user;
+                localStorage.setItem('authToken', authToken);
+                
+                updateAuthUI(true);
+                hideLoginModal();
+                
+                alert(`Welcome back, ${currentUser.email}!`);
+                
+            } catch (error) {
+                alert('Login failed: ' + error.message);
+            }
+        }
+
+        async function handleSignup(email, password, userType) {
+            try {
+                const response = await apiCall('/auth/register', {
+                    method: 'POST',
+                    body: JSON.stringify({ email, password, role: userType })
+                });
+                
+                hideSignupModal();
+                alert('Registration successful! Please login with your credentials.');
+                showLoginModal();
+                
+            } catch (error) {
+                alert('Registration failed: ' + error.message);
+            }
+        }
+
+        async function handleProfessionalRegistration(formData) {
+            try {
+                const professionalData = {
+                    name: formData.fullName,
+                    category: formData.category,
+                    location: formData.serviceArea,
+                    experience: formData.experience,
+                    description: formData.description,
+                    rate: formData.rate,
+                    phone: formData.phone,
+                    email: formData.email
+                };
+                
+                await apiCall('/professionals', {
+                    method: 'POST',
+                    body: JSON.stringify(professionalData)
+                });
+                
+                alert('Professional registration successful! You can now be found by customers.');
+                
+            } catch (error) {
+                alert('Registration failed: ' + error.message);
+            }
+        }
+
         // Form submissions
         document.getElementById('loginForm').addEventListener('submit', function(e) {
             e.preventDefault();
-            alert('Login functionality will be available soon!');
-            hideLoginModal();
+            const formData = new FormData(e.target);
+            const email = e.target.querySelector('input[type="text"]').value;
+            const password = e.target.querySelector('input[type="password"]').value;
+            
+            handleLogin(email, password);
         });
 
         document.getElementById('signupForm').addEventListener('submit', function(e) {
             e.preventDefault();
-            alert('Signup functionality will be available soon!');
-            hideSignupModal();
+            const email = e.target.querySelector('input[type="email"]').value;
+            const password = e.target.querySelector('input[type="password"]').value;
+            const userType = e.target.querySelector('select').value;
+            
+            if (!userType) {
+                alert('Please select whether you are a customer or professional');
+                return;
+            }
+            
+            handleSignup(email, password, userType);
         });
 
         document.getElementById('professionalForm').addEventListener('submit', function(e) {
             e.preventDefault();
-            alert('Professional registration submitted! We will contact you soon.');
+            
+            const formData = {
+                fullName: document.getElementById('fullName').value,
+                phone: document.getElementById('phone').value,
+                email: document.getElementById('email').value,
+                category: document.getElementById('category').value,
+                experience: document.getElementById('experience').value,
+                serviceArea: document.getElementById('serviceArea').value,
+                description: document.getElementById('description').value,
+                rate: document.getElementById('rate').value
+            };
+            
+            handleProfessionalRegistration(formData);
             this.reset();
         });
 
@@ -1321,13 +1504,62 @@
             }
         }
 
+        // Projects functionality (for future implementation)
+        async function loadProjects() {
+            try {
+                const projects = await apiCall('/projects');
+                // Display projects in a feed (to be implemented)
+                console.log('Projects loaded:', projects);
+            } catch (error) {
+                console.error('Error loading projects:', error);
+            }
+        }
+
+        async function createProject(title, description) {
+            try {
+                const project = await apiCall('/projects', {
+                    method: 'POST',
+                    body: JSON.stringify({ title, description })
+                });
+                alert('Project created successfully!');
+                return project;
+            } catch (error) {
+                alert('Error creating project: ' + error.message);
+            }
+        }
+
+        // Services functionality (for future implementation)
+        async function loadServices(filters = {}) {
+            try {
+                let endpoint = '/services';
+                const params = new URLSearchParams();
+                
+                if (filters.location) params.append('location', filters.location);
+                if (filters.category) params.append('category', filters.category);
+                
+                if (params.toString()) {
+                    endpoint += '?' + params.toString();
+                }
+                
+                const services = await apiCall(endpoint);
+                console.log('Services loaded:', services);
+                return services;
+            } catch (error) {
+                console.error('Error loading services:', error);
+            }
+        }
+
         // Initialize
         document.addEventListener('DOMContentLoaded', function() {
+            // Check authentication status
+            checkAuth();
+            
             // Load home page by default
             showPage('home');
+            
+            // Load initial data
+            loadProjects();
         });
     </script>
-<script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'97336e0db24f22a8',t:'MTc1NTg3NjgyMS4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script>
-<script src="app.js"></script>
-</body>
+<script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'978e876d60a454f2',t:'MTc1NjgzMjA2NC4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
 </html>
