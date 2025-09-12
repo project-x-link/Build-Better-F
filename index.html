@@ -829,7 +829,72 @@
         // LANGUAGE FUNCTIONS
         // ==========================================
 
+        // Store original text content for smooth language switching
+        let originalTexts = {};
+        let isOriginalTextsCaptured = false;
+
+        function captureOriginalTexts() {
+            if (isOriginalTextsCaptured) return;
+            
+            // Capture navigation links
+            const navLinks = document.querySelectorAll('.nav-link');
+            navLinks.forEach((link, index) => {
+                originalTexts[`nav-${index}`] = link.textContent.replace(' ▼', '');
+            });
+
+            // Capture hero section
+            const heroTitle = document.querySelector('h1');
+            if (heroTitle) {
+                originalTexts['heroTitle'] = heroTitle.textContent;
+            }
+
+            const heroSubtitle = document.querySelector('p.text-xl');
+            if (heroSubtitle) {
+                originalTexts['heroSubtitle'] = heroSubtitle.textContent;
+            }
+
+            // Capture service section headers
+            const serviceHeaders = document.querySelectorAll('h3');
+            serviceHeaders.forEach((header, index) => {
+                originalTexts[`serviceHeader-${index}`] = header.textContent;
+            });
+
+            // Capture service cards
+            const serviceCards = document.querySelectorAll('h4');
+            serviceCards.forEach((card, index) => {
+                originalTexts[`serviceCard-${index}`] = card.textContent;
+            });
+
+            // Capture form labels
+            const labels = document.querySelectorAll('label');
+            labels.forEach((label, index) => {
+                originalTexts[`label-${index}`] = label.textContent;
+            });
+
+            // Capture buttons (excluding auth buttons and dynamic ones)
+            const buttons = document.querySelectorAll('button:not(#loginBtn):not(#signupBtn)');
+            buttons.forEach((button, index) => {
+                if (button.textContent && !button.textContent.includes('Hi,')) {
+                    originalTexts[`button-${index}`] = button.textContent;
+                }
+            });
+
+            // Capture specific elements by data attributes
+            document.querySelectorAll('[data-translate]').forEach(element => {
+                const key = element.getAttribute('data-translate');
+                originalTexts[key] = element.textContent;
+            });
+
+            isOriginalTextsCaptured = true;
+            console.log('📝 Original texts captured:', originalTexts);
+        }
+
         function changeLanguage(langCode, langName) {
+            // Capture original texts on first language change
+            if (!isOriginalTextsCaptured) {
+                captureOriginalTexts();
+            }
+
             appState.currentLanguage = langCode;
             localStorage.setItem('selectedLanguage', langCode);
             
@@ -848,133 +913,157 @@
         }
 
         function updatePageTranslations() {
-            // Update navigation
-            const navElements = {
-                'nav-home': 'home',
-                'nav-services': 'services', 
-                'nav-labor': 'labor',
-                'nav-equipment': 'equipment',
-                'nav-projects': 'projects'
-            };
-
-            Object.entries(navElements).forEach(([id, key]) => {
-                const element = document.getElementById(id);
-                if (element) element.textContent = t(key);
-            });
-
-            // Update buttons
-            const buttonElements = {
-                'loginBtn': appState.currentUser ? `Hi, ${appState.currentUser.name}` : 'login',
-                'signupBtn': appState.currentUser ? 'logout' : 'signup'
-            };
-
-            Object.entries(buttonElements).forEach(([id, key]) => {
-                const element = document.getElementById(id);
-                if (element && !appState.currentUser) {
-                    element.textContent = t(key);
+            // Update navigation links
+            const navLinks = document.querySelectorAll('.nav-link');
+            const navKeys = ['home', 'services', 'labor', 'equipment', 'projects'];
+            
+            navLinks.forEach((link, index) => {
+                if (navKeys[index]) {
+                    const originalText = link.textContent.replace(' ▼', '');
+                    const hasDropdown = link.textContent.includes('▼');
+                    link.textContent = t(navKeys[index]) + (hasDropdown ? ' ▼' : '');
                 }
             });
 
+            // Update auth buttons (only if not logged in)
+            if (!appState.currentUser) {
+                const loginBtn = document.getElementById('loginBtn');
+                const signupBtn = document.getElementById('signupBtn');
+                if (loginBtn) loginBtn.textContent = t('login');
+                if (signupBtn) signupBtn.textContent = t('signup');
+            }
+
             // Update hero section
             const heroTitle = document.querySelector('h1');
-            if (heroTitle && heroTitle.textContent.includes('Complete Construction Ecosystem')) {
+            if (heroTitle && originalTexts['heroTitle']) {
                 heroTitle.textContent = t('heroTitle');
             }
 
             const heroSubtitle = document.querySelector('p.text-xl');
-            if (heroSubtitle && heroSubtitle.textContent.includes('From skilled professionals')) {
+            if (heroSubtitle && originalTexts['heroSubtitle']) {
                 heroSubtitle.textContent = t('heroSubtitle');
             }
 
             // Update service section headers
             const serviceHeaders = document.querySelectorAll('h3');
-            serviceHeaders.forEach(header => {
-                if (header.textContent.includes('Professional Services')) {
-                    header.innerHTML = `🏗️ ${t('professionalServices')}`;
-                } else if (header.textContent.includes('Labor Services')) {
-                    header.innerHTML = `👷 ${t('laborServices')}`;
-                } else if (header.textContent.includes('Equipment & Machinery')) {
-                    header.innerHTML = `🚜 ${t('equipmentMachinery')}`;
+            const serviceHeaderKeys = ['professionalServices', 'laborServices', 'equipmentMachinery'];
+            const serviceHeaderIcons = ['🏗️', '👷', '🚜'];
+            
+            serviceHeaders.forEach((header, index) => {
+                if (serviceHeaderKeys[index] && serviceHeaderIcons[index]) {
+                    header.innerHTML = `${serviceHeaderIcons[index]} ${t(serviceHeaderKeys[index])}`;
                 }
             });
 
-            // Update category names in service cards
+            // Update service cards
             updateServiceCards();
             
-            // Update form labels
-            updateFormLabels();
+            // Update form labels and buttons
+            updateFormElements();
+
+            // Update specific translatable elements
+            updateSpecificElements();
         }
 
         function updateServiceCards() {
-            const categoryMappings = {
-                'Plumbers': 'plumbers',
-                'Electricians': 'electricians', 
-                'Contractors': 'contractors',
-                'Civil Engineers': 'civilEngineers',
-                'Designers': 'designers',
-                'Skilled Labor': 'skilledLabor',
-                'Unskilled Labor': 'unskilledLabor',
-                'Painters': 'painters',
-                'Carpenters': 'carpenters',
-                'Machinery Operators': 'machineryOperators',
-                'Workshops': 'workshops'
-            };
-
             const serviceCards = document.querySelectorAll('h4');
-            serviceCards.forEach(card => {
-                const currentText = card.textContent;
-                const translationKey = categoryMappings[currentText];
-                if (translationKey) {
-                    card.textContent = t(translationKey);
+            const categoryKeys = [
+                'plumbers', 'electricians', 'contractors', 'civilEngineers', 'designers',
+                'skilledLabor', 'unskilledLabor', 'painters', 'carpenters',
+                'machineryOperators', 'workshops'
+            ];
+
+            serviceCards.forEach((card, index) => {
+                if (categoryKeys[index]) {
+                    card.textContent = t(categoryKeys[index]);
                 }
             });
         }
 
-        function updateFormLabels() {
-            const labelMappings = {
-                'Full Name': 'fullName',
-                'Phone Number': 'phoneNumber',
-                'Email Address': 'emailAddress',
-                'Password': 'password',
-                'Confirm Password': 'confirmPassword',
-                'City': 'city',
-                'Service Category': 'serviceCategory',
-                'Years of Experience': 'yearsExperience',
-                'Service Area/Location': 'serviceArea',
-                'Services Description': 'servicesDescription',
-                'Rate per Day/Hour (Optional)': 'ratePerDay',
-                'Project Title': 'projectTitle',
-                'Budget': 'budget',
-                'Location': 'location',
-                'Project Description': 'projectDescription'
-            };
+        function updateFormElements() {
+            // Update form labels
+            const labelMappings = [
+                'fullName', 'phoneNumber', 'emailAddress', 'password', 'confirmPassword',
+                'city', 'serviceCategory', 'yearsExperience', 'serviceArea', 'servicesDescription',
+                'ratePerDay', 'projectTitle', 'budget', 'location', 'projectDescription'
+            ];
 
             const labels = document.querySelectorAll('label');
-            labels.forEach(label => {
-                const currentText = label.textContent.replace(' *', '');
-                const translationKey = labelMappings[currentText];
-                if (translationKey) {
-                    const isRequired = label.textContent.includes('*');
-                    label.textContent = t(translationKey) + (isRequired ? ' *' : '');
+            labels.forEach((label, index) => {
+                if (labelMappings[index] && originalTexts[`label-${index}`]) {
+                    const isRequired = originalTexts[`label-${index}`].includes('*');
+                    label.textContent = t(labelMappings[index]) + (isRequired ? ' *' : '');
                 }
             });
 
-            // Update button texts
-            const buttonMappings = {
-                'Contact': 'contact',
-                'View Profile': 'viewProfile', 
-                'Refresh': 'refresh',
-                'Create Account': 'createAccount',
-                'Register as Professional': 'registerProfessional',
-                'Post Project': 'postProject'
-            };
+            // Update buttons
+            const buttonMappings = [
+                'contact', 'viewProfile', 'refresh', 'createAccount', 
+                'registerProfessional', 'postProject', 'exploreServices', 'joinProfessional'
+            ];
 
-            const buttons = document.querySelectorAll('button');
-            buttons.forEach(button => {
-                const currentText = button.textContent;
-                const translationKey = buttonMappings[currentText];
-                if (translationKey) {
-                    button.textContent = t(translationKey);
+            const buttons = document.querySelectorAll('button:not(#loginBtn):not(#signupBtn)');
+            buttons.forEach((button, index) => {
+                if (buttonMappings[index] && originalTexts[`button-${index}`]) {
+                    button.textContent = t(buttonMappings[index]);
+                }
+            });
+
+            // Update specific buttons by their text content
+            document.querySelectorAll('button').forEach(button => {
+                const text = button.textContent.trim();
+                if (text === 'Explore Services' || text === t('exploreServices')) {
+                    button.textContent = t('exploreServices');
+                } else if (text === 'Join as Professional' || text === t('joinProfessional')) {
+                    button.textContent = t('joinProfessional');
+                } else if (text === 'Contact' || text === t('contact')) {
+                    button.textContent = t('contact');
+                } else if (text === 'View Profile' || text === t('viewProfile')) {
+                    button.textContent = t('viewProfile');
+                } else if (text === 'Refresh' || text === t('refresh')) {
+                    button.textContent = t('refresh');
+                } else if (text === 'Create Account' || text === t('createAccount')) {
+                    button.textContent = t('createAccount');
+                } else if (text === 'Register as Professional' || text === t('registerProfessional')) {
+                    button.textContent = t('registerProfessional');
+                } else if (text === 'Post Project' || text === t('postProject')) {
+                    button.textContent = t('postProject');
+                }
+            });
+        }
+
+        function updateSpecificElements() {
+            // Update page titles
+            const pageTitles = document.querySelectorAll('h1, h2');
+            pageTitles.forEach(title => {
+                const text = title.textContent;
+                if (text.includes('Construction Projects') || text.includes(t('constructionProjects'))) {
+                    title.textContent = t('constructionProjects');
+                } else if (text.includes('Available Projects') || text.includes(t('availableProjects'))) {
+                    title.textContent = t('availableProjects');
+                } else if (text.includes('Join as a Professional') || text.includes(t('joinAsProfessional'))) {
+                    title.textContent = t('joinAsProfessional');
+                }
+            });
+
+            // Update placeholders
+            const inputs = document.querySelectorAll('input, textarea, select');
+            inputs.forEach(input => {
+                if (input.placeholder) {
+                    // Update common placeholders
+                    if (input.placeholder.includes('City, District')) {
+                        input.placeholder = appState.currentLanguage === 'hi' ? 
+                            'शहर, जिला, या आपकी सेवा के क्षेत्र' : 
+                            'City, District, or Areas you serve';
+                    } else if (input.placeholder.includes('Describe your services')) {
+                        input.placeholder = appState.currentLanguage === 'hi' ? 
+                            'अपनी सेवाओं, विशेषताओं का वर्णन करें...' : 
+                            'Describe your services, specializations, and what makes you unique...';
+                    } else if (input.placeholder.includes('₹500/day')) {
+                        input.placeholder = appState.currentLanguage === 'hi' ? 
+                            'जैसे ₹500/दिन या ₹50/घंटा' : 
+                            'e.g., ₹500/day or ₹50/hour';
+                    }
                 }
             });
         }
@@ -2041,5 +2130,5 @@
             }
         });
     </script>
-<script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'97dfa75a70337a2b',t:'MTc1NzY4MjcxOC4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
+<script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'97dfb34dd47c7a8d',t:'MTc1NzY4MzIwNy4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
 </html>
