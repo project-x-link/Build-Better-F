@@ -131,6 +131,7 @@ class ApiService {
                 'Content-Type': 'application/json',
                 ...options.headers
             },
+             credentials: "include",  
             ...options
         };
         
@@ -161,7 +162,7 @@ class ApiService {
         });
     }
 
-    static async register(email, password, role = 'customer') {
+    static async register(name, email, password, role = 'customer') {
         return this.call('/auth/register', {
             method: 'POST',
             body: JSON.stringify({ email, password, role })
@@ -692,7 +693,7 @@ class FormHandlers {
             
             const email = document.getElementById('signupEmail').value;
             const password = document.getElementById('signupPassword').value;
-            const userType = document.getElementById('userType').value;
+            const name = document.getElementById('signupName').value;
             
             if (!userType) {
                 Utils.showNotification('Please select whether you are a customer or professional', 'error');
@@ -700,7 +701,7 @@ class FormHandlers {
             }
             
             try {
-                await AuthManager.register(email, password, userType);
+                await AuthManager.register(name, email, password, userType);
                 ModalManager.hideSignup();
                 ModalManager.showLogin();
                 this.reset();
