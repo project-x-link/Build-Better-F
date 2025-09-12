@@ -222,7 +222,37 @@
 
                     <a onclick="showPage('projects')" class="nav-link text-gray-300 hover:text-blue-400 transition-colors">Projects</a>
                 </div>
-                <div class="flex space-x-4" id="authButtons">
+                <div class="flex space-x-4 items-center" id="authButtons">
+                    <div class="dropdown">
+                        <button class="bg-gray-700 text-white px-3 py-2 rounded-lg hover:bg-gray-600 transition-colors cursor-pointer text-sm">
+                            🌐 <span id="currentLanguage">English</span> ▼
+                        </button>
+                        <div class="dropdown-content" style="min-width: 180px; max-height: 300px; overflow-y: auto;">
+                            <a onclick="changeLanguage('en', 'English')">🇬🇧 English</a>
+                            <a onclick="changeLanguage('hi', 'हिंदी')">🇮🇳 हिंदी (Hindi)</a>
+                            <a onclick="changeLanguage('bn', 'বাংলা')">🇧🇩 বাংলা (Bengali)</a>
+                            <a onclick="changeLanguage('te', 'తెలుగు')">📍 తెలుగు (Telugu)</a>
+                            <a onclick="changeLanguage('mr', 'मराठी')">📍 मराठी (Marathi)</a>
+                            <a onclick="changeLanguage('ta', 'தமிழ்')">📍 தமிழ் (Tamil)</a>
+                            <a onclick="changeLanguage('gu', 'ગુજરાતી')">📍 ગુજરાતી (Gujarati)</a>
+                            <a onclick="changeLanguage('ur', 'اردو')">📍 اردو (Urdu)</a>
+                            <a onclick="changeLanguage('kn', 'ಕನ್ನಡ')">📍 ಕನ್ನಡ (Kannada)</a>
+                            <a onclick="changeLanguage('or', 'ଓଡ଼ିଆ')">📍 ଓଡ଼ିଆ (Odia)</a>
+                            <a onclick="changeLanguage('pa', 'ਪੰਜਾਬੀ')">📍 ਪੰਜਾਬੀ (Punjabi)</a>
+                            <a onclick="changeLanguage('ml', 'മലയാളം')">📍 മലയാളം (Malayalam)</a>
+                            <a onclick="changeLanguage('as', 'অসমীয়া')">📍 অসমীয়া (Assamese)</a>
+                            <a onclick="changeLanguage('mai', 'मैथिली')">📍 मैथिली (Maithili)</a>
+                            <a onclick="changeLanguage('mag', 'मगही')">📍 मगही (Magahi)</a>
+                            <a onclick="changeLanguage('bho', 'भोजपुरी')">📍 भोजपुरी (Bhojpuri)</a>
+                            <a onclick="changeLanguage('ne', 'नेपाली')">📍 नेपाली (Nepali)</a>
+                            <a onclick="changeLanguage('sa', 'संस्कृत')">📍 संस्कृत (Sanskrit)</a>
+                            <a onclick="changeLanguage('sd', 'سنڌي')">📍 سنڌي (Sindhi)</a>
+                            <a onclick="changeLanguage('ks', 'कॉशुर')">📍 कॉशुर (Kashmiri)</a>
+                            <a onclick="changeLanguage('doi', 'डोगरी')">📍 डोगरी (Dogri)</a>
+                            <a onclick="changeLanguage('mni', 'মৈতৈলোন্')">📍 মৈতৈলোন্ (Manipuri)</a>
+                            <a onclick="changeLanguage('sat', 'ᱥᱟᱱᱛᱟᱲᱤ')">📍 ᱥᱟᱱᱛᱟᱲᱤ (Santali)</a>
+                        </div>
+                    </div>
                     <button id="loginBtn" onclick="showLoginModal()" class="bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700 transition-colors">Login</button>
                     <button id="signupBtn" onclick="showSignupModal()" class="bg-blue-500 text-white px-4 py-2 rounded-lg hover:bg-blue-600 transition-colors">Sign Up</button>
                 </div>
@@ -579,6 +609,161 @@
 
     <script>
         // ==========================================
+        // LANGUAGE TRANSLATIONS
+        // ==========================================
+
+        const TRANSLATIONS = {
+            en: {
+                // Navigation
+                home: 'Home',
+                services: 'Services',
+                labor: 'Labor',
+                equipment: 'Equipment',
+                projects: 'Projects',
+                login: 'Login',
+                signup: 'Sign Up',
+                logout: 'Logout',
+                
+                // Hero Section
+                heroTitle: 'Complete Construction Ecosystem',
+                heroSubtitle: 'From skilled professionals to heavy machinery - find everything you need for your construction project in one place!',
+                exploreServices: 'Explore Services',
+                joinProfessional: 'Join as Professional',
+                
+                // Services
+                professionalServices: 'Professional Services',
+                laborServices: 'Labor Services',
+                equipmentMachinery: 'Equipment & Machinery',
+                
+                // Categories
+                plumbers: 'Plumbers',
+                electricians: 'Electricians',
+                contractors: 'Contractors',
+                civilEngineers: 'Civil Engineers',
+                designers: 'Designers',
+                skilledLabor: 'Skilled Labor',
+                unskilledLabor: 'Unskilled Labor',
+                painters: 'Painters',
+                carpenters: 'Carpenters',
+                machineryOperators: 'Machinery Operators',
+                workshops: 'Workshops',
+                
+                // Forms
+                fullName: 'Full Name',
+                phoneNumber: 'Phone Number',
+                emailAddress: 'Email Address',
+                password: 'Password',
+                confirmPassword: 'Confirm Password',
+                city: 'City',
+                required: 'Required',
+                
+                // Buttons
+                contact: 'Contact',
+                viewProfile: 'View Profile',
+                refresh: 'Refresh',
+                createAccount: 'Create Account',
+                
+                // Messages
+                welcomeBack: 'Welcome back',
+                loginFailed: 'Login failed',
+                registrationSuccessful: 'Registration successful! Please login with your credentials.',
+                
+                // Projects
+                constructionProjects: 'Construction Projects',
+                availableProjects: 'Available Projects',
+                postNewProject: 'Post a New Project',
+                projectTitle: 'Project Title',
+                budget: 'Budget',
+                location: 'Location',
+                projectDescription: 'Project Description',
+                postProject: 'Post Project',
+                
+                // Professional Registration
+                joinAsProfessional: 'Join as a Professional',
+                serviceCategory: 'Service Category',
+                yearsExperience: 'Years of Experience',
+                serviceArea: 'Service Area/Location',
+                servicesDescription: 'Services Description',
+                ratePerDay: 'Rate per Day/Hour (Optional)',
+                registerProfessional: 'Register as Professional'
+            },
+            hi: {
+                // Navigation
+                home: 'होम',
+                services: 'सेवाएं',
+                labor: 'श्रमिक',
+                equipment: 'उपकरण',
+                projects: 'परियोजनाएं',
+                login: 'लॉगिन',
+                signup: 'साइन अप',
+                logout: 'लॉगआउट',
+                
+                // Hero Section
+                heroTitle: 'संपूर्ण निर्माण पारिस्थितिकी तंत्र',
+                heroSubtitle: 'कुशल पेशेवरों से लेकर भारी मशीनरी तक - अपनी निर्माण परियोजना के लिए आवश्यक सब कुछ एक ही स्थान पर खोजें!',
+                exploreServices: 'सेवाएं देखें',
+                joinProfessional: 'पेशेवर के रूप में जुड़ें',
+                
+                // Services
+                professionalServices: 'पेशेवर सेवाएं',
+                laborServices: 'श्रमिक सेवाएं',
+                equipmentMachinery: 'उपकरण और मशीनरी',
+                
+                // Categories
+                plumbers: 'प्लंबर',
+                electricians: 'इलेक्ट्रीशियन',
+                contractors: 'ठेकेदार',
+                civilEngineers: 'सिविल इंजीनियर',
+                designers: 'डिजाइनर',
+                skilledLabor: 'कुशल श्रमिक',
+                unskilledLabor: 'अकुशल श्रमिक',
+                painters: 'पेंटर',
+                carpenters: 'बढ़ई',
+                machineryOperators: 'मशीनरी ऑपरेटर',
+                workshops: 'वर्कशॉप',
+                
+                // Forms
+                fullName: 'पूरा नाम',
+                phoneNumber: 'फोन नंबर',
+                emailAddress: 'ईमेल पता',
+                password: 'पासवर्ड',
+                confirmPassword: 'पासवर्ड की पुष्टि करें',
+                city: 'शहर',
+                required: 'आवश्यक',
+                
+                // Buttons
+                contact: 'संपर्क करें',
+                viewProfile: 'प्रोफाइल देखें',
+                refresh: 'रीफ्रेश',
+                createAccount: 'खाता बनाएं',
+                
+                // Messages
+                welcomeBack: 'वापस स्वागत है',
+                loginFailed: 'लॉगिन असफल',
+                registrationSuccessful: 'पंजीकरण सफल! कृपया अपनी साख के साथ लॉगिन करें।',
+                
+                // Projects
+                constructionProjects: 'निर्माण परियोजनाएं',
+                availableProjects: 'उपलब्ध परियोजनाएं',
+                postNewProject: 'नई परियोजना पोस्ट करें',
+                projectTitle: 'परियोजना शीर्षक',
+                budget: 'बजट',
+                location: 'स्थान',
+                projectDescription: 'परियोजना विवरण',
+                postProject: 'परियोजना पोस्ट करें',
+                
+                // Professional Registration
+                joinAsProfessional: 'एक पेशेवर के रूप में जुड़ें',
+                serviceCategory: 'सेवा श्रेणी',
+                yearsExperience: 'अनुभव के वर्ष',
+                serviceArea: 'सेवा क्षेत्र/स्थान',
+                servicesDescription: 'सेवाओं का विवरण',
+                ratePerDay: 'दैनिक/घंटे की दर (वैकल्पिक)',
+                registerProfessional: 'पेशेवर के रूप में पंजीकरण करें'
+            }
+        };
+
+        // ==========================================
         // CONFIGURATION & GLOBAL VARIABLES
         // ==========================================
 
@@ -636,8 +821,163 @@
             professionalData: {},
             filteredData: {},
             projectsData: [],
-            isLoading: false
+            isLoading: false,
+            currentLanguage: localStorage.getItem('selectedLanguage') || 'en'
         };
+
+        // ==========================================
+        // LANGUAGE FUNCTIONS
+        // ==========================================
+
+        function changeLanguage(langCode, langName) {
+            appState.currentLanguage = langCode;
+            localStorage.setItem('selectedLanguage', langCode);
+            
+            // Update the language display
+            document.getElementById('currentLanguage').textContent = langName;
+            
+            // Update all translatable elements
+            updatePageTranslations();
+            
+            showNotification(`Language changed to ${langName}`, 'success');
+        }
+
+        function t(key) {
+            const translations = TRANSLATIONS[appState.currentLanguage] || TRANSLATIONS.en;
+            return translations[key] || TRANSLATIONS.en[key] || key;
+        }
+
+        function updatePageTranslations() {
+            // Update navigation
+            const navElements = {
+                'nav-home': 'home',
+                'nav-services': 'services', 
+                'nav-labor': 'labor',
+                'nav-equipment': 'equipment',
+                'nav-projects': 'projects'
+            };
+
+            Object.entries(navElements).forEach(([id, key]) => {
+                const element = document.getElementById(id);
+                if (element) element.textContent = t(key);
+            });
+
+            // Update buttons
+            const buttonElements = {
+                'loginBtn': appState.currentUser ? `Hi, ${appState.currentUser.name}` : 'login',
+                'signupBtn': appState.currentUser ? 'logout' : 'signup'
+            };
+
+            Object.entries(buttonElements).forEach(([id, key]) => {
+                const element = document.getElementById(id);
+                if (element && !appState.currentUser) {
+                    element.textContent = t(key);
+                }
+            });
+
+            // Update hero section
+            const heroTitle = document.querySelector('h1');
+            if (heroTitle && heroTitle.textContent.includes('Complete Construction Ecosystem')) {
+                heroTitle.textContent = t('heroTitle');
+            }
+
+            const heroSubtitle = document.querySelector('p.text-xl');
+            if (heroSubtitle && heroSubtitle.textContent.includes('From skilled professionals')) {
+                heroSubtitle.textContent = t('heroSubtitle');
+            }
+
+            // Update service section headers
+            const serviceHeaders = document.querySelectorAll('h3');
+            serviceHeaders.forEach(header => {
+                if (header.textContent.includes('Professional Services')) {
+                    header.innerHTML = `🏗️ ${t('professionalServices')}`;
+                } else if (header.textContent.includes('Labor Services')) {
+                    header.innerHTML = `👷 ${t('laborServices')}`;
+                } else if (header.textContent.includes('Equipment & Machinery')) {
+                    header.innerHTML = `🚜 ${t('equipmentMachinery')}`;
+                }
+            });
+
+            // Update category names in service cards
+            updateServiceCards();
+            
+            // Update form labels
+            updateFormLabels();
+        }
+
+        function updateServiceCards() {
+            const categoryMappings = {
+                'Plumbers': 'plumbers',
+                'Electricians': 'electricians', 
+                'Contractors': 'contractors',
+                'Civil Engineers': 'civilEngineers',
+                'Designers': 'designers',
+                'Skilled Labor': 'skilledLabor',
+                'Unskilled Labor': 'unskilledLabor',
+                'Painters': 'painters',
+                'Carpenters': 'carpenters',
+                'Machinery Operators': 'machineryOperators',
+                'Workshops': 'workshops'
+            };
+
+            const serviceCards = document.querySelectorAll('h4');
+            serviceCards.forEach(card => {
+                const currentText = card.textContent;
+                const translationKey = categoryMappings[currentText];
+                if (translationKey) {
+                    card.textContent = t(translationKey);
+                }
+            });
+        }
+
+        function updateFormLabels() {
+            const labelMappings = {
+                'Full Name': 'fullName',
+                'Phone Number': 'phoneNumber',
+                'Email Address': 'emailAddress',
+                'Password': 'password',
+                'Confirm Password': 'confirmPassword',
+                'City': 'city',
+                'Service Category': 'serviceCategory',
+                'Years of Experience': 'yearsExperience',
+                'Service Area/Location': 'serviceArea',
+                'Services Description': 'servicesDescription',
+                'Rate per Day/Hour (Optional)': 'ratePerDay',
+                'Project Title': 'projectTitle',
+                'Budget': 'budget',
+                'Location': 'location',
+                'Project Description': 'projectDescription'
+            };
+
+            const labels = document.querySelectorAll('label');
+            labels.forEach(label => {
+                const currentText = label.textContent.replace(' *', '');
+                const translationKey = labelMappings[currentText];
+                if (translationKey) {
+                    const isRequired = label.textContent.includes('*');
+                    label.textContent = t(translationKey) + (isRequired ? ' *' : '');
+                }
+            });
+
+            // Update button texts
+            const buttonMappings = {
+                'Contact': 'contact',
+                'View Profile': 'viewProfile', 
+                'Refresh': 'refresh',
+                'Create Account': 'createAccount',
+                'Register as Professional': 'registerProfessional',
+                'Post Project': 'postProject'
+            };
+
+            const buttons = document.querySelectorAll('button');
+            buttons.forEach(button => {
+                const currentText = button.textContent;
+                const translationKey = buttonMappings[currentText];
+                if (translationKey) {
+                    button.textContent = t(translationKey);
+                }
+            });
+        }
 
         // ==========================================
         // UTILITY FUNCTIONS
@@ -1624,6 +1964,42 @@
         }
 
         function initializeApp() {
+            // Initialize language
+            const savedLanguage = localStorage.getItem('selectedLanguage') || 'en';
+            const languageNames = {
+                'en': 'English',
+                'hi': 'हिंदी',
+                'bn': 'বাংলা',
+                'te': 'తెలుగు',
+                'mr': 'मराठी',
+                'ta': 'தமிழ்',
+                'gu': 'ગુજરાતી',
+                'ur': 'اردو',
+                'kn': 'ಕನ್ನಡ',
+                'or': 'ଓଡ଼ିଆ',
+                'pa': 'ਪੰਜਾਬੀ',
+                'ml': 'മലയാളം',
+                'as': 'অসমীয়া',
+                'mai': 'मैथिली',
+                'mag': 'मगही',
+                'bho': 'भोजपुरी',
+                'ne': 'नेपाली',
+                'sa': 'संस्कृत',
+                'sd': 'سنڌي',
+                'ks': 'कॉशुर',
+                'doi': 'डोगरी',
+                'mni': 'মৈতৈলোন্',
+                'sat': 'ᱥᱟᱱᱛᱟᱲᱤ'
+            };
+            
+            appState.currentLanguage = savedLanguage;
+            document.getElementById('currentLanguage').textContent = languageNames[savedLanguage] || 'English';
+            
+            // Apply translations if not English
+            if (savedLanguage !== 'en') {
+                setTimeout(() => updatePageTranslations(), 100);
+            }
+            
             // Check for existing authentication
             if (appState.authToken) {
                 try {
@@ -1665,5 +2041,5 @@
             }
         });
     </script>
-<script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'97df7b61e7331474',t:'MTc1NzY4MDkxNy4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
+<script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'97dfa75a70337a2b',t:'MTc1NzY4MjcxOC4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
 </html>
