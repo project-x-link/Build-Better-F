@@ -169,6 +169,15 @@
         .retry-btn:hover {
             background-color: #dc2626;
         }
+        .input-error {
+            border-color: #ef4444 !important;
+            box-shadow: 0 0 0 3px rgba(239, 68, 68, 0.1) !important;
+        }
+        .error-message {
+            color: #ef4444;
+            font-size: 0.875rem;
+            margin-top: 0.25rem;
+        }
     </style>
 </head>
 <body class="bg-gray-50">
@@ -189,6 +198,7 @@
                             <a onclick="showPage('electricians')">⚡ Electricians</a>
                             <a onclick="showPage('contractors')">🏗️ Contractors</a>
                             <a onclick="showPage('civilengineers')">👨‍💼 Civil Engineers</a>
+                            <a onclick="showPage('designers')">🎨 Designers</a>
                         </div>
                     </div>
                     
@@ -242,7 +252,7 @@
                 <!-- Professional Services -->
                 <div class="mb-12">
                     <h3 class="text-2xl font-bold text-white mb-6">🏗️ Professional Services</h3>
-                    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+                    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-6">
                         <div onclick="showPage('plumbers')" class="text-center p-6 bg-gray-800 rounded-xl card-hover border border-gray-700 cursor-pointer">
                             <div class="service-icon text-5xl mb-3">🔧</div>
                             <h4 class="text-lg font-semibold mb-2 text-white">Plumbers</h4>
@@ -262,6 +272,11 @@
                             <div class="service-icon text-5xl mb-3">👨‍💼</div>
                             <h4 class="text-lg font-semibold mb-2 text-white">Civil Engineers</h4>
                             <p class="text-gray-300 text-sm">Design, planning, project supervision</p>
+                        </div>
+                        <div onclick="showPage('designers')" class="text-center p-6 bg-gray-800 rounded-xl card-hover border border-gray-700 cursor-pointer">
+                            <div class="service-icon text-5xl mb-3">🎨</div>
+                            <h4 class="text-lg font-semibold mb-2 text-white">Designers</h4>
+                            <p class="text-gray-300 text-sm">Architectural & interior design</p>
                         </div>
                     </div>
                 </div>
@@ -343,6 +358,7 @@
                                     <option value="electricians">Electrician</option>
                                     <option value="contractors">Contractor</option>
                                     <option value="civilengineers">Civil Engineer</option>
+                                    <option value="designers">Designer</option>
                                     <option value="skilledlabor">Skilled Labor</option>
                                     <option value="unskilledlabor">Unskilled Labor</option>
                                     <option value="painters">Painter</option>
@@ -507,25 +523,52 @@
 
     <!-- Signup Modal -->
     <div id="signupModal" class="fixed inset-0 bg-black bg-opacity-50 hidden z-50 flex items-center justify-center">
-        <div class="bg-white p-8 rounded-xl max-w-md w-full mx-4">
+        <div class="bg-white p-8 rounded-xl max-w-lg w-full mx-4 max-h-[90vh] overflow-y-auto">
             <div class="flex justify-between items-center mb-6">
-                <h3 class="text-2xl font-bold">Sign Up</h3>
+                <h3 class="text-2xl font-bold">Create Account</h3>
                 <button onclick="hideSignupModal()" class="text-gray-500 hover:text-gray-700 text-2xl">&times;</button>
             </div>
             <form id="signupForm" class="space-y-4">
-                <div>
-                    <label class="block text-sm font-medium text-gray-700 mb-2">Full Name</label>
-                    <input type="text" id="signupName" required class="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent">
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700 mb-2">Full Name *</label>
+                        <input type="text" id="signupName" required class="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent">
+                        <div id="signupNameError" class="error-message hidden"></div>
+                    </div>
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700 mb-2">Phone Number *</label>
+                        <input type="tel" id="signupPhone" required pattern="[0-9]{10}" class="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent">
+                        <div id="signupPhoneError" class="error-message hidden"></div>
+                    </div>
                 </div>
                 <div>
-                    <label class="block text-sm font-medium text-gray-700 mb-2">Email</label>
+                    <label class="block text-sm font-medium text-gray-700 mb-2">Email Address *</label>
                     <input type="email" id="signupEmail" required class="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent">
+                    <div id="signupEmailError" class="error-message hidden"></div>
                 </div>
                 <div>
-                    <label class="block text-sm font-medium text-gray-700 mb-2">Password</label>
-                    <input type="password" id="signupPassword" required class="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent">
+                    <label class="block text-sm font-medium text-gray-700 mb-2">City *</label>
+                    <input type="text" id="signupCity" required class="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent">
+                    <div id="signupCityError" class="error-message hidden"></div>
                 </div>
-                <button type="submit" id="signupSubmitBtn" class="w-full bg-green-600 text-white p-3 rounded-lg hover:bg-green-700 transition-colors font-semibold">Sign Up</button>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700 mb-2">Password *</label>
+                        <input type="password" id="signupPassword" required minlength="6" class="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent">
+                        <div id="signupPasswordError" class="error-message hidden"></div>
+                        <div class="text-xs text-gray-500 mt-1">Minimum 6 characters</div>
+                    </div>
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700 mb-2">Confirm Password *</label>
+                        <input type="password" id="signupConfirmPassword" required minlength="6" class="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent">
+                        <div id="signupConfirmPasswordError" class="error-message hidden"></div>
+                    </div>
+                </div>
+                <div class="flex items-center">
+                    <input type="checkbox" id="signupTerms" required class="h-4 w-4 text-blue-600 focus:ring-blue-500 border-gray-300 rounded">
+                    <label for="signupTerms" class="ml-2 block text-sm text-gray-700">I agree to the Terms of Service and Privacy Policy *</label>
+                </div>
+                <button type="submit" id="signupSubmitBtn" class="w-full bg-green-600 text-white p-3 rounded-lg hover:bg-green-700 transition-colors font-semibold">Create Account</button>
             </form>
             <p class="text-center mt-4 text-gray-600">Already have an account? <button type="button" onclick="hideSignupModal(); showLoginModal();" class="text-blue-600 hover:underline">Login</button></p>
         </div>
@@ -555,7 +598,8 @@
                 'painters': 'painters',
                 'carpenters': 'carpenters',
                 'machinery': 'machinery',
-                'workshops': 'workshops'
+                'workshops': 'workshops',
+                'designers': 'designers'
             },
             CATEGORY_ICONS: {
                 plumbers: '🔧',
@@ -567,7 +611,8 @@
                 painters: '🎨',
                 carpenters: '🔨',
                 machinery: '🚜',
-                workshops: '🔧'
+                workshops: '🔧',
+                designers: '🎨'
             },
             CATEGORY_NAMES: {
                 plumbers: 'Plumbers',
@@ -579,7 +624,8 @@
                 painters: 'Painters',
                 carpenters: 'Carpenters',
                 machinery: 'Machinery Operators',
-                workshops: 'Workshops'
+                workshops: 'Workshops',
+                designers: 'Designers'
             }
         };
 
@@ -637,6 +683,42 @@
             }
         }
 
+        function clearFieldError(fieldId) {
+            const field = document.getElementById(fieldId);
+            const errorDiv = document.getElementById(fieldId + 'Error');
+            
+            if (field) {
+                field.classList.remove('input-error');
+            }
+            if (errorDiv) {
+                errorDiv.classList.add('hidden');
+                errorDiv.textContent = '';
+            }
+        }
+
+        function showFieldError(fieldId, message) {
+            const field = document.getElementById(fieldId);
+            const errorDiv = document.getElementById(fieldId + 'Error');
+            
+            if (field) {
+                field.classList.add('input-error');
+            }
+            if (errorDiv) {
+                errorDiv.classList.remove('hidden');
+                errorDiv.textContent = message;
+            }
+        }
+
+        function validateEmail(email) {
+            const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            return emailRegex.test(email);
+        }
+
+        function validatePhone(phone) {
+            const phoneRegex = /^[0-9]{10}$/;
+            return phoneRegex.test(phone.replace(/\s+/g, ''));
+        }
+
         // ==========================================
         // API SERVICE
         // ==========================================
@@ -664,10 +746,22 @@
                         let errorMessage = `HTTP ${response.status}: ${response.statusText}`;
                         try {
                             const errorData = await response.json();
-                            errorMessage = errorData.message || errorMessage;
+                            errorMessage = errorData.message || errorData.error || errorMessage;
                         } catch (e) {
                             // If response is not JSON, use status text
                         }
+                        
+                        // Handle 401 Unauthorized
+                        if (response.status === 401) {
+                            localStorage.removeItem(CONFIG.STORAGE_KEYS.AUTH_TOKEN);
+                            localStorage.removeItem(CONFIG.STORAGE_KEYS.USER_DATA);
+                            appState.authToken = null;
+                            appState.currentUser = null;
+                            updateAuthUI(false);
+                            showNotification('Session expired. Please login again.', 'warning');
+                            throw new Error('Session expired');
+                        }
+                        
                         throw new Error(errorMessage);
                     }
                     
@@ -681,14 +775,6 @@
                     // Handle different types of errors
                     if (error.name === 'TypeError' && error.message.includes('fetch')) {
                         throw new Error('Network error: Unable to connect to server. Please check your internet connection.');
-                    } else if (error.message.includes('401')) {
-                        // Unauthorized - clear token and redirect to login
-                        localStorage.removeItem(CONFIG.STORAGE_KEYS.AUTH_TOKEN);
-                        localStorage.removeItem(CONFIG.STORAGE_KEYS.USER_DATA);
-                        appState.authToken = null;
-                        appState.currentUser = null;
-                        updateAuthUI(false);
-                        throw new Error('Session expired. Please login again.');
                     } else {
                         throw error;
                     }
@@ -703,10 +789,10 @@
                 });
             }
 
-            static async register(name, email, password) {
+            static async register(userData) {
                 return this.call('/auth/register', {
                     method: 'POST',
-                    body: JSON.stringify({ name, email, password })
+                    body: JSON.stringify(userData)
                 });
             }
 
@@ -718,7 +804,16 @@
             static async createProfessional(professionalData) {
                 return this.call('/professionals', {
                     method: 'POST',
-                    body: JSON.stringify(professionalData)
+                    body: JSON.stringify({
+                        name: professionalData.fullName,
+                        category: professionalData.category,
+                        experience: professionalData.experience,
+                        phone: professionalData.phone,
+                        email: professionalData.email,
+                        serviceArea: professionalData.serviceArea,
+                        description: professionalData.description,
+                        rate: professionalData.rate
+                    })
                 });
             }
 
@@ -1020,12 +1115,13 @@
             const rate = professional.rate || '₹500/day';
             const experience = professional.experience || '2-5 years';
             const serviceArea = professional.serviceArea || 'Multiple locations';
+            const name = professional.name || professional.fullName || 'Professional';
             
             return `
                 <div class="professional-card">
                     <div class="flex justify-between items-start mb-4">
                         <div>
-                            <h3 class="text-xl font-bold text-gray-800">${professional.fullName}</h3>
+                            <h3 class="text-xl font-bold text-gray-800">${name}</h3>
                             <p class="text-gray-600">${experience} experience</p>
                             <p class="text-gray-600">📍 ${serviceArea}</p>
                         </div>
@@ -1148,7 +1244,7 @@
         }
 
         function createProjectCard(project) {
-            const userName = project.userId?.name || 'Anonymous';
+            const userName = project.userId?.name || project.userId?.username || 'Anonymous';
             const budget = project.budget ? `₹${project.budget.toLocaleString()}` : 'Budget not specified';
             const location = project.location || 'Location not specified';
             
@@ -1189,8 +1285,72 @@
         }
 
         // ==========================================
-        // FORM HANDLERS
+        // FORM VALIDATION & HANDLERS
         // ==========================================
+
+        function validateSignupForm() {
+            let isValid = true;
+            
+            // Clear all previous errors
+            ['signupName', 'signupPhone', 'signupEmail', 'signupCity', 'signupPassword', 'signupConfirmPassword'].forEach(clearFieldError);
+            
+            const name = document.getElementById('signupName').value.trim();
+            const phone = document.getElementById('signupPhone').value.trim();
+            const email = document.getElementById('signupEmail').value.trim();
+            const city = document.getElementById('signupCity').value.trim();
+            const password = document.getElementById('signupPassword').value;
+            const confirmPassword = document.getElementById('signupConfirmPassword').value;
+            
+            // Validate name
+            if (!name || name.length < 2) {
+                showFieldError('signupName', 'Name must be at least 2 characters long');
+                isValid = false;
+            }
+            
+            // Validate phone
+            if (!phone) {
+                showFieldError('signupPhone', 'Phone number is required');
+                isValid = false;
+            } else if (!validatePhone(phone)) {
+                showFieldError('signupPhone', 'Please enter a valid 10-digit phone number');
+                isValid = false;
+            }
+            
+            // Validate email
+            if (!email) {
+                showFieldError('signupEmail', 'Email is required');
+                isValid = false;
+            } else if (!validateEmail(email)) {
+                showFieldError('signupEmail', 'Please enter a valid email address');
+                isValid = false;
+            }
+            
+            // Validate city
+            if (!city || city.length < 2) {
+                showFieldError('signupCity', 'City is required');
+                isValid = false;
+            }
+            
+            // Validate password
+            if (!password) {
+                showFieldError('signupPassword', 'Password is required');
+                isValid = false;
+            } else if (password.length < 6) {
+                showFieldError('signupPassword', 'Password must be at least 6 characters long');
+                isValid = false;
+            }
+            
+            // Validate confirm password
+            if (!confirmPassword) {
+                showFieldError('signupConfirmPassword', 'Please confirm your password');
+                isValid = false;
+            } else if (password !== confirmPassword) {
+                showFieldError('signupConfirmPassword', 'Passwords do not match');
+                isValid = false;
+            }
+            
+            return isValid;
+        }
 
         function initializeForms() {
             // Login Form
@@ -1227,14 +1387,22 @@
             document.getElementById('signupForm').addEventListener('submit', async function(e) {
                 e.preventDefault();
                 
-                const name = document.getElementById('signupName').value;
-                const email = document.getElementById('signupEmail').value;
-                const password = document.getElementById('signupPassword').value;
+                if (!validateSignupForm()) {
+                    return;
+                }
+                
+                const userData = {
+                    name: document.getElementById('signupName').value.trim(),
+                    phone: document.getElementById('signupPhone').value.trim(),
+                    email: document.getElementById('signupEmail').value.trim(),
+                    city: document.getElementById('signupCity').value.trim(),
+                    password: document.getElementById('signupPassword').value
+                };
                 
                 setButtonLoading('signupSubmitBtn', true);
                 
                 try {
-                    await ApiService.register(name, email, password);
+                    await ApiService.register(userData);
                     showNotification('Registration successful! Please login with your credentials.', 'success');
                     hideSignupModal();
                     showLoginModal();
@@ -1358,5 +1526,5 @@
             }
         });
     </script>
-<script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'97de5dcec48da750',t:'MTc1NzY2OTIyMC4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
+<script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'97de81b016b42edc',t:'MTc1NzY3MDY4OS4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
 </html>
