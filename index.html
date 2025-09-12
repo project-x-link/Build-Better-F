@@ -189,38 +189,38 @@
                     <div onclick="showPage('home')" class="text-2xl font-bold text-blue-400 cursor-pointer">🏗️ Build Better</div>
                 </div>
                 <div class="hidden md:flex space-x-6">
-                    <a onclick="showPage('home')" class="nav-link text-gray-300 hover:text-blue-400 transition-colors">Home</a>
+                    <a onclick="showPage('home')" class="nav-link text-gray-300 hover:text-blue-400 transition-colors" data-translate="home">Home</a>
                     
                     <div class="dropdown">
-                        <a class="nav-link text-gray-300 hover:text-blue-400 transition-colors cursor-pointer">Services ▼</a>
+                        <a class="nav-link text-gray-300 hover:text-blue-400 transition-colors cursor-pointer" data-translate="services">Services ▼</a>
                         <div class="dropdown-content">
-                            <a onclick="showPage('plumbers')">🔧 Plumbers</a>
-                            <a onclick="showPage('electricians')">⚡ Electricians</a>
-                            <a onclick="showPage('contractors')">🏗️ Contractors</a>
-                            <a onclick="showPage('civilengineers')">👨‍💼 Civil Engineers</a>
-                            <a onclick="showPage('designers')">🎨 Designers</a>
+                            <a onclick="showPage('plumbers')">🔧 <span data-translate="plumbers">Plumbers</span></a>
+                            <a onclick="showPage('electricians')">⚡ <span data-translate="electricians">Electricians</span></a>
+                            <a onclick="showPage('contractors')">🏗️ <span data-translate="contractors">Contractors</span></a>
+                            <a onclick="showPage('civilengineers')">👨‍💼 <span data-translate="civilEngineers">Civil Engineers</span></a>
+                            <a onclick="showPage('designers')">🎨 <span data-translate="designers">Designers</span></a>
                         </div>
                     </div>
                     
                     <div class="dropdown">
-                        <a class="nav-link text-gray-300 hover:text-blue-400 transition-colors cursor-pointer">Labor ▼</a>
+                        <a class="nav-link text-gray-300 hover:text-blue-400 transition-colors cursor-pointer" data-translate="labor">Labor ▼</a>
                         <div class="dropdown-content">
-                            <a onclick="showPage('skilledlabor')">👷‍♂️ Skilled Labor</a>
-                            <a onclick="showPage('unskilledlabor')">👷 Unskilled Labor</a>
-                            <a onclick="showPage('painters')">🎨 Painters</a>
-                            <a onclick="showPage('carpenters')">🔨 Carpenters</a>
+                            <a onclick="showPage('skilledlabor')">👷‍♂️ <span data-translate="skilledLabor">Skilled Labor</span></a>
+                            <a onclick="showPage('unskilledlabor')">👷 <span data-translate="unskilledLabor">Unskilled Labor</span></a>
+                            <a onclick="showPage('painters')">🎨 <span data-translate="painters">Painters</span></a>
+                            <a onclick="showPage('carpenters')">🔨 <span data-translate="carpenters">Carpenters</span></a>
                         </div>
                     </div>
                     
                     <div class="dropdown">
-                        <a class="nav-link text-gray-300 hover:text-blue-400 transition-colors cursor-pointer">Equipment ▼</a>
+                        <a class="nav-link text-gray-300 hover:text-blue-400 transition-colors cursor-pointer" data-translate="equipment">Equipment ▼</a>
                         <div class="dropdown-content">
-                            <a onclick="showPage('machinery')">🚜 Machinery Operators</a>
-                            <a onclick="showPage('workshops')">🔧 Workshops</a>
+                            <a onclick="showPage('machinery')">🚜 <span data-translate="machineryOperators">Machinery Operators</span></a>
+                            <a onclick="showPage('workshops')">🔧 <span data-translate="workshops">Workshops</span></a>
                         </div>
                     </div>
 
-                    <a onclick="showPage('projects')" class="nav-link text-gray-300 hover:text-blue-400 transition-colors">Projects</a>
+                    <a onclick="showPage('projects')" class="nav-link text-gray-300 hover:text-blue-400 transition-colors" data-translate="projects">Projects</a>
                 </div>
                 <div class="flex space-x-4 items-center" id="authButtons">
                     <div class="dropdown">
@@ -253,8 +253,8 @@
                             <a onclick="changeLanguage('sat', 'ᱥᱟᱱᱛᱟᱲᱤ')">📍 ᱥᱟᱱᱛᱟᱲᱤ (Santali)</a>
                         </div>
                     </div>
-                    <button id="loginBtn" onclick="showLoginModal()" class="bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700 transition-colors">Login</button>
-                    <button id="signupBtn" onclick="showSignupModal()" class="bg-blue-500 text-white px-4 py-2 rounded-lg hover:bg-blue-600 transition-colors">Sign Up</button>
+                    <button id="loginBtn" onclick="showLoginModal()" class="bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700 transition-colors" data-translate="login">Login</button>
+                    <button id="signupBtn" onclick="showSignupModal()" class="bg-blue-500 text-white px-4 py-2 rounded-lg hover:bg-blue-600 transition-colors" data-translate="signup">Sign Up</button>
                 </div>
             </div>
         </div>
@@ -265,11 +265,11 @@
         <!-- Hero Section -->
         <section class="hero-gradient text-white py-20">
             <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-                <h1 class="text-5xl font-bold mb-6">Complete Construction Ecosystem</h1>
-                <p class="text-xl mb-8 max-w-3xl mx-auto">From skilled professionals to heavy machinery - find everything you need for your construction project in one place!</p>
+                <h1 class="text-5xl font-bold mb-6" data-translate="heroTitle">Complete Construction Ecosystem</h1>
+                <p class="text-xl mb-8 max-w-3xl mx-auto" data-translate="heroSubtitle">From skilled professionals to heavy machinery - find everything you need for your construction project in one place!</p>
                 <div class="flex flex-col sm:flex-row gap-4 justify-center">
-                    <button onclick="scrollToSection('services')" class="bg-white text-blue-600 px-8 py-3 rounded-lg font-semibold hover:bg-gray-100 transition-colors">Explore Services</button>
-                    <button onclick="scrollToSection('join')" class="border-2 border-white text-white px-8 py-3 rounded-lg font-semibold hover:bg-white hover:text-blue-600 transition-colors">Join as Professional</button>
+                    <button onclick="scrollToSection('services')" class="bg-white text-blue-600 px-8 py-3 rounded-lg font-semibold hover:bg-gray-100 transition-colors" data-translate="exploreServices">Explore Services</button>
+                    <button onclick="scrollToSection('join')" class="border-2 border-white text-white px-8 py-3 rounded-lg font-semibold hover:bg-white hover:text-blue-600 transition-colors" data-translate="joinProfessional">Join as Professional</button>
                 </div>
             </div>
         </section>
@@ -277,35 +277,35 @@
         <!-- Services Section -->
         <section id="services" class="py-16 dark-section">
             <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-                <h2 class="text-4xl font-bold text-center text-white mb-12">Complete Construction Services</h2>
+                <h2 class="text-4xl font-bold text-center text-white mb-12" data-translate="completeConstructionServices">Complete Construction Services</h2>
                 
                 <!-- Professional Services -->
                 <div class="mb-12">
-                    <h3 class="text-2xl font-bold text-white mb-6">🏗️ Professional Services</h3>
+                    <h3 class="text-2xl font-bold text-white mb-6" data-translate="professionalServices">🏗️ Professional Services</h3>
                     <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-6">
                         <div onclick="showPage('plumbers')" class="text-center p-6 bg-gray-800 rounded-xl card-hover border border-gray-700 cursor-pointer">
                             <div class="service-icon text-5xl mb-3">🔧</div>
-                            <h4 class="text-lg font-semibold mb-2 text-white">Plumbers</h4>
+                            <h4 class="text-lg font-semibold mb-2 text-white" data-translate="plumbers">Plumbers</h4>
                             <p class="text-gray-300 text-sm">Water supply, drainage, pipe repairs</p>
                         </div>
                         <div onclick="showPage('electricians')" class="text-center p-6 bg-gray-800 rounded-xl card-hover border border-gray-700 cursor-pointer">
                             <div class="service-icon text-5xl mb-3">⚡</div>
-                            <h4 class="text-lg font-semibold mb-2 text-white">Electricians</h4>
+                            <h4 class="text-lg font-semibold mb-2 text-white" data-translate="electricians">Electricians</h4>
                             <p class="text-gray-300 text-sm">Wiring, electrical repairs, installations</p>
                         </div>
                         <div onclick="showPage('contractors')" class="text-center p-6 bg-gray-800 rounded-xl card-hover border border-gray-700 cursor-pointer">
                             <div class="service-icon text-5xl mb-3">🏗️</div>
-                            <h4 class="text-lg font-semibold mb-2 text-white">Contractors</h4>
+                            <h4 class="text-lg font-semibold mb-2 text-white" data-translate="contractors">Contractors</h4>
                             <p class="text-gray-300 text-sm">Complete construction projects</p>
                         </div>
                         <div onclick="showPage('civilengineers')" class="text-center p-6 bg-gray-800 rounded-xl card-hover border border-gray-700 cursor-pointer">
                             <div class="service-icon text-5xl mb-3">👨‍💼</div>
-                            <h4 class="text-lg font-semibold mb-2 text-white">Civil Engineers</h4>
+                            <h4 class="text-lg font-semibold mb-2 text-white" data-translate="civilEngineers">Civil Engineers</h4>
                             <p class="text-gray-300 text-sm">Design, planning, project supervision</p>
                         </div>
                         <div onclick="showPage('designers')" class="text-center p-6 bg-gray-800 rounded-xl card-hover border border-gray-700 cursor-pointer">
                             <div class="service-icon text-5xl mb-3">🎨</div>
-                            <h4 class="text-lg font-semibold mb-2 text-white">Designers</h4>
+                            <h4 class="text-lg font-semibold mb-2 text-white" data-translate="designers">Designers</h4>
                             <p class="text-gray-300 text-sm">Architectural & interior design</p>
                         </div>
                     </div>
@@ -313,26 +313,26 @@
 
                 <!-- Labor Services -->
                 <div class="mb-12">
-                    <h3 class="text-2xl font-bold text-white mb-6">👷 Labor Services</h3>
+                    <h3 class="text-2xl font-bold text-white mb-6" data-translate="laborServices">👷 Labor Services</h3>
                     <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
                         <div onclick="showPage('skilledlabor')" class="text-center p-6 bg-gray-800 rounded-xl card-hover border border-gray-700 cursor-pointer">
                             <div class="service-icon text-5xl mb-3">👷‍♂️</div>
-                            <h4 class="text-lg font-semibold mb-2 text-white">Skilled Labor</h4>
+                            <h4 class="text-lg font-semibold mb-2 text-white" data-translate="skilledLabor">Skilled Labor</h4>
                             <p class="text-gray-300 text-sm">Masonry, welding, specialized work</p>
                         </div>
                         <div onclick="showPage('unskilledlabor')" class="text-center p-6 bg-gray-800 rounded-xl card-hover border border-gray-700 cursor-pointer">
                             <div class="service-icon text-5xl mb-3">👷</div>
-                            <h4 class="text-lg font-semibold mb-2 text-white">Unskilled Labor</h4>
+                            <h4 class="text-lg font-semibold mb-2 text-white" data-translate="unskilledLabor">Unskilled Labor</h4>
                             <p class="text-gray-300 text-sm">General labor, loading, cleaning</p>
                         </div>
                         <div onclick="showPage('painters')" class="text-center p-6 bg-gray-800 rounded-xl card-hover border border-gray-700 cursor-pointer">
                             <div class="service-icon text-5xl mb-3">🎨</div>
-                            <h4 class="text-lg font-semibold mb-2 text-white">Painters</h4>
+                            <h4 class="text-lg font-semibold mb-2 text-white" data-translate="painters">Painters</h4>
                             <p class="text-gray-300 text-sm">Interior, exterior, decorative painting</p>
                         </div>
                         <div onclick="showPage('carpenters')" class="text-center p-6 bg-gray-800 rounded-xl card-hover border border-gray-700 cursor-pointer">
                             <div class="service-icon text-5xl mb-3">🔨</div>
-                            <h4 class="text-lg font-semibold mb-2 text-white">Carpenters</h4>
+                            <h4 class="text-lg font-semibold mb-2 text-white" data-translate="carpenters">Carpenters</h4>
                             <p class="text-gray-300 text-sm">Woodwork, furniture, installations</p>
                         </div>
                     </div>
@@ -340,16 +340,16 @@
 
                 <!-- Equipment & Machinery -->
                 <div>
-                    <h3 class="text-2xl font-bold text-white mb-6">🚜 Equipment & Machinery</h3>
+                    <h3 class="text-2xl font-bold text-white mb-6" data-translate="equipmentMachinery">🚜 Equipment & Machinery</h3>
                     <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-6">
                         <div onclick="showPage('machinery')" class="text-center p-6 bg-gray-800 rounded-xl card-hover border border-gray-700 cursor-pointer">
                             <div class="service-icon text-5xl mb-3">🚜</div>
-                            <h4 class="text-lg font-semibold mb-2 text-white">Machinery Operators</h4>
+                            <h4 class="text-lg font-semibold mb-2 text-white" data-translate="machineryOperators">Machinery Operators</h4>
                             <p class="text-gray-300 text-sm">JCB, excavators, cranes, heavy equipment</p>
                         </div>
                         <div onclick="showPage('workshops')" class="text-center p-6 bg-gray-800 rounded-xl card-hover border border-gray-700 cursor-pointer">
                             <div class="service-icon text-5xl mb-3">🔧</div>
-                            <h4 class="text-lg font-semibold mb-2 text-white">Workshops</h4>
+                            <h4 class="text-lg font-semibold mb-2 text-white" data-translate="workshops">Workshops</h4>
                             <p class="text-gray-300 text-sm">Tool rental, equipment repair, fabrication</p>
                         </div>
                     </div>
@@ -360,28 +360,28 @@
         <!-- Join as Professional Section -->
         <section id="join" class="py-16 bg-white">
             <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-                <h2 class="text-4xl font-bold text-center text-gray-800 mb-12">Join as a Professional</h2>
+                <h2 class="text-4xl font-bold text-center text-gray-800 mb-12" data-translate="joinAsProfessional">Join as a Professional</h2>
                 <div class="bg-gray-50 p-8 rounded-xl">
                     <form id="professionalForm" class="space-y-6">
                         <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
                             <div>
-                                <label class="block text-sm font-medium text-gray-700 mb-2">Full Name *</label>
+                                <label class="block text-sm font-medium text-gray-700 mb-2" data-translate="fullName">Full Name *</label>
                                 <input type="text" id="fullName" required class="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent">
                             </div>
                             <div>
-                                <label class="block text-sm font-medium text-gray-700 mb-2">Phone Number *</label>
+                                <label class="block text-sm font-medium text-gray-700 mb-2" data-translate="phoneNumber">Phone Number *</label>
                                 <input type="tel" id="phone" required class="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent">
                             </div>
                         </div>
                         
                         <div>
-                            <label class="block text-sm font-medium text-gray-700 mb-2">Email Address *</label>
+                            <label class="block text-sm font-medium text-gray-700 mb-2" data-translate="emailAddress">Email Address *</label>
                             <input type="email" id="email" required class="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent">
                         </div>
                         
                         <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
                             <div>
-                                <label class="block text-sm font-medium text-gray-700 mb-2">Service Category *</label>
+                                <label class="block text-sm font-medium text-gray-700 mb-2" data-translate="serviceCategory">Service Category *</label>
                                 <select id="category" required class="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent">
                                     <option value="">Select Category</option>
                                     <option value="plumbers">Plumber</option>
@@ -398,7 +398,7 @@
                                 </select>
                             </div>
                             <div>
-                                <label class="block text-sm font-medium text-gray-700 mb-2">Years of Experience *</label>
+                                <label class="block text-sm font-medium text-gray-700 mb-2" data-translate="yearsExperience">Years of Experience *</label>
                                 <select id="experience" required class="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent">
                                     <option value="">Select Experience</option>
                                     <option value="0-1 years">0-1 years</option>
@@ -410,17 +410,17 @@
                         </div>
                         
                         <div>
-                            <label class="block text-sm font-medium text-gray-700 mb-2">Service Area/Location *</label>
+                            <label class="block text-sm font-medium text-gray-700 mb-2" data-translate="serviceArea">Service Area/Location *</label>
                             <input type="text" id="serviceArea" required placeholder="City, District, or Areas you serve" class="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent">
                         </div>
                         
                         <div>
-                            <label class="block text-sm font-medium text-gray-700 mb-2">Services Description</label>
+                            <label class="block text-sm font-medium text-gray-700 mb-2" data-translate="servicesDescription">Services Description</label>
                             <textarea id="description" rows="4" placeholder="Describe your services, specializations, and what makes you unique..." class="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"></textarea>
                         </div>
                         
                         <div>
-                            <label class="block text-sm font-medium text-gray-700 mb-2">Rate per Day/Hour (Optional)</label>
+                            <label class="block text-sm font-medium text-gray-700 mb-2" data-translate="ratePerDay">Rate per Day/Hour (Optional)</label>
                             <input type="text" id="rate" placeholder="e.g., ₹500/day or ₹50/hour" class="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent">
                         </div>
                         
@@ -429,7 +429,7 @@
                             <label for="terms" class="ml-2 block text-sm text-gray-700">I agree to the Terms of Service and Privacy Policy</label>
                         </div>
                         
-                        <button type="submit" id="professionalSubmitBtn" class="w-full bg-green-600 text-white p-3 rounded-lg hover:bg-green-700 transition-colors font-semibold">Register as Professional</button>
+                        <button type="submit" id="professionalSubmitBtn" class="w-full bg-green-600 text-white p-3 rounded-lg hover:bg-green-700 transition-colors font-semibold" data-translate="registerProfessional">Register as Professional</button>
                     </form>
                 </div>
             </div>
@@ -441,7 +441,7 @@
         <section class="hero-gradient text-white py-16">
             <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
                 <div class="text-6xl mb-4">🏗️</div>
-                <h1 class="text-4xl font-bold mb-4">Construction Projects</h1>
+                <h1 class="text-4xl font-bold mb-4" data-translate="constructionProjects">Construction Projects</h1>
                 <p class="text-xl mb-6 max-w-3xl mx-auto">Browse available projects or post your own construction needs</p>
             </div>
         </section>
@@ -449,27 +449,27 @@
         <!-- Create Project Section (Only for logged in users) -->
         <section id="createProjectSection" class="py-8 bg-white shadow-sm" style="display: none;">
             <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-                <h3 class="text-2xl font-bold mb-6">Post a New Project</h3>
+                <h3 class="text-2xl font-bold mb-6" data-translate="postNewProject">Post a New Project</h3>
                 <form id="projectForm" class="space-y-4">
                     <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
                         <div>
-                            <label class="block text-sm font-medium text-gray-700 mb-2">Project Title *</label>
+                            <label class="block text-sm font-medium text-gray-700 mb-2" data-translate="projectTitle">Project Title *</label>
                             <input type="text" id="projectTitle" required class="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500">
                         </div>
                         <div>
-                            <label class="block text-sm font-medium text-gray-700 mb-2">Budget (₹)</label>
+                            <label class="block text-sm font-medium text-gray-700 mb-2" data-translate="budget">Budget (₹)</label>
                             <input type="number" id="projectBudget" class="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500">
                         </div>
                     </div>
                     <div>
-                        <label class="block text-sm font-medium text-gray-700 mb-2">Location</label>
+                        <label class="block text-sm font-medium text-gray-700 mb-2" data-translate="location">Location</label>
                         <input type="text" id="projectLocation" class="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500">
                     </div>
                     <div>
-                        <label class="block text-sm font-medium text-gray-700 mb-2">Project Description *</label>
+                        <label class="block text-sm font-medium text-gray-700 mb-2" data-translate="projectDescription">Project Description *</label>
                         <textarea id="projectDescription" required rows="4" class="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500"></textarea>
                     </div>
-                    <button type="submit" id="projectSubmitBtn" class="bg-blue-600 text-white px-6 py-3 rounded-lg hover:bg-blue-700 transition-colors font-semibold">Post Project</button>
+                    <button type="submit" id="projectSubmitBtn" class="bg-blue-600 text-white px-6 py-3 rounded-lg hover:bg-blue-700 transition-colors font-semibold" data-translate="postProject">Post Project</button>
                 </form>
             </div>
         </section>
@@ -478,7 +478,7 @@
         <section class="py-12 bg-gray-50">
             <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                 <div class="flex justify-between items-center mb-8">
-                    <h2 class="text-3xl font-bold text-gray-800">Available Projects</h2>
+                    <h2 class="text-3xl font-bold text-gray-800" data-translate="availableProjects">Available Projects</h2>
                     <div class="text-gray-600">
                         <span id="projectsCount">0</span> projects found
                     </div>
@@ -533,19 +533,19 @@
     <div id="loginModal" class="fixed inset-0 bg-black bg-opacity-50 hidden z-50 flex items-center justify-center">
         <div class="bg-white p-8 rounded-xl max-w-md w-full mx-4">
             <div class="flex justify-between items-center mb-6">
-                <h3 class="text-2xl font-bold">Login</h3>
+                <h3 class="text-2xl font-bold" data-translate="login">Login</h3>
                 <button onclick="hideLoginModal()" class="text-gray-500 hover:text-gray-700 text-2xl">&times;</button>
             </div>
             <form id="loginForm" class="space-y-4">
                 <div>
-                    <label class="block text-sm font-medium text-gray-700 mb-2">Email</label>
+                    <label class="block text-sm font-medium text-gray-700 mb-2" data-translate="emailAddress">Email</label>
                     <input type="email" id="loginEmail" required class="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent">
                 </div>
                 <div>
-                    <label class="block text-sm font-medium text-gray-700 mb-2">Password</label>
+                    <label class="block text-sm font-medium text-gray-700 mb-2" data-translate="password">Password</label>
                     <input type="password" id="loginPassword" required class="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent">
                 </div>
-                <button type="submit" id="loginSubmitBtn" class="w-full bg-blue-600 text-white p-3 rounded-lg hover:bg-blue-700 transition-colors font-semibold">Login</button>
+                <button type="submit" id="loginSubmitBtn" class="w-full bg-blue-600 text-white p-3 rounded-lg hover:bg-blue-700 transition-colors font-semibold" data-translate="login">Login</button>
             </form>
             <p class="text-center mt-4 text-gray-600">Don't have an account? <button type="button" onclick="hideLoginModal(); showSignupModal();" class="text-blue-600 hover:underline">Sign up</button></p>
         </div>
@@ -555,41 +555,41 @@
     <div id="signupModal" class="fixed inset-0 bg-black bg-opacity-50 hidden z-50 flex items-center justify-center">
         <div class="bg-white p-8 rounded-xl max-w-lg w-full mx-4 max-h-[90vh] overflow-y-auto">
             <div class="flex justify-between items-center mb-6">
-                <h3 class="text-2xl font-bold">Create Account</h3>
+                <h3 class="text-2xl font-bold" data-translate="createAccount">Create Account</h3>
                 <button onclick="hideSignupModal()" class="text-gray-500 hover:text-gray-700 text-2xl">&times;</button>
             </div>
             <form id="signupForm" class="space-y-4">
                 <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
                     <div>
-                        <label class="block text-sm font-medium text-gray-700 mb-2">Full Name *</label>
+                        <label class="block text-sm font-medium text-gray-700 mb-2" data-translate="fullName">Full Name *</label>
                         <input type="text" id="signupName" required class="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent">
                         <div id="signupNameError" class="error-message hidden"></div>
                     </div>
                     <div>
-                        <label class="block text-sm font-medium text-gray-700 mb-2">Phone Number *</label>
+                        <label class="block text-sm font-medium text-gray-700 mb-2" data-translate="phoneNumber">Phone Number *</label>
                         <input type="tel" id="signupPhone" required pattern="[0-9]{10}" class="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent">
                         <div id="signupPhoneError" class="error-message hidden"></div>
                     </div>
                 </div>
                 <div>
-                    <label class="block text-sm font-medium text-gray-700 mb-2">Email Address *</label>
+                    <label class="block text-sm font-medium text-gray-700 mb-2" data-translate="emailAddress">Email Address *</label>
                     <input type="email" id="signupEmail" required class="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent">
                     <div id="signupEmailError" class="error-message hidden"></div>
                 </div>
                 <div>
-                    <label class="block text-sm font-medium text-gray-700 mb-2">City *</label>
+                    <label class="block text-sm font-medium text-gray-700 mb-2" data-translate="city">City *</label>
                     <input type="text" id="signupCity" required class="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent">
                     <div id="signupCityError" class="error-message hidden"></div>
                 </div>
                 <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
                     <div>
-                        <label class="block text-sm font-medium text-gray-700 mb-2">Password *</label>
+                        <label class="block text-sm font-medium text-gray-700 mb-2" data-translate="password">Password *</label>
                         <input type="password" id="signupPassword" required minlength="6" class="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent">
                         <div id="signupPasswordError" class="error-message hidden"></div>
                         <div class="text-xs text-gray-500 mt-1">Minimum 6 characters</div>
                     </div>
                     <div>
-                        <label class="block text-sm font-medium text-gray-700 mb-2">Confirm Password *</label>
+                        <label class="block text-sm font-medium text-gray-700 mb-2" data-translate="confirmPassword">Confirm Password *</label>
                         <input type="password" id="signupConfirmPassword" required minlength="6" class="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent">
                         <div id="signupConfirmPasswordError" class="error-message hidden"></div>
                     </div>
@@ -598,7 +598,7 @@
                     <input type="checkbox" id="signupTerms" required class="h-4 w-4 text-blue-600 focus:ring-blue-500 border-gray-300 rounded">
                     <label for="signupTerms" class="ml-2 block text-sm text-gray-700">I agree to the Terms of Service and Privacy Policy *</label>
                 </div>
-                <button type="submit" id="signupSubmitBtn" class="w-full bg-green-600 text-white p-3 rounded-lg hover:bg-green-700 transition-colors font-semibold">Create Account</button>
+                <button type="submit" id="signupSubmitBtn" class="w-full bg-green-600 text-white p-3 rounded-lg hover:bg-green-700 transition-colors font-semibold" data-translate="createAccount">Create Account</button>
             </form>
             <p class="text-center mt-4 text-gray-600">Already have an account? <button type="button" onclick="hideSignupModal(); showLoginModal();" class="text-blue-600 hover:underline">Login</button></p>
         </div>
@@ -631,9 +631,9 @@
                 joinProfessional: 'Join as Professional',
                 
                 // Services
-                professionalServices: 'Professional Services',
-                laborServices: 'Labor Services',
-                equipmentMachinery: 'Equipment & Machinery',
+                professionalServices: '🏗️ Professional Services',
+                laborServices: '👷 Labor Services',
+                equipmentMachinery: '🚜 Equipment & Machinery',
                 
                 // Categories
                 plumbers: 'Plumbers',
@@ -685,7 +685,10 @@
                 serviceArea: 'Service Area/Location',
                 servicesDescription: 'Services Description',
                 ratePerDay: 'Rate per Day/Hour (Optional)',
-                registerProfessional: 'Register as Professional'
+                registerProfessional: 'Register as Professional',
+                
+                // Additional
+                completeConstructionServices: 'Complete Construction Services'
             },
             hi: {
                 // Navigation
@@ -705,9 +708,9 @@
                 joinProfessional: 'पेशेवर के रूप में जुड़ें',
                 
                 // Services
-                professionalServices: 'पेशेवर सेवाएं',
-                laborServices: 'श्रमिक सेवाएं',
-                equipmentMachinery: 'उपकरण और मशीनरी',
+                professionalServices: '🏗️ पेशेवर सेवाएं',
+                laborServices: '👷 श्रमिक सेवाएं',
+                equipmentMachinery: '🚜 उपकरण और मशीनरी',
                 
                 // Categories
                 plumbers: 'प्लंबर',
@@ -759,9 +762,95 @@
                 serviceArea: 'सेवा क्षेत्र/स्थान',
                 servicesDescription: 'सेवाओं का विवरण',
                 ratePerDay: 'दैनिक/घंटे की दर (वैकल्पिक)',
-                registerProfessional: 'पेशेवर के रूप में पंजीकरण करें'
+                registerProfessional: 'पेशेवर के रूप में पंजीकरण करें',
+                
+                // Additional
+                completeConstructionServices: 'संपूर्ण निर्माण सेवाएं'
             }
         };
+
+        // ==========================================
+        // ENHANCED LANGUAGE SYSTEM
+        // ==========================================
+
+        let appState = {
+            currentLanguage: localStorage.getItem('selectedLanguage') || 'en',
+            currentUser: null,
+            authToken: localStorage.getItem('authToken'),
+            professionalData: {},
+            filteredData: {},
+            projectsData: [],
+            isLoading: false
+        };
+
+        // Enhanced language switching that works unlimited times
+        function changeLanguage(langCode, langName) {
+            console.log(`🌐 Switching language from ${appState.currentLanguage} to ${langCode}`);
+            
+            appState.currentLanguage = langCode;
+            localStorage.setItem('selectedLanguage', langCode);
+            
+            // Update the language display
+            document.getElementById('currentLanguage').textContent = langName;
+            
+            // Apply translations to all elements with data-translate attribute
+            updateAllTranslations();
+            
+            showNotification(`Language changed to ${langName}`, 'success');
+            console.log(`✅ Language successfully changed to ${langCode}`);
+        }
+
+        function t(key) {
+            const translations = TRANSLATIONS[appState.currentLanguage] || TRANSLATIONS.en;
+            return translations[key] || TRANSLATIONS.en[key] || key;
+        }
+
+        function updateAllTranslations() {
+            console.log(`🔄 Updating all translations to: ${appState.currentLanguage}`);
+            
+            // Find all elements with data-translate attribute
+            const translatableElements = document.querySelectorAll('[data-translate]');
+            
+            translatableElements.forEach(element => {
+                const key = element.getAttribute('data-translate');
+                const translatedText = t(key);
+                
+                // Handle different element types
+                if (element.tagName === 'INPUT' && element.type === 'submit') {
+                    element.value = translatedText;
+                } else if (element.tagName === 'INPUT' && element.placeholder) {
+                    // Don't change placeholder for now, handle separately if needed
+                } else {
+                    // For navigation items with dropdown arrows
+                    if (element.textContent.includes('▼')) {
+                        element.textContent = translatedText + ' ▼';
+                    } else {
+                        element.textContent = translatedText;
+                    }
+                }
+            });
+            
+            // Handle special cases for auth buttons when user is logged in
+            updateAuthButtonsIfLoggedIn();
+            
+            console.log(`✅ Updated ${translatableElements.length} translatable elements`);
+        }
+
+        function updateAuthButtonsIfLoggedIn() {
+            if (appState.currentUser) {
+                const loginBtn = document.getElementById('loginBtn');
+                const signupBtn = document.getElementById('signupBtn');
+                
+                if (loginBtn && loginBtn.textContent.startsWith('Hi,')) {
+                    // Keep the user greeting, don't translate
+                    return;
+                }
+                
+                if (signupBtn && signupBtn.textContent === 'Logout') {
+                    signupBtn.textContent = t('logout');
+                }
+            }
+        }
 
         // ==========================================
         // CONFIGURATION & GLOBAL VARIABLES
@@ -813,260 +902,6 @@
                 designers: 'Designers'
             }
         };
-
-        // Global state
-        let appState = {
-            currentUser: null,
-            authToken: localStorage.getItem(CONFIG.STORAGE_KEYS.AUTH_TOKEN),
-            professionalData: {},
-            filteredData: {},
-            projectsData: [],
-            isLoading: false,
-            currentLanguage: localStorage.getItem('selectedLanguage') || 'en'
-        };
-
-        // ==========================================
-        // LANGUAGE FUNCTIONS
-        // ==========================================
-
-        // Store original text content for smooth language switching
-        let originalTexts = {};
-        let isOriginalTextsCaptured = false;
-
-        function captureOriginalTexts() {
-            if (isOriginalTextsCaptured) return;
-            
-            // Capture navigation links
-            const navLinks = document.querySelectorAll('.nav-link');
-            navLinks.forEach((link, index) => {
-                originalTexts[`nav-${index}`] = link.textContent.replace(' ▼', '');
-            });
-
-            // Capture hero section
-            const heroTitle = document.querySelector('h1');
-            if (heroTitle) {
-                originalTexts['heroTitle'] = heroTitle.textContent;
-            }
-
-            const heroSubtitle = document.querySelector('p.text-xl');
-            if (heroSubtitle) {
-                originalTexts['heroSubtitle'] = heroSubtitle.textContent;
-            }
-
-            // Capture service section headers
-            const serviceHeaders = document.querySelectorAll('h3');
-            serviceHeaders.forEach((header, index) => {
-                originalTexts[`serviceHeader-${index}`] = header.textContent;
-            });
-
-            // Capture service cards
-            const serviceCards = document.querySelectorAll('h4');
-            serviceCards.forEach((card, index) => {
-                originalTexts[`serviceCard-${index}`] = card.textContent;
-            });
-
-            // Capture form labels
-            const labels = document.querySelectorAll('label');
-            labels.forEach((label, index) => {
-                originalTexts[`label-${index}`] = label.textContent;
-            });
-
-            // Capture buttons (excluding auth buttons and dynamic ones)
-            const buttons = document.querySelectorAll('button:not(#loginBtn):not(#signupBtn)');
-            buttons.forEach((button, index) => {
-                if (button.textContent && !button.textContent.includes('Hi,')) {
-                    originalTexts[`button-${index}`] = button.textContent;
-                }
-            });
-
-            // Capture specific elements by data attributes
-            document.querySelectorAll('[data-translate]').forEach(element => {
-                const key = element.getAttribute('data-translate');
-                originalTexts[key] = element.textContent;
-            });
-
-            isOriginalTextsCaptured = true;
-            console.log('📝 Original texts captured:', originalTexts);
-        }
-
-        function changeLanguage(langCode, langName) {
-            // Capture original texts on first language change
-            if (!isOriginalTextsCaptured) {
-                captureOriginalTexts();
-            }
-
-            appState.currentLanguage = langCode;
-            localStorage.setItem('selectedLanguage', langCode);
-            
-            // Update the language display
-            document.getElementById('currentLanguage').textContent = langName;
-            
-            // Update all translatable elements
-            updatePageTranslations();
-            
-            showNotification(`Language changed to ${langName}`, 'success');
-        }
-
-        function t(key) {
-            const translations = TRANSLATIONS[appState.currentLanguage] || TRANSLATIONS.en;
-            return translations[key] || TRANSLATIONS.en[key] || key;
-        }
-
-        function updatePageTranslations() {
-            // Update navigation links
-            const navLinks = document.querySelectorAll('.nav-link');
-            const navKeys = ['home', 'services', 'labor', 'equipment', 'projects'];
-            
-            navLinks.forEach((link, index) => {
-                if (navKeys[index]) {
-                    const originalText = link.textContent.replace(' ▼', '');
-                    const hasDropdown = link.textContent.includes('▼');
-                    link.textContent = t(navKeys[index]) + (hasDropdown ? ' ▼' : '');
-                }
-            });
-
-            // Update auth buttons (only if not logged in)
-            if (!appState.currentUser) {
-                const loginBtn = document.getElementById('loginBtn');
-                const signupBtn = document.getElementById('signupBtn');
-                if (loginBtn) loginBtn.textContent = t('login');
-                if (signupBtn) signupBtn.textContent = t('signup');
-            }
-
-            // Update hero section
-            const heroTitle = document.querySelector('h1');
-            if (heroTitle && originalTexts['heroTitle']) {
-                heroTitle.textContent = t('heroTitle');
-            }
-
-            const heroSubtitle = document.querySelector('p.text-xl');
-            if (heroSubtitle && originalTexts['heroSubtitle']) {
-                heroSubtitle.textContent = t('heroSubtitle');
-            }
-
-            // Update service section headers
-            const serviceHeaders = document.querySelectorAll('h3');
-            const serviceHeaderKeys = ['professionalServices', 'laborServices', 'equipmentMachinery'];
-            const serviceHeaderIcons = ['🏗️', '👷', '🚜'];
-            
-            serviceHeaders.forEach((header, index) => {
-                if (serviceHeaderKeys[index] && serviceHeaderIcons[index]) {
-                    header.innerHTML = `${serviceHeaderIcons[index]} ${t(serviceHeaderKeys[index])}`;
-                }
-            });
-
-            // Update service cards
-            updateServiceCards();
-            
-            // Update form labels and buttons
-            updateFormElements();
-
-            // Update specific translatable elements
-            updateSpecificElements();
-        }
-
-        function updateServiceCards() {
-            const serviceCards = document.querySelectorAll('h4');
-            const categoryKeys = [
-                'plumbers', 'electricians', 'contractors', 'civilEngineers', 'designers',
-                'skilledLabor', 'unskilledLabor', 'painters', 'carpenters',
-                'machineryOperators', 'workshops'
-            ];
-
-            serviceCards.forEach((card, index) => {
-                if (categoryKeys[index]) {
-                    card.textContent = t(categoryKeys[index]);
-                }
-            });
-        }
-
-        function updateFormElements() {
-            // Update form labels
-            const labelMappings = [
-                'fullName', 'phoneNumber', 'emailAddress', 'password', 'confirmPassword',
-                'city', 'serviceCategory', 'yearsExperience', 'serviceArea', 'servicesDescription',
-                'ratePerDay', 'projectTitle', 'budget', 'location', 'projectDescription'
-            ];
-
-            const labels = document.querySelectorAll('label');
-            labels.forEach((label, index) => {
-                if (labelMappings[index] && originalTexts[`label-${index}`]) {
-                    const isRequired = originalTexts[`label-${index}`].includes('*');
-                    label.textContent = t(labelMappings[index]) + (isRequired ? ' *' : '');
-                }
-            });
-
-            // Update buttons
-            const buttonMappings = [
-                'contact', 'viewProfile', 'refresh', 'createAccount', 
-                'registerProfessional', 'postProject', 'exploreServices', 'joinProfessional'
-            ];
-
-            const buttons = document.querySelectorAll('button:not(#loginBtn):not(#signupBtn)');
-            buttons.forEach((button, index) => {
-                if (buttonMappings[index] && originalTexts[`button-${index}`]) {
-                    button.textContent = t(buttonMappings[index]);
-                }
-            });
-
-            // Update specific buttons by their text content
-            document.querySelectorAll('button').forEach(button => {
-                const text = button.textContent.trim();
-                if (text === 'Explore Services' || text === t('exploreServices')) {
-                    button.textContent = t('exploreServices');
-                } else if (text === 'Join as Professional' || text === t('joinProfessional')) {
-                    button.textContent = t('joinProfessional');
-                } else if (text === 'Contact' || text === t('contact')) {
-                    button.textContent = t('contact');
-                } else if (text === 'View Profile' || text === t('viewProfile')) {
-                    button.textContent = t('viewProfile');
-                } else if (text === 'Refresh' || text === t('refresh')) {
-                    button.textContent = t('refresh');
-                } else if (text === 'Create Account' || text === t('createAccount')) {
-                    button.textContent = t('createAccount');
-                } else if (text === 'Register as Professional' || text === t('registerProfessional')) {
-                    button.textContent = t('registerProfessional');
-                } else if (text === 'Post Project' || text === t('postProject')) {
-                    button.textContent = t('postProject');
-                }
-            });
-        }
-
-        function updateSpecificElements() {
-            // Update page titles
-            const pageTitles = document.querySelectorAll('h1, h2');
-            pageTitles.forEach(title => {
-                const text = title.textContent;
-                if (text.includes('Construction Projects') || text.includes(t('constructionProjects'))) {
-                    title.textContent = t('constructionProjects');
-                } else if (text.includes('Available Projects') || text.includes(t('availableProjects'))) {
-                    title.textContent = t('availableProjects');
-                } else if (text.includes('Join as a Professional') || text.includes(t('joinAsProfessional'))) {
-                    title.textContent = t('joinAsProfessional');
-                }
-            });
-
-            // Update placeholders
-            const inputs = document.querySelectorAll('input, textarea, select');
-            inputs.forEach(input => {
-                if (input.placeholder) {
-                    // Update common placeholders
-                    if (input.placeholder.includes('City, District')) {
-                        input.placeholder = appState.currentLanguage === 'hi' ? 
-                            'शहर, जिला, या आपकी सेवा के क्षेत्र' : 
-                            'City, District, or Areas you serve';
-                    } else if (input.placeholder.includes('Describe your services')) {
-                        input.placeholder = appState.currentLanguage === 'hi' ? 
-                            'अपनी सेवाओं, विशेषताओं का वर्णन करें...' : 
-                            'Describe your services, specializations, and what makes you unique...';
-                    } else if (input.placeholder.includes('₹500/day')) {
-                        input.placeholder = appState.currentLanguage === 'hi' ? 
-                            'जैसे ₹500/दिन या ₹50/घंटा' : 
-                            'e.g., ₹500/day or ₹50/hour';
-                    }
-                }
-            });
-        }
 
         // ==========================================
         // UTILITY FUNCTIONS
@@ -1160,8 +995,7 @@
                         'Content-Type': 'application/json',
                         ...options.headers
                     },
-                    // Add timeout to all requests
-                    signal: AbortSignal.timeout(15000), // 15 second timeout
+                    signal: AbortSignal.timeout(15000),
                     ...options
                 };
                 
@@ -1171,41 +1005,18 @@
                 
                 try {
                     console.log(`🌐 Making API call to: ${url}`);
-                    console.log('📤 Request config:', {
-                        method: config.method || 'GET',
-                        headers: config.headers,
-                        body: config.body ? 'Present' : 'None'
-                    });
-                    
                     const response = await fetch(url, config);
-                    
-                    console.log(`📥 Response status: ${response.status} ${response.statusText}`);
-                    console.log('📥 Response headers:', Object.fromEntries(response.headers.entries()));
                     
                     if (!response.ok) {
                         let errorMessage = `HTTP ${response.status}: ${response.statusText}`;
-                        let errorDetails = null;
                         
                         try {
                             const errorData = await response.json();
-                            console.log('❌ Error response data:', errorData);
                             errorMessage = errorData.message || errorData.error || errorMessage;
-                            errorDetails = errorData.details || errorData.errors;
                         } catch (e) {
-                            console.log('⚠️ Could not parse error response as JSON');
-                            // Try to get text response
-                            try {
-                                const errorText = await response.text();
-                                console.log('❌ Error response text:', errorText);
-                                if (errorText) {
-                                    errorMessage = errorText;
-                                }
-                            } catch (textError) {
-                                console.log('⚠️ Could not get error response text');
-                            }
+                            // Ignore JSON parsing errors
                         }
                         
-                        // Handle specific status codes
                         if (response.status === 401) {
                             localStorage.removeItem(CONFIG.STORAGE_KEYS.AUTH_TOKEN);
                             localStorage.removeItem(CONFIG.STORAGE_KEYS.USER_DATA);
@@ -1214,42 +1025,27 @@
                             updateAuthUI(false);
                             showNotification('Session expired. Please login again.', 'warning');
                             throw new Error('Session expired');
-                        } else if (response.status === 404) {
-                            throw new Error('API endpoint not found. Please check if your backend is properly deployed.');
-                        } else if (response.status === 500) {
-                            throw new Error('Server error. Please try again later or check your backend logs.');
-                        } else if (response.status === 0) {
-                            throw new Error('Network error: Cannot reach server. Check if your Render service is running.');
                         }
                         
-                        const error = new Error(errorMessage);
-                        error.status = response.status;
-                        error.details = errorDetails;
-                        throw error;
+                        throw new Error(errorMessage);
                     }
                     
                     const data = await response.json();
-                    console.log('✅ API Response data:', data);
                     return data;
                     
                 } catch (error) {
                     console.error('🚨 API Error:', error);
                     
-                    // Handle different types of errors with specific messages
                     if (error.name === 'TypeError' && error.message.includes('fetch')) {
-                        throw new Error('🌐 Network Error: Cannot connect to backend server. Please check:\n• Is your Render service running?\n• Is the URL correct?\n• Check your internet connection');
+                        throw new Error('Network Error: Cannot connect to backend server.');
                     } else if (error.name === 'TimeoutError' || error.message.includes('timeout')) {
-                        throw new Error('⏱️ Request Timeout: Backend is taking too long to respond. This might be a Render cold start - please try again in a moment.');
-                    } else if (error.name === 'AbortError') {
-                        throw new Error('⏹️ Request Cancelled: The request was cancelled due to timeout.');
+                        throw new Error('Request Timeout: Backend is taking too long to respond.');
                     } else {
-                        // Re-throw the original error if it's already formatted
                         throw error;
                     }
                 }
             }
 
-            // Authentication endpoints
             static async login(email, password) {
                 return this.call('/auth/login', {
                     method: 'POST',
@@ -1264,7 +1060,6 @@
                 });
             }
 
-            // Professional endpoints
             static async getProfessionals(category) {
                 return this.call(`/professionals/${category}`);
             }
@@ -1285,54 +1080,14 @@
                 });
             }
 
-            // Project endpoints
             static async getProjects() {
                 return this.call('/projects');
-            }
-
-            static async getMyProjects() {
-                return this.call('/projects/my-projects');
             }
 
             static async createProject(projectData) {
                 return this.call('/projects', {
                     method: 'POST',
                     body: JSON.stringify(projectData)
-                });
-            }
-
-            static async updateProject(id, data) {
-                return this.call(`/projects/${id}`, {
-                    method: 'PUT',
-                    body: JSON.stringify(data)
-                });
-            }
-
-            static async deleteProject(id) {
-                return this.call(`/projects/${id}`, {
-                    method: 'DELETE'
-                });
-            }
-
-            // Services endpoints
-            static async getServices(filters = {}) {
-                let endpoint = '/services';
-                const params = new URLSearchParams();
-                
-                if (filters.location) params.append('location', filters.location);
-                if (filters.category) params.append('category', filters.category);
-                
-                if (params.toString()) {
-                    endpoint += '?' + params.toString();
-                }
-                
-                return this.call(endpoint);
-            }
-
-            static async createService(serviceData) {
-                return this.call('/services', {
-                    method: 'POST',
-                    body: JSON.stringify(serviceData)
                 });
             }
         }
@@ -1349,16 +1104,16 @@
             if (isLoggedIn && appState.currentUser) {
                 loginBtn.textContent = `Hi, ${appState.currentUser.name}`;
                 loginBtn.onclick = () => showDashboard();
-                signupBtn.textContent = 'Logout';
+                signupBtn.textContent = t('logout');
                 signupBtn.onclick = () => logout();
                 
                 if (createProjectSection) {
                     createProjectSection.style.display = 'block';
                 }
             } else {
-                loginBtn.textContent = 'Login';
+                loginBtn.textContent = t('login');
                 loginBtn.onclick = () => showLoginModal();
-                signupBtn.textContent = 'Sign Up';
+                signupBtn.textContent = t('signup');
                 signupBtn.onclick = () => showSignupModal();
                 
                 if (createProjectSection) {
@@ -1381,7 +1136,6 @@
             updateAuthUI(false);
             showNotification('Logged out successfully', 'info');
             
-            // Redirect to home
             showPage('home');
         }
 
@@ -1410,28 +1164,23 @@
         // ==========================================
 
         function showPage(pageId) {
-            // Hide all pages
             document.querySelectorAll('.page').forEach(page => {
                 page.classList.remove('active');
             });
             
-            // Show selected page
             const targetPage = document.getElementById(pageId);
             if (targetPage) {
                 targetPage.classList.add('active');
             } else {
-                // Create dynamic service page if it doesn't exist
                 createServicePage(pageId);
             }
             
-            // Load data based on page
             if (CONFIG.CATEGORIES[pageId]) {
                 loadProfessionals(pageId);
             } else if (pageId === 'projects') {
                 loadProjects();
             }
             
-            // Scroll to top
             window.scrollTo(0, 0);
         }
 
@@ -1463,7 +1212,7 @@
                                     <button type="button" onclick="filterByExperience('${category}', '10+')" class="filter-btn px-4 py-2 rounded-lg border border-gray-300 hover:bg-blue-600 hover:text-white">10+ Years</button>
                                 </div>
                                 <div class="flex items-center space-x-4">
-                                    <button onclick="loadProfessionals('${category}')" class="px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700">Refresh</button>
+                                    <button onclick="loadProfessionals('${category}')" class="px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700" data-translate="refresh">Refresh</button>
                                 </div>
                             </div>
                         </div>
@@ -1485,7 +1234,6 @@
                 </div>
             `;
             
-            // Insert the page before the footer
             const footer = document.querySelector('footer');
             footer.insertAdjacentHTML('beforebegin', pageHTML);
         }
@@ -1502,13 +1250,10 @@
                     return;
                 }
                 
-                // Show loading state
                 showLoadingState(category + 'Grid');
                 
-                // Fetch professionals from API
                 const data = await ApiService.getProfessionals(apiCategory);
                 
-                // Store and display data
                 appState.professionalData[apiCategory] = data;
                 appState.filteredData[category] = [...data];
                 
@@ -1573,7 +1318,7 @@
                     <div class="empty-state-icon">${icon}</div>
                     <h3 class="text-xl font-semibold mb-2">No ${name} Available Yet</h3>
                     <p>Be the first professional to join this category!</p>
-                    <button onclick="showPage('home'); setTimeout(() => scrollToSection('join'), 100);" class="mt-4 bg-blue-600 text-white px-6 py-2 rounded-lg hover:bg-blue-700 transition-colors">Join as Professional</button>
+                    <button onclick="showPage('home'); setTimeout(() => scrollToSection('join'), 100);" class="mt-4 bg-blue-600 text-white px-6 py-2 rounded-lg hover:bg-blue-700 transition-colors" data-translate="joinProfessional">Join as Professional</button>
                 </div>
             `;
         }
@@ -1618,8 +1363,8 @@
                     </div>
                     
                     <div class="mt-4 flex space-x-2">
-                        <button onclick="contactProfessional('${phone}')" class="flex-1 bg-blue-600 text-white py-2 px-4 rounded-lg hover:bg-blue-700 transition-colors">Contact</button>
-                        <button onclick="viewProfile('${professional._id}')" class="flex-1 border border-blue-600 text-blue-600 py-2 px-4 rounded-lg hover:bg-blue-50 transition-colors">View Profile</button>
+                        <button onclick="contactProfessional('${phone}')" class="flex-1 bg-blue-600 text-white py-2 px-4 rounded-lg hover:bg-blue-700 transition-colors" data-translate="contact">Contact</button>
+                        <button onclick="viewProfile('${professional._id}')" class="flex-1 border border-blue-600 text-blue-600 py-2 px-4 rounded-lg hover:bg-blue-50 transition-colors" data-translate="viewProfile">View Profile</button>
                     </div>
                 </div>
             `;
@@ -1633,7 +1378,6 @@
         }
 
         function filterByExperience(category, experience) {
-            // Update active filter button
             const filterButtons = document.querySelectorAll(`#${category} .filter-btn`);
             filterButtons.forEach(btn => btn.classList.remove('active'));
             event.target.classList.add('active');
@@ -1759,7 +1503,6 @@
         function validateSignupForm() {
             let isValid = true;
             
-            // Clear all previous errors
             ['signupName', 'signupPhone', 'signupEmail', 'signupCity', 'signupPassword', 'signupConfirmPassword'].forEach(clearFieldError);
             
             const name = document.getElementById('signupName').value.trim();
@@ -1769,13 +1512,11 @@
             const password = document.getElementById('signupPassword').value;
             const confirmPassword = document.getElementById('signupConfirmPassword').value;
             
-            // Validate name
             if (!name || name.length < 2) {
                 showFieldError('signupName', 'Name must be at least 2 characters long');
                 isValid = false;
             }
             
-            // Validate phone
             if (!phone) {
                 showFieldError('signupPhone', 'Phone number is required');
                 isValid = false;
@@ -1784,7 +1525,6 @@
                 isValid = false;
             }
             
-            // Validate email
             if (!email) {
                 showFieldError('signupEmail', 'Email is required');
                 isValid = false;
@@ -1793,13 +1533,11 @@
                 isValid = false;
             }
             
-            // Validate city
             if (!city || city.length < 2) {
                 showFieldError('signupCity', 'City is required');
                 isValid = false;
             }
             
-            // Validate password
             if (!password) {
                 showFieldError('signupPassword', 'Password is required');
                 isValid = false;
@@ -1808,7 +1546,6 @@
                 isValid = false;
             }
             
-            // Validate confirm password
             if (!confirmPassword) {
                 showFieldError('signupConfirmPassword', 'Please confirm your password');
                 isValid = false;
@@ -1840,12 +1577,12 @@
                     localStorage.setItem(CONFIG.STORAGE_KEYS.USER_DATA, JSON.stringify(appState.currentUser));
                     
                     updateAuthUI(true);
-                    showNotification(`Welcome back, ${appState.currentUser.name}!`, 'success');
+                    showNotification(`${t('welcomeBack')}, ${appState.currentUser.name}!`, 'success');
                     hideLoginModal();
                     this.reset();
                     
                 } catch (error) {
-                    showNotification('Login failed: ' + error.message, 'error');
+                    showNotification(t('loginFailed') + ': ' + error.message, 'error');
                 } finally {
                     setButtonLoading('loginSubmitBtn', false);
                 }
@@ -1871,7 +1608,7 @@
                 
                 try {
                     await ApiService.register(userData);
-                    showNotification('Registration successful! Please login with your credentials.', 'success');
+                    showNotification(t('registrationSuccessful'), 'success');
                     hideSignupModal();
                     showLoginModal();
                     this.reset();
@@ -1937,7 +1674,7 @@
                         await ApiService.createProject(projectData);
                         showNotification('Project created successfully!', 'success');
                         this.reset();
-                        loadProjects(); // Refresh projects list
+                        loadProjects();
                         
                     } catch (error) {
                         showNotification('Failed to create project: ' + error.message, 'error');
@@ -1951,106 +1688,6 @@
         // ==========================================
         // INITIALIZATION
         // ==========================================
-
-        async function testApiConnection() {
-            try {
-                console.log('🌐 Testing connection to:', CONFIG.API_BASE_URL);
-                
-                // Test multiple endpoints to validate API structure
-                const testEndpoints = [
-                    { path: '/professionals/engineers', name: 'Professionals API' },
-                    { path: '/services', name: 'Services API' }
-                ];
-                
-                let successCount = 0;
-                
-                for (const endpoint of testEndpoints) {
-                    const fullUrl = `${CONFIG.API_BASE_URL}${endpoint.path}`;
-                    console.log(`📡 Testing ${endpoint.name}: ${fullUrl}`);
-                    
-                    try {
-                        const response = await fetch(fullUrl, {
-                            method: 'GET',
-                            headers: {
-                                'Content-Type': 'application/json',
-                                'Accept': 'application/json'
-                            },
-                            mode: 'cors',
-                            signal: AbortSignal.timeout(15000)
-                        });
-                        
-                        console.log(`📥 ${endpoint.name} Status: ${response.status} ${response.statusText}`);
-                        
-                        if (response.ok) {
-                            const data = await response.json();
-                            console.log(`✅ ${endpoint.name} Response:`, data);
-                            successCount++;
-                        } else {
-                            console.error(`❌ ${endpoint.name} Error: ${response.status}`);
-                        }
-                    } catch (endpointError) {
-                        console.error(`🚨 ${endpoint.name} Test Failed:`, endpointError);
-                    }
-                }
-                
-                if (successCount > 0) {
-                    console.log(`🎉 Backend Connection Successful! ${successCount}/${testEndpoints.length} APIs working.`);
-                    return true;
-                } else {
-                    console.log('❌ All API tests failed. Check your backend deployment.');
-                    return false;
-                }
-                
-            } catch (error) {
-                console.error('🚨 API Connection Test Failed:', error);
-                return false;
-            }
-        }
-
-        async function checkBackendStatus() {
-            try {
-                console.log('🔍 Starting comprehensive backend diagnostics...');
-                
-                // Step 1: Check if the main domain is reachable
-                console.log('📡 Step 1: Testing main domain reachability...');
-                const pingResponse = await fetch('https://build-better.onrender.com', {
-                    method: 'GET',
-                    mode: 'no-cors', // Use no-cors for basic connectivity test
-                    signal: AbortSignal.timeout(10000)
-                });
-                
-                console.log('🏓 Main domain ping result:', pingResponse.type, pingResponse.status);
-                
-                // Step 2: Test API endpoint with detailed logging
-                console.log('📡 Step 2: Testing API endpoint...');
-                const apiSuccess = await testApiConnection();
-                
-            } catch (error) {
-                console.error('🚨 Backend status check failed:', error);
-            }
-        }
-
-        function showCorsFixGuide() {
-            showNotification('🔧 CORS Fix Required in Your Backend:', 'warning');
-            showNotification('1. Install: npm install cors', 'info');
-            showNotification('2. Add: const cors = require("cors")', 'info');
-            showNotification('3. Use: app.use(cors({ origin: "*" }))', 'info');
-            showNotification('4. Redeploy your Render service', 'info');
-        }
-
-        function showTroubleshootingGuide() {
-            showNotification('🔧 Backend Troubleshooting Checklist:', 'warning');
-            showNotification('✅ 1. Is your Render service deployed and running?', 'info');
-            showNotification('✅ 2. Does your backend have CORS enabled?', 'info');
-            showNotification('✅ 3. Are your API routes correctly defined?', 'info');
-            showNotification('✅ 4. Check Render logs for any startup errors', 'info');
-            showNotification('✅ 5. Verify your backend URL is correct', 'info');
-            
-            // Add a retry button in the UI
-            setTimeout(() => {
-                showNotification('🔄 Click here to retry connection test', 'info');
-            }, 2000);
-        }
 
         function initializeApp() {
             // Initialize language
@@ -2086,7 +1723,7 @@
             
             // Apply translations if not English
             if (savedLanguage !== 'en') {
-                setTimeout(() => updatePageTranslations(), 100);
+                setTimeout(() => updateAllTranslations(), 100);
             }
             
             // Check for existing authentication
@@ -2106,9 +1743,6 @@
             
             // Initialize forms
             initializeForms();
-            
-            // Check backend status and test API connection
-            checkBackendStatus();
         }
 
         // ==========================================
@@ -2119,10 +1753,8 @@
             initializeApp();
         });
 
-        // Handle page visibility change to refresh data
         document.addEventListener('visibilitychange', function() {
             if (!document.hidden) {
-                // Page became visible, refresh current page data if needed
                 const activePage = document.querySelector('.page.active');
                 if (activePage && activePage.id === 'projects') {
                     loadProjects();
@@ -2130,5 +1762,5 @@
             }
         });
     </script>
-<script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'97dfb34dd47c7a8d',t:'MTc1NzY4MzIwNy4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
+<script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'97dfd39695f67a0c',t:'MTc1NzY4NDUzMC4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
 </html>
