@@ -1525,7 +1525,6 @@
 
         async function testApiConnection() {
             try {
-                showNotification('🔍 Testing API connection to your backend...', 'info');
                 console.log('🌐 Testing connection to:', CONFIG.API_BASE_URL);
                 
                 // Test multiple endpoints to validate API structure
@@ -1557,57 +1556,30 @@
                             const data = await response.json();
                             console.log(`✅ ${endpoint.name} Response:`, data);
                             successCount++;
-                            showNotification(`✅ ${endpoint.name} working! Found ${data.length || 0} items.`, 'success');
                         } else {
                             console.error(`❌ ${endpoint.name} Error: ${response.status}`);
-                            
-                            if (response.status === 404) {
-                                showNotification(`❌ ${endpoint.name} Not Found (404) - Check your backend routes`, 'error');
-                            } else if (response.status === 500) {
-                                showNotification(`❌ ${endpoint.name} Server Error (500) - Check backend logs`, 'error');
-                            }
                         }
                     } catch (endpointError) {
                         console.error(`🚨 ${endpoint.name} Test Failed:`, endpointError);
-                        showNotification(`❌ ${endpoint.name} failed: ${endpointError.message}`, 'error');
                     }
                 }
                 
                 if (successCount > 0) {
-                    showNotification(`🎉 Backend Connection Successful! ${successCount}/${testEndpoints.length} APIs working.`, 'success');
+                    console.log(`🎉 Backend Connection Successful! ${successCount}/${testEndpoints.length} APIs working.`);
                     return true;
                 } else {
-                    showNotification('❌ All API tests failed. Check your backend deployment.', 'error');
+                    console.log('❌ All API tests failed. Check your backend deployment.');
                     return false;
                 }
                 
             } catch (error) {
                 console.error('🚨 API Connection Test Failed:', error);
-                
-                // Detailed error analysis
-                if (error.message.includes('CORS')) {
-                    showNotification('❌ CORS Error: Your backend needs to allow cross-origin requests', 'error');
-                    showNotification('🔧 Fix: Add CORS middleware to your Express server', 'warning');
-                    showNotification('💡 Example: app.use(cors({ origin: "*" })) in your backend', 'info');
-                } else if (error.name === 'TypeError' && error.message.includes('fetch')) {
-                    showNotification('❌ Network Error: Cannot reach your backend server', 'error');
-                    showNotification('🔧 Check: Is your Render service running and deployed?', 'warning');
-                } else if (error.name === 'TimeoutError' || error.message.includes('timeout')) {
-                    showNotification('⏱️ Request Timeout: Backend is taking too long to respond', 'error');
-                    showNotification('💡 This might be a Render cold start - try again in 30 seconds', 'info');
-                } else if (error.name === 'AbortError') {
-                    showNotification('⏹️ Request Cancelled: Connection timeout after 15 seconds', 'error');
-                } else {
-                    showNotification(`❌ Unexpected Error: ${error.message}`, 'error');
-                }
-                
                 return false;
             }
         }
 
         async function checkBackendStatus() {
             try {
-                showNotification('🔍 Checking backend status...', 'info');
                 console.log('🔍 Starting comprehensive backend diagnostics...');
                 
                 // Step 1: Check if the main domain is reachable
@@ -1624,25 +1596,8 @@
                 console.log('📡 Step 2: Testing API endpoint...');
                 const apiSuccess = await testApiConnection();
                 
-                if (!apiSuccess) {
-                    // Step 3: Provide troubleshooting guide
-                    showTroubleshootingGuide();
-                }
-                
             } catch (error) {
                 console.error('🚨 Backend status check failed:', error);
-                
-                if (error.name === 'TimeoutError') {
-                    showNotification('⏱️ Backend Timeout: Your Render service might be in cold start mode', 'warning');
-                    showNotification('💡 Render free tier services sleep after 15 minutes of inactivity', 'info');
-                    showNotification('🔄 Please wait 30-60 seconds and try again', 'info');
-                } else if (error.message.includes('CORS')) {
-                    showNotification('❌ CORS Policy Error: Your backend is blocking cross-origin requests', 'error');
-                    showCorsFixGuide();
-                } else {
-                    showNotification('❌ Cannot reach backend server', 'error');
-                    showTroubleshootingGuide();
-                }
             }
         }
 
@@ -1689,9 +1644,6 @@
             
             // Check backend status and test API connection
             checkBackendStatus();
-            
-            // Show welcome message
-            showNotification('Welcome to Build Better! Checking your backend connection...', 'info');
         }
 
         // ==========================================
@@ -1713,5 +1665,5 @@
             }
         });
     </script>
-<script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'97dea27861298fa6',t:'MTc1NzY3MjAzMi4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
+<script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'97df7b61e7331474',t:'MTc1NzY4MDkxNy4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
 </html>
