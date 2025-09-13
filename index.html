@@ -6,34 +6,226 @@
     <title>Build Better - Complete Construction Platform</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <style>
-        /* Custom Styles */
-        .page { display: none; }
-        .page.active { display: block; }
+        /* Custom Styles - Mobile Optimized */
+        .page { 
+            display: none; 
+            animation: pageSlideIn 0.4s ease-out;
+        }
+        .page.active { 
+            display: block; 
+        }
+        
+        @keyframes pageSlideIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
         
         .hero-gradient {
             background: linear-gradient(135deg, #1e3a8a 0%, #3b82f6 50%, #06b6d4 100%);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .hero-gradient::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="grid" width="10" height="10" patternUnits="userSpaceOnUse"><path d="M 10 0 L 0 0 0 10" fill="none" stroke="rgba(255,255,255,0.1)" stroke-width="0.5"/></pattern></defs><rect width="100" height="100" fill="url(%23grid)"/></svg>');
+            animation: gridMove 20s linear infinite;
+        }
+        
+        @keyframes gridMove {
+            0% { transform: translate(0, 0); }
+            100% { transform: translate(10px, 10px); }
         }
         
         .dark-section {
             background: linear-gradient(135deg, #1f2937 0%, #374151 100%);
+            position: relative;
         }
         
         .card-hover {
-            transition: all 0.3s ease;
+            transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .card-hover::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.1), transparent);
+            transition: left 0.5s;
+        }
+        
+        .card-hover:hover::before {
+            left: 100%;
         }
         
         .card-hover:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1);
+            transform: translateY(-4px) scale(1.01);
+            box-shadow: 0 15px 30px -8px rgba(0, 0, 0, 0.2);
         }
         
         .service-icon {
-            transition: transform 0.3s ease;
+            transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            display: inline-block;
         }
         
         .card-hover:hover .service-icon {
-            transform: scale(1.1);
+            transform: scale(1.1) rotate(3deg);
+            filter: drop-shadow(0 0 8px rgba(59, 130, 246, 0.4));
         }
+        
+        /* Floating Animation - Reduced for mobile */
+        .floating {
+            animation: floating 4s ease-in-out infinite;
+        }
+        
+        @keyframes floating {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-6px); }
+        }
+        
+        /* Pulse Animation - Subtle for mobile */
+        .pulse-glow {
+            animation: pulseGlow 3s ease-in-out infinite;
+        }
+        
+        @keyframes pulseGlow {
+            0%, 100% { 
+                box-shadow: 0 0 3px rgba(59, 130, 246, 0.4);
+            }
+            50% { 
+                box-shadow: 0 0 12px rgba(59, 130, 246, 0.6), 0 0 20px rgba(59, 130, 246, 0.3);
+            }
+        }
+        
+        /* Bounce Animation for Buttons - Mobile Optimized */
+        .btn-bounce {
+            transition: all 0.2s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+        }
+        
+        .btn-bounce:hover {
+            transform: scale(1.03);
+            animation: buttonBounce 0.4s ease;
+        }
+        
+        .btn-bounce:active {
+            transform: scale(0.98);
+        }
+        
+        @keyframes buttonBounce {
+            0%, 20%, 60%, 100% { transform: scale(1.03); }
+            40% { transform: scale(1.06); }
+            80% { transform: scale(1.04); }
+        }
+        
+        /* Gradient Text Animation - Reduced intensity */
+        .gradient-text {
+            background: linear-gradient(45deg, #3b82f6, #06b6d4, #8b5cf6, #f59e0b);
+            background-size: 200% 200%;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            animation: gradientShift 4s ease infinite;
+        }
+        
+        @keyframes gradientShift {
+            0%, 100% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+        }
+        
+        /* Sparkle Effect - Removed */
+        
+        /* Exciting Navigation */
+        nav {
+            backdrop-filter: blur(10px);
+            background: rgba(17, 24, 39, 0.95) !important;
+            border-bottom: 1px solid rgba(59, 130, 246, 0.2);
+        }
+        
+        .nav-link {
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .nav-link::before {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: -100%;
+            width: 100%;
+            height: 2px;
+            background: linear-gradient(90deg, #3b82f6, #06b6d4);
+            transition: left 0.3s ease;
+        }
+        
+        .nav-link:hover::before {
+            left: 0;
+        }
+        
+        /* Exciting Cards */
+        .exciting-card {
+            background: linear-gradient(145deg, #ffffff, #f8fafc);
+            border: 1px solid rgba(59, 130, 246, 0.1);
+            border-radius: 16px;
+            padding: 24px;
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            position: relative;
+            overflow: hidden;
+            opacity: 0;
+            transform: translateY(30px);
+            animation: slideInUp 0.6s ease-out forwards;
+        }
+        
+        @keyframes slideInUp {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        .exciting-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(90deg, #3b82f6, #06b6d4, #8b5cf6);
+            transform: scaleX(0);
+            transition: transform 0.3s ease;
+        }
+        
+        .exciting-card:hover::before {
+            transform: scaleX(1);
+        }
+        
+        .exciting-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 40px rgba(59, 130, 246, 0.15);
+            border-color: rgba(59, 130, 246, 0.3);
+        }
+        
+        /* Staggered Animation Delays */
+        .exciting-card:nth-child(1) { animation-delay: 0.1s; }
+        .exciting-card:nth-child(2) { animation-delay: 0.2s; }
+        .exciting-card:nth-child(3) { animation-delay: 0.3s; }
+        .exciting-card:nth-child(4) { animation-delay: 0.4s; }
+        .exciting-card:nth-child(5) { animation-delay: 0.5s; }
         
         .dropdown {
             position: relative;
@@ -203,24 +395,26 @@
         
         .tutorial-tooltip {
             position: absolute;
-            background: white;
-            border-radius: 12px;
-            padding: 20px;
-            max-width: 300px;
-            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.3);
+            background: linear-gradient(145deg, #ffffff, #f8fafc);
+            border: 2px solid rgba(59, 130, 246, 0.2);
+            border-radius: 16px;
+            padding: 24px;
+            max-width: 320px;
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25), 0 0 0 1px rgba(59, 130, 246, 0.1);
             z-index: 10001;
-            animation: tutorialFadeIn 0.4s ease-out;
-            pointer-events: auto; /* Make tooltip clickable */
+            animation: tutorialFadeIn 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            pointer-events: auto;
+            backdrop-filter: blur(10px);
         }
         
         @keyframes tutorialFadeIn {
             from {
                 opacity: 0;
-                transform: translateY(-10px) scale(0.95);
+                transform: translateY(-20px) scale(0.9) rotate(-2deg);
             }
             to {
                 opacity: 1;
-                transform: translateY(0) scale(1);
+                transform: translateY(0) scale(1) rotate(0deg);
             }
         }
         
@@ -257,32 +451,55 @@
         }
         
         .tutorial-btn {
-            padding: 6px 12px;
-            border-radius: 6px;
-            font-size: 0.8rem;
-            font-weight: 500;
+            padding: 8px 16px;
+            border-radius: 8px;
+            font-size: 0.875rem;
+            font-weight: 600;
             cursor: pointer;
-            transition: all 0.2s;
+            transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
             border: none;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .tutorial-btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+            transition: left 0.5s;
+        }
+        
+        .tutorial-btn:hover::before {
+            left: 100%;
         }
         
         .tutorial-btn-skip {
-            background: #f3f4f6;
+            background: linear-gradient(145deg, #f3f4f6, #e5e7eb);
             color: #6b7280;
+            border: 1px solid rgba(107, 114, 128, 0.2);
         }
         
         .tutorial-btn-skip:hover {
-            background: #e5e7eb;
+            background: linear-gradient(145deg, #e5e7eb, #d1d5db);
             color: #374151;
+            transform: translateY(-1px);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
         }
         
         .tutorial-btn-next {
-            background: #3b82f6;
+            background: linear-gradient(145deg, #3b82f6, #2563eb);
             color: white;
+            box-shadow: 0 4px 6px rgba(59, 130, 246, 0.3);
         }
         
         .tutorial-btn-next:hover {
-            background: #2563eb;
+            background: linear-gradient(145deg, #2563eb, #1d4ed8);
+            transform: translateY(-2px);
+            box-shadow: 0 8px 15px rgba(59, 130, 246, 0.4);
         }
         
         .tutorial-arrow {
@@ -461,7 +678,59 @@
             }
         }
         
+        /* Mobile-Specific Optimizations */
         @media (max-width: 768px) {
+            /* Reduce animation intensity on mobile */
+            .card-hover:hover {
+                transform: translateY(-2px) scale(1.005);
+                box-shadow: 0 8px 16px -4px rgba(0, 0, 0, 0.15);
+            }
+            
+            .service-icon {
+                transition: all 0.2s ease;
+            }
+            
+            .card-hover:hover .service-icon {
+                transform: scale(1.05) rotate(1deg);
+                filter: drop-shadow(0 0 4px rgba(59, 130, 246, 0.3));
+            }
+            
+            /* Reduce floating animation */
+            .floating {
+                animation: floating 5s ease-in-out infinite;
+            }
+            
+            @keyframes floating {
+                0%, 100% { transform: translateY(0px); }
+                50% { transform: translateY(-3px); }
+            }
+            
+            /* Subtle pulse for mobile */
+            .pulse-glow {
+                animation: pulseGlow 4s ease-in-out infinite;
+            }
+            
+            @keyframes pulseGlow {
+                0%, 100% { 
+                    box-shadow: 0 0 2px rgba(59, 130, 246, 0.3);
+                }
+                50% { 
+                    box-shadow: 0 0 8px rgba(59, 130, 246, 0.5), 0 0 12px rgba(59, 130, 246, 0.2);
+                }
+            }
+            
+            /* Button animations for touch */
+            .btn-bounce:hover {
+                transform: scale(1.02);
+                animation: none; /* Remove bounce on mobile hover */
+            }
+            
+            .btn-bounce:active {
+                transform: scale(0.98);
+                transition: transform 0.1s ease;
+            }
+            
+            /* Tutorial mobile styles */
             .tutorial-content {
                 padding: 24px;
                 margin: 16px;
@@ -481,6 +750,65 @@
                 transform: translateX(-50%);
                 width: 90vw;
                 max-width: 300px;
+            }
+            
+            /* Reduce page transition for mobile */
+            .page {
+                animation: pageSlideIn 0.3s ease-out;
+            }
+            
+            @keyframes pageSlideIn {
+                from {
+                    opacity: 0;
+                    transform: translateY(15px);
+                }
+                to {
+                    opacity: 1;
+                    transform: translateY(0);
+                }
+            }
+            
+            /* Disable complex animations on very small screens */
+            .hero-gradient::before {
+                animation: none; /* Disable grid animation on mobile */
+            }
+            
+            .gradient-text {
+                animation: none; /* Disable gradient shift on mobile */
+                background: linear-gradient(45deg, #3b82f6, #06b6d4);
+                -webkit-background-clip: text;
+                -webkit-text-fill-color: transparent;
+                background-clip: text;
+            }
+        }
+        
+        /* Reduce motion for users who prefer it */
+        @media (prefers-reduced-motion: reduce) {
+            .page {
+                animation: none;
+            }
+            
+            .floating,
+            .pulse-glow,
+            .hero-gradient::before,
+            .gradient-text {
+                animation: none;
+            }
+            
+            .card-hover,
+            .service-icon,
+            .btn-bounce {
+                transition: none;
+            }
+            
+            .card-hover:hover {
+                transform: none;
+                box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            }
+            
+            .service-icon:hover {
+                transform: none;
+                filter: none;
             }
         }
     </style>
@@ -531,7 +859,7 @@
                 
                 <div class="flex space-x-4 items-center">
                     <div class="dropdown">
-                        <button class="bg-gray-700 text-white px-3 py-2 rounded-lg hover:bg-gray-600 transition-colors cursor-pointer text-sm">
+                        <button class="bg-gradient-to-r from-gray-700 to-gray-800 text-white px-3 py-2 rounded-lg hover:from-gray-600 hover:to-gray-700 transition-all cursor-pointer text-sm btn-bounce">
                             🌐 <span id="currentLanguage">English</span> ▼
                         </button>
                         <div class="dropdown-content" style="min-width: 180px; max-height: 300px; overflow-y: auto;">
@@ -549,8 +877,8 @@
                             <a onclick="changeLanguage('ml', 'മലയാളം')">📍 മലയാളം (Malayalam)</a>
                         </div>
                     </div>
-                    <button id="loginBtn" onclick="showPage('login')" class="bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700 transition-colors" data-translate="login">Login</button>
-                    <button id="signupBtn" onclick="showPage('signup')" class="bg-blue-500 text-white px-4 py-2 rounded-lg hover:bg-blue-600 transition-colors" data-translate="signup">Sign Up</button>
+                    <button id="loginBtn" onclick="showPage('login')" class="bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700 transition-colors btn-bounce" data-translate="login">Login</button>
+                    <button id="signupBtn" onclick="handleSignupButtonClick()" class="bg-gradient-to-r from-blue-500 to-purple-600 text-white px-4 py-2 rounded-lg hover:from-blue-600 hover:to-purple-700 transition-all btn-bounce pulse-glow" data-translate="signup">Sign Up</button>
                 </div>
             </div>
         </div>
@@ -559,15 +887,24 @@
     <!-- HOME PAGE -->
     <div id="home" class="page active">
         <!-- Hero Section -->
-        <section class="hero-gradient text-white py-20">
-            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-                <h1 class="text-5xl font-bold mb-6" data-translate="heroTitle">Complete Construction Ecosystem</h1>
-                <p class="text-xl mb-8 max-w-3xl mx-auto" data-translate="heroSubtitle">From skilled professionals to heavy machinery - find everything you need for your construction project in one place!</p>
+        <section class="hero-gradient text-white py-20 relative">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center relative z-10">
+                <div class="floating mb-6">
+                    <div class="text-8xl mb-4 sparkle">🏗️</div>
+                </div>
+                <h1 class="text-5xl font-bold mb-6 gradient-text" data-translate="heroTitle" style="color: white;">Complete Construction Ecosystem</h1>
+                <p class="text-xl mb-8 max-w-3xl mx-auto opacity-90" data-translate="heroSubtitle">From skilled professionals to heavy machinery - find everything you need for your construction project in one place!</p>
                 <div class="flex flex-col sm:flex-row gap-4 justify-center">
-                    <button onclick="scrollToSection('services')" class="bg-white text-blue-600 px-8 py-3 rounded-lg font-semibold hover:bg-gray-100 transition-colors" data-translate="exploreServices">Explore Services</button>
-                    <button onclick="scrollToSection('join')" class="border-2 border-white text-white px-8 py-3 rounded-lg font-semibold hover:bg-white hover:text-blue-600 transition-colors" data-translate="joinProfessional">Join as Professional</button>
+                    <button onclick="scrollToSection('services')" class="bg-white text-blue-600 px-8 py-3 rounded-lg font-semibold btn-bounce pulse-glow" data-translate="exploreServices">Explore Services</button>
+                    <button onclick="scrollToSection('join')" class="border-2 border-white text-white px-8 py-3 rounded-lg font-semibold btn-bounce hover:bg-white hover:text-blue-600 transition-colors" data-translate="joinProfessional">Join as Professional</button>
                 </div>
             </div>
+            
+            <!-- Floating Elements -->
+            <div class="absolute top-20 left-10 text-4xl floating" style="animation-delay: 0.5s;">⚡</div>
+            <div class="absolute top-32 right-20 text-3xl floating" style="animation-delay: 1s;">🔧</div>
+            <div class="absolute bottom-20 left-20 text-3xl floating" style="animation-delay: 1.5s;">🎨</div>
+            <div class="absolute bottom-32 right-10 text-4xl floating" style="animation-delay: 2s;">🚜</div>
         </section>
 
         <!-- Services Section -->
@@ -579,27 +916,27 @@
                 <div class="mb-12">
                     <h3 class="text-2xl font-bold text-white mb-6" data-translate="professionalServices">🏗️ Professional Services</h3>
                     <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-6">
-                        <div onclick="showPage('plumbers')" class="text-center p-6 bg-gray-800 rounded-xl card-hover border border-gray-700 cursor-pointer">
+                        <div onclick="showPage('plumbers')" class="text-center p-6 bg-gradient-to-br from-gray-800 to-gray-900 rounded-xl card-hover border border-blue-500/20 cursor-pointer exciting-card" style="animation-delay: 0.1s;">
                             <div class="service-icon text-5xl mb-3">🔧</div>
                             <h4 class="text-lg font-semibold mb-2 text-white" data-translate="plumbers">Plumbers</h4>
                             <p class="text-gray-300 text-sm">Water supply, drainage, pipe repairs</p>
                         </div>
-                        <div onclick="showPage('electricians')" class="text-center p-6 bg-gray-800 rounded-xl card-hover border border-gray-700 cursor-pointer">
+                        <div onclick="showPage('electricians')" class="text-center p-6 bg-gradient-to-br from-gray-800 to-gray-900 rounded-xl card-hover border border-yellow-500/20 cursor-pointer exciting-card" style="animation-delay: 0.2s;">
                             <div class="service-icon text-5xl mb-3">⚡</div>
                             <h4 class="text-lg font-semibold mb-2 text-white" data-translate="electricians">Electricians</h4>
                             <p class="text-gray-300 text-sm">Wiring, electrical repairs, installations</p>
                         </div>
-                        <div onclick="showPage('contractors')" class="text-center p-6 bg-gray-800 rounded-xl card-hover border border-gray-700 cursor-pointer">
+                        <div onclick="showPage('contractors')" class="text-center p-6 bg-gradient-to-br from-gray-800 to-gray-900 rounded-xl card-hover border border-green-500/20 cursor-pointer exciting-card" style="animation-delay: 0.3s;">
                             <div class="service-icon text-5xl mb-3">🏗️</div>
                             <h4 class="text-lg font-semibold mb-2 text-white" data-translate="contractors">Contractors</h4>
                             <p class="text-gray-300 text-sm">Complete construction projects</p>
                         </div>
-                        <div onclick="showPage('civilengineers')" class="text-center p-6 bg-gray-800 rounded-xl card-hover border border-gray-700 cursor-pointer">
+                        <div onclick="showPage('civilengineers')" class="text-center p-6 bg-gradient-to-br from-gray-800 to-gray-900 rounded-xl card-hover border border-purple-500/20 cursor-pointer exciting-card" style="animation-delay: 0.4s;">
                             <div class="service-icon text-5xl mb-3">👨‍💼</div>
                             <h4 class="text-lg font-semibold mb-2 text-white" data-translate="civilEngineers">Civil Engineers</h4>
                             <p class="text-gray-300 text-sm">Design, planning, project supervision</p>
                         </div>
-                        <div onclick="showPage('designers')" class="text-center p-6 bg-gray-800 rounded-xl card-hover border border-gray-700 cursor-pointer">
+                        <div onclick="showPage('designers')" class="text-center p-6 bg-gradient-to-br from-gray-800 to-gray-900 rounded-xl card-hover border border-pink-500/20 cursor-pointer exciting-card" style="animation-delay: 0.5s;">
                             <div class="service-icon text-5xl mb-3">🎨</div>
                             <h4 class="text-lg font-semibold mb-2 text-white" data-translate="designers">Designers</h4>
                             <p class="text-gray-300 text-sm">Architectural & interior design</p>
@@ -1269,13 +1606,7 @@
                 tutorialStep2Desc: 'Sign up to access all features and connect with construction professionals.',
                 tutorialStep2Pointer: 'Click Sign Up to get started',
                 
-                tutorialStep3Title: 'Explore Services',
-                tutorialStep3Desc: 'Browse through different categories to find the right professionals for your project.',
-                tutorialStep3Pointer: 'Click on any service category',
-                
-                tutorialStep4Title: 'Find Projects',
-                tutorialStep4Desc: 'Discover available construction projects or post your own requirements.',
-                tutorialStep4Pointer: 'Visit the Projects section'
+
             },
             
             hi: {
@@ -1396,13 +1727,79 @@
                 tutorialStep2Desc: 'सभी सुविधाओं तक पहुंचने और निर्माण पेशेवरों से जुड़ने के लिए साइन अप करें।',
                 tutorialStep2Pointer: 'शुरू करने के लिए साइन अप पर क्लिक करें',
                 
-                tutorialStep3Title: 'सेवाएं देखें',
-                tutorialStep3Desc: 'अपनी परियोजना के लिए सही पेशेवरों को खोजने के लिए विभिन्न श्रेणियों को देखें।',
-                tutorialStep3Pointer: 'किसी भी सेवा श्रेणी पर क्लिक करें',
+
+            },
+            
+            bn: {
+                // Navigation
+                home: 'হোম',
+                services: 'সেবা',
+                labor: 'শ্রমিক',
+                equipment: 'যন্ত্রপাতি',
+                projects: 'প্রকল্প',
+                login: 'লগইন',
+                signup: 'সাইন আপ',
+                logout: 'লগআউট',
                 
-                tutorialStep4Title: 'परियोजनाएं खोजें',
-                tutorialStep4Desc: 'उपलब्ध निर्माण परियोजनाओं की खोज करें या अपनी आवश्यकताएं पोस्ट करें।',
-                tutorialStep4Pointer: 'परियोजनाएं अनुभाग पर जाएं'
+                // Hero Section
+                heroTitle: 'সম্পূর্ণ নির্মাণ ইকোসিস্টেম',
+                heroSubtitle: 'দক্ষ পেশাদার থেকে ভারী যন্ত্রপাতি পর্যন্ত - আপনার নির্মাণ প্রকল্পের জন্য প্রয়োজনীয় সবকিছু এক জায়গায় খুঁজুন!',
+                exploreServices: 'সেবা দেখুন',
+                joinProfessional: 'পেশাদার হিসেবে যোগ দিন',
+                
+                // Tutorial
+                tutorialWelcome: 'Build Better এ স্বাগতম! 🏗️',
+                tutorialSkip: 'টিউটোরিয়াল এড়িয়ে যান',
+                tutorialNext: 'পরবর্তী',
+                tutorialPrevious: 'পূর্ববর্তী',
+                tutorialFinish: 'শুরু করুন!',
+                tutorialStep: 'ধাপ',
+                tutorialOf: 'এর',
+                
+                // Tutorial Steps
+                tutorialStep1Title: 'আপনার ভাষা বেছে নিন',
+                tutorialStep1Desc: 'প্রথমে, আপনার জন্য সবকিছু সহজ করতে আপনার পছন্দের ভাষা নির্বাচন করুন।',
+                
+                tutorialStep2Title: 'আপনার অ্যাকাউন্ট তৈরি করুন',
+                tutorialStep2Desc: 'সমস্ত বৈশিষ্ট্য অ্যাক্সেস করতে এবং নির্মাণ পেশাদারদের সাথে সংযোগ করতে সাইন আপ করুন।',
+                
+
+            },
+            
+            te: {
+                // Navigation
+                home: 'హోమ్',
+                services: 'సేవలు',
+                labor: 'కార్మికులు',
+                equipment: 'పరికరాలు',
+                projects: 'ప్రాజెక్టులు',
+                login: 'లాగిన్',
+                signup: 'సైన్ అప్',
+                logout: 'లాగౌట్',
+                
+                // Hero Section
+                heroTitle: 'పూర్తి నిర్మాణ పర్యావరణ వ్యవస్థ',
+                heroSubtitle: 'నైపుణ్యం కలిగిన నిపుణుల నుండి భారీ యంత్రాలు వరకు - మీ నిర్మాణ ప్రాజెక్ట్ కోసం అవసరమైన ప్రతిదీ ఒకే చోట కనుగొనండి!',
+                exploreServices: 'సేవలను అన్వేషించండి',
+                joinProfessional: 'నిపుణుడిగా చేరండి',
+                
+                // Tutorial
+                tutorialWelcome: 'Build Better కి స్వాగతం! 🏗️',
+                tutorialSkip: 'ట్యుటోరియల్ దాటవేయండి',
+                tutorialNext: 'తదుపరి',
+                tutorialPrevious: 'మునుపటి',
+                tutorialFinish: 'ప్రారంభించండి!',
+                tutorialStep: 'దశ',
+                tutorialOf: 'లో',
+                
+                // Tutorial Steps
+                tutorialStep1Title: 'మీ భాషను ఎంచుకోండి',
+                tutorialStep1Desc: 'మొదట, మీ కోసం ప్రతిదీ సులభం చేయడానికి మీ ఇష్టమైన భాషను ఎంచుకోండి।',
+                
+                tutorialStep2Title: 'మీ ఖాతాను సృష్టించండి',
+                tutorialStep2Desc: 'అన్ని లక్షణాలను యాక్సెస్ చేయడానికి మరియు నిర్మాణ నిపుణులతో కనెక్ట్ అవ్వడానికి సైన్ అప్ చేయండి।',
+                
+
             }
             // Add other languages as needed...
         };
@@ -1441,15 +1838,6 @@
                 targetElement: '#signupBtn',
                 position: 'bottom',
                 required: false
-            },
-            {
-                step: 3,
-                icon: '📋',
-                title: 'Find Projects',
-                description: 'Discover available construction projects or post your own requirements.',
-                targetElement: 'a[onclick="showPage(\'projects\')"]',
-                position: 'bottom',
-                required: false
             }
         ];
 
@@ -1478,9 +1866,12 @@
             const overlay = document.getElementById('tutorialOverlay');
             overlay.style.display = 'block';
 
-            // Update tooltip content
-            document.getElementById('tutorialTitle').textContent = currentStep.title + ' ' + currentStep.icon;
-            document.getElementById('tutorialDescription').textContent = currentStep.description;
+            // Update tooltip content with translations
+            const titleKey = `tutorialStep${currentStep.step}Title`;
+            const descKey = `tutorialStep${currentStep.step}Desc`;
+            
+            document.getElementById('tutorialTitle').textContent = t(titleKey) + ' ' + currentStep.icon;
+            document.getElementById('tutorialDescription').textContent = t(descKey);
             document.getElementById('currentStep').textContent = appState.currentTutorialStep;
             document.getElementById('totalSteps').textContent = TUTORIAL_STEPS.length;
 
@@ -1498,13 +1889,17 @@
             // Position tooltip relative to target element
             positionTooltip(targetElement, currentStep.position);
 
-            // Update buttons
+            // Update buttons with translations
             const nextBtn = document.getElementById('tutorialNext');
+            const skipBtn = document.getElementById('skipTutorial');
+            
             if (appState.currentTutorialStep === TUTORIAL_STEPS.length) {
-                nextBtn.textContent = 'Finish';
+                nextBtn.textContent = t('tutorialFinish');
             } else {
-                nextBtn.textContent = 'Next';
+                nextBtn.textContent = t('tutorialNext');
             }
+            
+            skipBtn.textContent = t('tutorialSkip');
         }
 
         function positionTooltip(targetElement, position) {
@@ -1579,6 +1974,13 @@
             pointerRing.style.width = width + 'px';
             pointerRing.style.height = height + 'px';
             pointerRing.style.display = 'block';
+            
+            // Make the highlighted element clickable during tutorial
+            if (appState.currentTutorialStep === 2 && targetElement.id === 'signupBtn') {
+                // Allow signup button to be clicked during tutorial
+                targetElement.style.pointerEvents = 'auto';
+                targetElement.style.zIndex = '10003';
+            }
         }
 
         function scrollElementIntoView(element) {
@@ -1652,9 +2054,9 @@
             document.getElementById('currentLanguage').textContent = langName;
             updateAllTranslations();
             
-            // Update tutorial if active
+            // Update tutorial if active - refresh current step with new language
             if (!appState.tutorialCompleted && document.getElementById('tutorialOverlay').style.display === 'block') {
-                updateTutorialStep();
+                updateTutorialLanguage();
             }
             
             showNotification(`Language changed to ${langName}`, 'success');
@@ -1665,6 +2067,15 @@
                     nextTutorialStep();
                 }, 1000);
             }
+        }
+
+        function handleSignupButtonClick() {
+            // If tutorial is active and on step 2, complete tutorial and go to signup
+            if (!appState.tutorialCompleted && appState.currentTutorialStep === 2) {
+                completeTutorial();
+            }
+            // Navigate to signup page
+            showPage('signup');
         }
 
         function t(key) {
@@ -1701,6 +2112,36 @@
             
             document.getElementById('tutorialTitle').textContent = t(titleKey) + ' ' + currentStep.icon;
             document.getElementById('tutorialDescription').textContent = t(descKey);
+        }
+
+        function updateTutorialLanguage() {
+            if (appState.tutorialCompleted) return;
+            
+            const currentStep = TUTORIAL_STEPS[appState.currentTutorialStep - 1];
+            if (!currentStep) return;
+            
+            // Update tutorial content with translated text
+            const titleKey = `tutorialStep${currentStep.step}Title`;
+            const descKey = `tutorialStep${currentStep.step}Desc`;
+            
+            document.getElementById('tutorialTitle').textContent = t(titleKey) + ' ' + currentStep.icon;
+            document.getElementById('tutorialDescription').textContent = t(descKey);
+            
+            // Update button texts
+            const nextBtn = document.getElementById('tutorialNext');
+            const skipBtn = document.getElementById('skipTutorial');
+            
+            if (appState.currentTutorialStep === TUTORIAL_STEPS.length) {
+                nextBtn.textContent = t('tutorialFinish');
+            } else {
+                nextBtn.textContent = t('tutorialNext');
+            }
+            
+            skipBtn.textContent = t('tutorialSkip');
+            
+            // Update step counter text
+            document.getElementById('currentStep').textContent = appState.currentTutorialStep;
+            document.getElementById('totalSteps').textContent = TUTORIAL_STEPS.length;
         }
 
         // ==========================================
@@ -2211,5 +2652,5 @@
             console.log('✅ Build Better app initialized successfully');
         });
     </script>
-<script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'97e85059b3d7c1ac',t:'MTc1Nzc3MzUyNi4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
+<script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'97e899dbf4558f8c',t:'MTc1Nzc3NjUzNy4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
 </html>
