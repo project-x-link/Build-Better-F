@@ -184,7 +184,297 @@
             background-color: #3b82f6;
         }
         
+        /* Tutorial Styles */
+        .tutorial-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.4);
+            z-index: 10000;
+            display: none;
+            pointer-events: none; /* Don't block interactions */
+        }
+        
+        .tutorial-overlay.active {
+            display: block;
+        }
+        
+        .tutorial-tooltip {
+            position: absolute;
+            background: white;
+            border-radius: 12px;
+            padding: 20px;
+            max-width: 300px;
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.3);
+            z-index: 10001;
+            animation: tutorialFadeIn 0.4s ease-out;
+            pointer-events: auto; /* Make tooltip clickable */
+        }
+        
+        @keyframes tutorialFadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(-10px) scale(0.95);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0) scale(1);
+            }
+        }
+        
+        .tutorial-tooltip h4 {
+            margin: 0 0 8px 0;
+            color: #1f2937;
+            font-size: 1.1rem;
+            font-weight: 600;
+        }
+        
+        .tutorial-tooltip p {
+            margin: 0 0 16px 0;
+            color: #6b7280;
+            font-size: 0.9rem;
+            line-height: 1.4;
+        }
+        
+        .tutorial-tooltip-footer {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 12px;
+        }
+        
+        .tutorial-step-counter {
+            font-size: 0.8rem;
+            color: #9ca3af;
+            font-weight: 500;
+        }
+        
+        .tutorial-buttons {
+            display: flex;
+            gap: 8px;
+        }
+        
+        .tutorial-btn {
+            padding: 6px 12px;
+            border-radius: 6px;
+            font-size: 0.8rem;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.2s;
+            border: none;
+        }
+        
+        .tutorial-btn-skip {
+            background: #f3f4f6;
+            color: #6b7280;
+        }
+        
+        .tutorial-btn-skip:hover {
+            background: #e5e7eb;
+            color: #374151;
+        }
+        
+        .tutorial-btn-next {
+            background: #3b82f6;
+            color: white;
+        }
+        
+        .tutorial-btn-next:hover {
+            background: #2563eb;
+        }
+        
+        .tutorial-arrow {
+            position: absolute;
+            width: 0;
+            height: 0;
+            border: 8px solid transparent;
+        }
+        
+        .tutorial-arrow.top {
+            bottom: -16px;
+            left: 50%;
+            transform: translateX(-50%);
+            border-top-color: white;
+        }
+        
+        .tutorial-arrow.bottom {
+            top: -16px;
+            left: 50%;
+            transform: translateX(-50%);
+            border-bottom-color: white;
+        }
+        
+        .tutorial-arrow.left {
+            right: -16px;
+            top: 50%;
+            transform: translateY(-50%);
+            border-left-color: white;
+        }
+        
+        .tutorial-arrow.right {
+            left: -16px;
+            top: 50%;
+            transform: translateY(-50%);
+            border-right-color: white;
+        }
+        
+        .tutorial-pointer {
+            position: absolute;
+            z-index: 10001;
+            pointer-events: none;
+            display: none;
+        }
+        
+        .tutorial-pointer.active {
+            display: block;
+            animation: tutorialPointerFade 0.5s ease-in;
+        }
+        
+        @keyframes tutorialPointerFade {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        
+        .pointer-pulse {
+            width: 20px;
+            height: 20px;
+            background: #3b82f6;
+            border-radius: 50%;
+            position: relative;
+            animation: tutorialPulse 2s infinite;
+        }
+        
+        .pointer-pulse::before {
+            content: '';
+            position: absolute;
+            top: -10px;
+            left: -10px;
+            width: 40px;
+            height: 40px;
+            border: 2px solid #3b82f6;
+            border-radius: 50%;
+            animation: tutorialPulseRing 2s infinite;
+        }
+        
+        @keyframes tutorialPulse {
+            0% {
+                transform: scale(1);
+                opacity: 1;
+            }
+            50% {
+                transform: scale(1.2);
+                opacity: 0.7;
+            }
+            100% {
+                transform: scale(1);
+                opacity: 1;
+            }
+        }
+        
+        @keyframes tutorialPulseRing {
+            0% {
+                transform: scale(0.8);
+                opacity: 1;
+            }
+            100% {
+                transform: scale(2);
+                opacity: 0;
+            }
+        }
+        
+        .pointer-text {
+            position: absolute;
+            top: -40px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: #1f2937;
+            color: white;
+            padding: 8px 12px;
+            border-radius: 6px;
+            font-size: 0.875rem;
+            font-weight: 500;
+            white-space: nowrap;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+        }
+        
+        .pointer-text::after {
+            content: '';
+            position: absolute;
+            top: 100%;
+            left: 50%;
+            transform: translateX(-50%);
+            border: 6px solid transparent;
+            border-top-color: #1f2937;
+        }
+        
+        .tutorial-highlight {
+            position: relative;
+            z-index: 10002; /* Higher than overlay to ensure clickability */
+            box-shadow: 0 0 0 4px #3b82f6, 0 0 0 8px rgba(59, 130, 246, 0.3) !important;
+            border-radius: 8px !important;
+            pointer-events: auto !important; /* Ensure highlighted elements are clickable */
+            background: inherit !important; /* Preserve original background */
+        }
+        
+        .tutorial-highlight .dropdown-content {
+            z-index: 10003 !important;
+            pointer-events: auto !important;
+            background: white !important;
+            backdrop-filter: none !important;
+        }
+        
+        .tutorial-highlight .dropdown-content a {
+            pointer-events: auto !important;
+            background: white !important;
+        }
+        
+        .tutorial-highlight button {
+            z-index: 10003 !important;
+            pointer-events: auto !important;
+        }
+        
+        /* Tutorial pointer styles */
+        .tutorial-pointer-ring {
+            position: absolute;
+            border: 3px solid #3b82f6;
+            border-radius: 8px;
+            z-index: 10002;
+            pointer-events: none;
+            animation: tutorialHighlightPulse 2s infinite;
+            box-shadow: 0 0 0 4px rgba(59, 130, 246, 0.3);
+        }
+        
+        @keyframes tutorialHighlightPulse {
+            0% {
+                transform: scale(1);
+                opacity: 1;
+            }
+            50% {
+                transform: scale(1.05);
+                opacity: 0.8;
+            }
+            100% {
+                transform: scale(1);
+                opacity: 1;
+            }
+        }
+        
         @media (max-width: 768px) {
+            .tutorial-content {
+                padding: 24px;
+                margin: 16px;
+            }
+            
+            .tutorial-icon {
+                font-size: 3rem;
+            }
+            
+            .tutorial-footer {
+                flex-direction: column;
+            }
+            
             .dropdown-content {
                 position: fixed;
                 left: 50%;
@@ -259,8 +549,8 @@
                             <a onclick="changeLanguage('ml', 'മലയാളം')">📍 മലയാളം (Malayalam)</a>
                         </div>
                     </div>
-                    <button id="loginBtn" onclick="showLoginModal()" class="bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700 transition-colors" data-translate="login">Login</button>
-                    <button id="signupBtn" onclick="showSignupModal()" class="bg-blue-500 text-white px-4 py-2 rounded-lg hover:bg-blue-600 transition-colors" data-translate="signup">Sign Up</button>
+                    <button id="loginBtn" onclick="showPage('login')" class="bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700 transition-colors" data-translate="login">Login</button>
+                    <button id="signupBtn" onclick="showPage('signup')" class="bg-blue-500 text-white px-4 py-2 rounded-lg hover:bg-blue-600 transition-colors" data-translate="signup">Sign Up</button>
                 </div>
             </div>
         </div>
@@ -442,6 +732,277 @@
         </section>
     </div>
 
+    <!-- LOGIN PAGE -->
+    <div id="login" class="page">
+        <section class="min-h-screen bg-gradient-to-br from-blue-50 to-indigo-100 flex items-center justify-center py-12 px-4 sm:px-6 lg:px-8">
+            <div class="max-w-md w-full space-y-8">
+                <div class="text-center">
+                    <div onclick="showPage('home')" class="cursor-pointer inline-block">
+                        <h2 class="text-3xl font-bold text-gray-900">🏗️ Build Better</h2>
+                    </div>
+                    <h3 class="mt-6 text-2xl font-bold text-gray-900" data-translate="loginToAccount">Login to Your Account</h3>
+                    <p class="mt-2 text-sm text-gray-600" data-translate="loginSubtitle">Access your construction network</p>
+                </div>
+                
+                <div class="bg-white py-8 px-6 shadow-xl rounded-xl">
+                    <form id="loginForm" class="space-y-6">
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700 mb-2" data-translate="emailAddress">Email Address *</label>
+                            <input type="email" id="loginEmail" required class="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-colors">
+                            <div id="loginEmailError" class="error-message hidden"></div>
+                        </div>
+                        
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700 mb-2" data-translate="password">Password *</label>
+                            <input type="password" id="loginPassword" required class="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-colors">
+                            <div id="loginPasswordError" class="error-message hidden"></div>
+                        </div>
+                        
+                        <div class="flex items-center justify-between">
+                            <div class="flex items-center">
+                                <input id="rememberMe" type="checkbox" class="h-4 w-4 text-blue-600 focus:ring-blue-500 border-gray-300 rounded">
+                                <label for="rememberMe" class="ml-2 block text-sm text-gray-700" data-translate="rememberMe">Remember me</label>
+                            </div>
+                            <div class="text-sm">
+                                <a href="#" class="font-medium text-blue-600 hover:text-blue-500" data-translate="forgotPassword">Forgot password?</a>
+                            </div>
+                        </div>
+                        
+                        <button type="submit" id="loginSubmitBtn" class="w-full bg-blue-600 text-white p-3 rounded-lg hover:bg-blue-700 transition-colors font-semibold text-lg" data-translate="login">Login</button>
+                    </form>
+                    
+                    <div class="mt-6 text-center">
+                        <p class="text-gray-600">Don't have an account? 
+                            <button onclick="showPage('signup')" class="font-medium text-blue-600 hover:text-blue-500" data-translate="signUpHere">Sign up here</button>
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <!-- SIGNUP PAGE -->
+    <div id="signup" class="page">
+        <section class="min-h-screen bg-gradient-to-br from-green-50 to-emerald-100 py-12 px-4 sm:px-6 lg:px-8">
+            <div class="max-w-4xl mx-auto">
+                <div class="text-center mb-8">
+                    <div onclick="showPage('home')" class="cursor-pointer inline-block">
+                        <h2 class="text-3xl font-bold text-gray-900">🏗️ Build Better</h2>
+                    </div>
+                    <h3 class="mt-6 text-2xl font-bold text-gray-900" data-translate="createNewAccount">Create New Account</h3>
+                    <p class="mt-2 text-sm text-gray-600" data-translate="signupSubtitle">Join the construction community</p>
+                </div>
+                
+                <div class="bg-white py-8 px-6 shadow-xl rounded-xl">
+                    <form id="signupForm" class="space-y-6">
+                        <!-- Personal Information -->
+                        <div class="border-b border-gray-200 pb-6">
+                            <h4 class="text-lg font-semibold text-gray-900 mb-4" data-translate="personalInfo">Personal Information</h4>
+                            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                                <div>
+                                    <label class="block text-sm font-medium text-gray-700 mb-2" data-translate="fullName">Full Name *</label>
+                                    <input type="text" id="signupName" required class="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent">
+                                    <div id="signupNameError" class="error-message hidden"></div>
+                                </div>
+                                <div>
+                                    <label class="block text-sm font-medium text-gray-700 mb-2" data-translate="emailAddress">Email Address *</label>
+                                    <input type="email" id="signupEmail" required class="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent">
+                                    <div id="signupEmailError" class="error-message hidden"></div>
+                                </div>
+                            </div>
+                            
+                            <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mt-4">
+                                <div>
+                                    <label class="block text-sm font-medium text-gray-700 mb-2" data-translate="contactNumber">Contact Number *</label>
+                                    <input type="tel" id="signupPhone" required pattern="[0-9]{10}" placeholder="10-digit mobile number" class="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent">
+                                    <div id="signupPhoneError" class="error-message hidden"></div>
+                                </div>
+                                <div>
+                                    <label class="block text-sm font-medium text-gray-700 mb-2" data-translate="alternativeNumber">Alternative Number (Optional)</label>
+                                    <input type="tel" id="signupAltPhone" pattern="[0-9]{10}" placeholder="Alternative contact" class="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent">
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Address Information -->
+                        <div class="border-b border-gray-200 pb-6">
+                            <h4 class="text-lg font-semibold text-gray-900 mb-4" data-translate="addressInfo">Address Information</h4>
+                            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                                <div>
+                                    <label class="block text-sm font-medium text-gray-700 mb-2" data-translate="state">State *</label>
+                                    <select id="signupState" required class="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent">
+                                        <option value="">Select State</option>
+                                        <option value="Andhra Pradesh">Andhra Pradesh</option>
+                                        <option value="Arunachal Pradesh">Arunachal Pradesh</option>
+                                        <option value="Assam">Assam</option>
+                                        <option value="Bihar">Bihar</option>
+                                        <option value="Chhattisgarh">Chhattisgarh</option>
+                                        <option value="Goa">Goa</option>
+                                        <option value="Gujarat">Gujarat</option>
+                                        <option value="Haryana">Haryana</option>
+                                        <option value="Himachal Pradesh">Himachal Pradesh</option>
+                                        <option value="Jharkhand">Jharkhand</option>
+                                        <option value="Karnataka">Karnataka</option>
+                                        <option value="Kerala">Kerala</option>
+                                        <option value="Madhya Pradesh">Madhya Pradesh</option>
+                                        <option value="Maharashtra">Maharashtra</option>
+                                        <option value="Manipur">Manipur</option>
+                                        <option value="Meghalaya">Meghalaya</option>
+                                        <option value="Mizoram">Mizoram</option>
+                                        <option value="Nagaland">Nagaland</option>
+                                        <option value="Odisha">Odisha</option>
+                                        <option value="Punjab">Punjab</option>
+                                        <option value="Rajasthan">Rajasthan</option>
+                                        <option value="Sikkim">Sikkim</option>
+                                        <option value="Tamil Nadu">Tamil Nadu</option>
+                                        <option value="Telangana">Telangana</option>
+                                        <option value="Tripura">Tripura</option>
+                                        <option value="Uttar Pradesh">Uttar Pradesh</option>
+                                        <option value="Uttarakhand">Uttarakhand</option>
+                                        <option value="West Bengal">West Bengal</option>
+                                        <option value="Delhi">Delhi</option>
+                                        <option value="Jammu and Kashmir">Jammu and Kashmir</option>
+                                        <option value="Ladakh">Ladakh</option>
+                                        <option value="Puducherry">Puducherry</option>
+                                        <option value="Chandigarh">Chandigarh</option>
+                                        <option value="Dadra and Nagar Haveli and Daman and Diu">Dadra and Nagar Haveli and Daman and Diu</option>
+                                        <option value="Lakshadweep">Lakshadweep</option>
+                                        <option value="Andaman and Nicobar Islands">Andaman and Nicobar Islands</option>
+                                    </select>
+                                    <div id="signupStateError" class="error-message hidden"></div>
+                                </div>
+                                <div>
+                                    <label class="block text-sm font-medium text-gray-700 mb-2" data-translate="city">City *</label>
+                                    <input type="text" id="signupCity" required placeholder="Enter your city" class="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent">
+                                    <div id="signupCityError" class="error-message hidden"></div>
+                                </div>
+                            </div>
+                            
+                            <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mt-4">
+                                <div>
+                                    <label class="block text-sm font-medium text-gray-700 mb-2" data-translate="landmark">Landmark (Optional)</label>
+                                    <input type="text" id="signupLandmark" placeholder="Near landmark" class="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent">
+                                </div>
+                                <div>
+                                    <label class="block text-sm font-medium text-gray-700 mb-2" data-translate="pincode">Pincode *</label>
+                                    <input type="text" id="signupPincode" required pattern="[0-9]{6}" placeholder="6-digit pincode" class="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent">
+                                    <div id="signupPincodeError" class="error-message hidden"></div>
+                                </div>
+                            </div>
+                            
+                            <div class="mt-4">
+                                <label class="block text-sm font-medium text-gray-700 mb-2" data-translate="fullAddress">Full Address *</label>
+                                <textarea id="signupAddress" required rows="3" placeholder="House/Building number, Street, Area" class="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"></textarea>
+                                <div id="signupAddressError" class="error-message hidden"></div>
+                            </div>
+                        </div>
+
+                        <!-- Account Type -->
+                        <div class="border-b border-gray-200 pb-6">
+                            <h4 class="text-lg font-semibold text-gray-900 mb-4" data-translate="accountType">Account Type</h4>
+                            <div class="space-y-4">
+                                <div class="flex items-center">
+                                    <input id="userTypeCustomer" name="userType" type="radio" value="customer" checked class="h-4 w-4 text-blue-600 focus:ring-blue-500 border-gray-300">
+                                    <label for="userTypeCustomer" class="ml-3 block text-sm font-medium text-gray-700">
+                                        <span class="text-lg">👤</span> <span data-translate="customer">Customer</span>
+                                        <p class="text-xs text-gray-500 mt-1">Looking for construction services</p>
+                                    </label>
+                                </div>
+                                <div class="flex items-center">
+                                    <input id="userTypeProfessional" name="userType" type="radio" value="professional" class="h-4 w-4 text-blue-600 focus:ring-blue-500 border-gray-300">
+                                    <label for="userTypeProfessional" class="ml-3 block text-sm font-medium text-gray-700">
+                                        <span class="text-lg">👷‍♂️</span> <span data-translate="professional">Professional</span>
+                                        <p class="text-xs text-gray-500 mt-1">Providing construction services</p>
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Professional Details (Hidden by default) -->
+                        <div id="professionalDetails" class="border-b border-gray-200 pb-6 hidden">
+                            <h4 class="text-lg font-semibold text-gray-900 mb-4" data-translate="professionalInfo">Professional Information</h4>
+                            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                                <div>
+                                    <label class="block text-sm font-medium text-gray-700 mb-2" data-translate="serviceCategory">Service Category *</label>
+                                    <select id="professionalCategory" class="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent">
+                                        <option value="">Select Category</option>
+                                        <option value="plumbers">Plumber</option>
+                                        <option value="electricians">Electrician</option>
+                                        <option value="contractors">Contractor</option>
+                                        <option value="civilengineers">Civil Engineer</option>
+                                        <option value="designers">Designer</option>
+                                        <option value="skilledlabor">Skilled Labor</option>
+                                        <option value="unskilledlabor">Unskilled Labor</option>
+                                        <option value="painters">Painter</option>
+                                        <option value="carpenters">Carpenter</option>
+                                        <option value="machinery">Machinery Operator</option>
+                                        <option value="workshops">Workshop Owner</option>
+                                    </select>
+                                    <div id="professionalCategoryError" class="error-message hidden"></div>
+                                </div>
+                                <div>
+                                    <label class="block text-sm font-medium text-gray-700 mb-2" data-translate="yearsExperience">Years of Experience *</label>
+                                    <select id="professionalExperience" class="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent">
+                                        <option value="">Select Experience</option>
+                                        <option value="0-1 years">0-1 years</option>
+                                        <option value="2-5 years">2-5 years</option>
+                                        <option value="6-10 years">6-10 years</option>
+                                        <option value="10+ years">10+ years</option>
+                                    </select>
+                                    <div id="professionalExperienceError" class="error-message hidden"></div>
+                                </div>
+                            </div>
+                            
+                            <div class="mt-4">
+                                <label class="block text-sm font-medium text-gray-700 mb-2" data-translate="servicesDescription">Services Description</label>
+                                <textarea id="professionalDescription" rows="3" placeholder="Describe your services, specializations, and what makes you unique..." class="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"></textarea>
+                            </div>
+                            
+                            <div class="mt-4">
+                                <label class="block text-sm font-medium text-gray-700 mb-2" data-translate="ratePerDay">Rate per Day/Hour (Optional)</label>
+                                <input type="text" id="professionalRate" placeholder="e.g., ₹500/day or ₹50/hour" class="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent">
+                            </div>
+                        </div>
+
+                        <!-- Password -->
+                        <div class="border-b border-gray-200 pb-6">
+                            <h4 class="text-lg font-semibold text-gray-900 mb-4" data-translate="securityInfo">Security Information</h4>
+                            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                                <div>
+                                    <label class="block text-sm font-medium text-gray-700 mb-2" data-translate="password">Password *</label>
+                                    <input type="password" id="signupPassword" required minlength="6" class="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent">
+                                    <div id="signupPasswordError" class="error-message hidden"></div>
+                                    <div class="text-xs text-gray-500 mt-1">Minimum 6 characters</div>
+                                </div>
+                                <div>
+                                    <label class="block text-sm font-medium text-gray-700 mb-2" data-translate="confirmPassword">Confirm Password *</label>
+                                    <input type="password" id="signupConfirmPassword" required minlength="6" class="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent">
+                                    <div id="signupConfirmPasswordError" class="error-message hidden"></div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Terms and Submit -->
+                        <div>
+                            <div class="flex items-center mb-6">
+                                <input type="checkbox" id="signupTerms" required class="h-4 w-4 text-blue-600 focus:ring-blue-500 border-gray-300 rounded">
+                                <label for="signupTerms" class="ml-2 block text-sm text-gray-700">I agree to the <a href="#" class="text-blue-600 hover:underline">Terms of Service</a> and <a href="#" class="text-blue-600 hover:underline">Privacy Policy</a> *</label>
+                            </div>
+                            
+                            <button type="submit" id="signupSubmitBtn" class="w-full bg-green-600 text-white p-4 rounded-lg hover:bg-green-700 transition-colors font-semibold text-lg" data-translate="createAccount">Create Account</button>
+                        </div>
+                    </form>
+                    
+                    <div class="mt-6 text-center">
+                        <p class="text-gray-600">Already have an account? 
+                            <button onclick="showPage('login')" class="font-medium text-blue-600 hover:text-blue-500" data-translate="loginHere">Login here</button>
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+
     <!-- PROJECTS PAGE -->
     <div id="projects" class="page">
         <section class="hero-gradient text-white py-16">
@@ -496,81 +1057,6 @@
         </section>
     </div>
 
-    <!-- Login Modal -->
-    <div id="loginModal" class="fixed inset-0 bg-black bg-opacity-50 hidden z-50 flex items-center justify-center">
-        <div class="bg-white p-8 rounded-xl max-w-md w-full mx-4">
-            <div class="flex justify-between items-center mb-6">
-                <h3 class="text-2xl font-bold" data-translate="login">Login</h3>
-                <button onclick="hideLoginModal()" class="text-gray-500 hover:text-gray-700 text-2xl">&times;</button>
-            </div>
-            <form id="loginForm" class="space-y-4">
-                <div>
-                    <label class="block text-sm font-medium text-gray-700 mb-2" data-translate="emailAddress">Email</label>
-                    <input type="email" id="loginEmail" required class="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent">
-                </div>
-                <div>
-                    <label class="block text-sm font-medium text-gray-700 mb-2" data-translate="password">Password</label>
-                    <input type="password" id="loginPassword" required class="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent">
-                </div>
-                <button type="submit" id="loginSubmitBtn" class="w-full bg-blue-600 text-white p-3 rounded-lg hover:bg-blue-700 transition-colors font-semibold" data-translate="login">Login</button>
-            </form>
-            <p class="text-center mt-4 text-gray-600">Don't have an account? <button type="button" onclick="hideLoginModal(); showSignupModal();" class="text-blue-600 hover:underline">Sign up</button></p>
-        </div>
-    </div>
-
-    <!-- Signup Modal -->
-    <div id="signupModal" class="fixed inset-0 bg-black bg-opacity-50 hidden z-50 flex items-center justify-center">
-        <div class="bg-white p-8 rounded-xl max-w-lg w-full mx-4 max-h-[90vh] overflow-y-auto">
-            <div class="flex justify-between items-center mb-6">
-                <h3 class="text-2xl font-bold" data-translate="createAccount">Create Account</h3>
-                <button onclick="hideSignupModal()" class="text-gray-500 hover:text-gray-700 text-2xl">&times;</button>
-            </div>
-            <form id="signupForm" class="space-y-4">
-                <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-                    <div>
-                        <label class="block text-sm font-medium text-gray-700 mb-2" data-translate="fullName">Full Name *</label>
-                        <input type="text" id="signupName" required class="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent">
-                        <div id="signupNameError" class="error-message hidden"></div>
-                    </div>
-                    <div>
-                        <label class="block text-sm font-medium text-gray-700 mb-2" data-translate="phoneNumber">Phone Number *</label>
-                        <input type="tel" id="signupPhone" required pattern="[0-9]{10}" class="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent">
-                        <div id="signupPhoneError" class="error-message hidden"></div>
-                    </div>
-                </div>
-                <div>
-                    <label class="block text-sm font-medium text-gray-700 mb-2" data-translate="emailAddress">Email Address *</label>
-                    <input type="email" id="signupEmail" required class="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent">
-                    <div id="signupEmailError" class="error-message hidden"></div>
-                </div>
-                <div>
-                    <label class="block text-sm font-medium text-gray-700 mb-2" data-translate="city">City *</label>
-                    <input type="text" id="signupCity" required class="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent">
-                    <div id="signupCityError" class="error-message hidden"></div>
-                </div>
-                <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-                    <div>
-                        <label class="block text-sm font-medium text-gray-700 mb-2" data-translate="password">Password *</label>
-                        <input type="password" id="signupPassword" required minlength="6" class="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent">
-                        <div id="signupPasswordError" class="error-message hidden"></div>
-                        <div class="text-xs text-gray-500 mt-1">Minimum 6 characters</div>
-                    </div>
-                    <div>
-                        <label class="block text-sm font-medium text-gray-700 mb-2" data-translate="confirmPassword">Confirm Password *</label>
-                        <input type="password" id="signupConfirmPassword" required minlength="6" class="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent">
-                        <div id="signupConfirmPasswordError" class="error-message hidden"></div>
-                    </div>
-                </div>
-                <div class="flex items-center">
-                    <input type="checkbox" id="signupTerms" required class="h-4 w-4 text-blue-600 focus:ring-blue-500 border-gray-300 rounded">
-                    <label for="signupTerms" class="ml-2 block text-sm text-gray-700">I agree to the Terms of Service and Privacy Policy *</label>
-                </div>
-                <button type="submit" id="signupSubmitBtn" class="w-full bg-green-600 text-white p-3 rounded-lg hover:bg-green-700 transition-colors font-semibold" data-translate="createAccount">Create Account</button>
-            </form>
-            <p class="text-center mt-4 text-gray-600">Already have an account? <button type="button" onclick="hideSignupModal(); showLoginModal();" class="text-blue-600 hover:underline">Login</button></p>
-        </div>
-    </div>
-
     <!-- Footer -->
     <footer class="bg-gray-900 text-white py-12">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -610,9 +1096,1120 @@
         </div>
     </footer>
 
+    <!-- Tutorial Overlay -->
+    <div id="tutorialOverlay" class="tutorial-overlay" style="display: none;">
+        <!-- Pointer ring for highlighting -->
+        <div id="tutorialPointerRing" class="tutorial-pointer-ring" style="display: none;"></div>
+        
+        <div id="tutorialTooltip" class="tutorial-tooltip">
+            <h4 id="tutorialTitle">Choose Your Language 🌐</h4>
+            <p id="tutorialDescription">First, select your preferred language to make everything easier for you.</p>
+            
+            <!-- Language Selection for Tutorial -->
+            <div id="tutorialLanguageSelection" class="mb-4" style="display: none;">
+                <div class="grid grid-cols-2 gap-2 mb-4">
+                    <button onclick="changeLanguage('en', 'English')" class="tutorial-lang-btn bg-blue-100 hover:bg-blue-200 px-3 py-2 rounded text-sm transition-colors">🇬🇧 English</button>
+                    <button onclick="changeLanguage('hi', 'हिंदी')" class="tutorial-lang-btn bg-blue-100 hover:bg-blue-200 px-3 py-2 rounded text-sm transition-colors">🇮🇳 हिंदी</button>
+                    <button onclick="changeLanguage('bn', 'বাংলা')" class="tutorial-lang-btn bg-blue-100 hover:bg-blue-200 px-3 py-2 rounded text-sm transition-colors">🇧🇩 বাংলা</button>
+                    <button onclick="changeLanguage('te', 'తెలుగు')" class="tutorial-lang-btn bg-blue-100 hover:bg-blue-200 px-3 py-2 rounded text-sm transition-colors">📍 తెలుగు</button>
+                    <button onclick="changeLanguage('mr', 'मराठी')" class="tutorial-lang-btn bg-blue-100 hover:bg-blue-200 px-3 py-2 rounded text-sm transition-colors">📍 मराठी</button>
+                    <button onclick="changeLanguage('ta', 'தமிழ்')" class="tutorial-lang-btn bg-blue-100 hover:bg-blue-200 px-3 py-2 rounded text-sm transition-colors">📍 தமிழ்</button>
+                </div>
+                <div class="text-center">
+                    <button id="showMoreLanguages" onclick="toggleMoreLanguages()" class="text-blue-600 hover:text-blue-800 text-sm underline">More Languages...</button>
+                </div>
+                <div id="moreLanguages" class="grid grid-cols-2 gap-2 mt-2" style="display: none;">
+                    <button onclick="changeLanguage('gu', 'ગુજરાતી')" class="tutorial-lang-btn bg-blue-100 hover:bg-blue-200 px-3 py-2 rounded text-sm transition-colors">📍 ગુજરાતી</button>
+                    <button onclick="changeLanguage('ur', 'اردو')" class="tutorial-lang-btn bg-blue-100 hover:bg-blue-200 px-3 py-2 rounded text-sm transition-colors">📍 اردو</button>
+                    <button onclick="changeLanguage('kn', 'ಕನ್ನಡ')" class="tutorial-lang-btn bg-blue-100 hover:bg-blue-200 px-3 py-2 rounded text-sm transition-colors">📍 ಕನ್ನಡ</button>
+                    <button onclick="changeLanguage('or', 'ଓଡ଼ିଆ')" class="tutorial-lang-btn bg-blue-100 hover:bg-blue-200 px-3 py-2 rounded text-sm transition-colors">📍 ଓଡ଼ିଆ</button>
+                    <button onclick="changeLanguage('pa', 'ਪੰਜਾਬੀ')" class="tutorial-lang-btn bg-blue-100 hover:bg-blue-200 px-3 py-2 rounded text-sm transition-colors">📍 ਪੰਜਾਬੀ</button>
+                    <button onclick="changeLanguage('ml', 'മലയാളം')" class="tutorial-lang-btn bg-blue-100 hover:bg-blue-200 px-3 py-2 rounded text-sm transition-colors">📍 മലയാളം</button>
+                </div>
+            </div>
+            
+            <div class="tutorial-tooltip-footer">
+                <span class="tutorial-step-counter">
+                    Step <span id="currentStep">1</span> of <span id="totalSteps">3</span>
+                </span>
+                <div class="tutorial-buttons">
+                    <button id="skipTutorial" class="tutorial-btn tutorial-btn-skip">Skip</button>
+                    <button id="tutorialNext" class="tutorial-btn tutorial-btn-next">Next</button>
+                </div>
+            </div>
+            
+            <div id="tutorialArrow" class="tutorial-arrow bottom"></div>
+        </div>
+    </div>
+
     <!-- Notification Container -->
     <div id="notificationContainer"></div>
 
-    <script src="app.js"></script>
-<script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'97e806b0b6b62e83',t:'MTc1Nzc3MDUwOS4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
+    <script>
+        // ==========================================
+        // COMPLETE LANGUAGE TRANSLATIONS
+        // ==========================================
+
+        const TRANSLATIONS = {
+            en: {
+                // Navigation
+                home: 'Home',
+                services: 'Services',
+                labor: 'Labor',
+                equipment: 'Equipment',
+                projects: 'Projects',
+                login: 'Login',
+                signup: 'Sign Up',
+                logout: 'Logout',
+                
+                // Hero Section
+                heroTitle: 'Complete Construction Ecosystem',
+                heroSubtitle: 'From skilled professionals to heavy machinery - find everything you need for your construction project in one place!',
+                exploreServices: 'Explore Services',
+                joinProfessional: 'Join as Professional',
+                
+                // Services
+                professionalServices: '🏗️ Professional Services',
+                laborServices: '👷 Labor Services',
+                equipmentMachinery: '🚜 Equipment & Machinery',
+                
+                // Categories
+                plumbers: 'Plumbers',
+                electricians: 'Electricians',
+                contractors: 'Contractors',
+                civilEngineers: 'Civil Engineers',
+                designers: 'Designers',
+                skilledLabor: 'Skilled Labor',
+                unskilledLabor: 'Unskilled Labor',
+                painters: 'Painters',
+                carpenters: 'Carpenters',
+                machineryOperators: 'Machinery Operators',
+                workshops: 'Workshops',
+                
+                // Forms
+                fullName: 'Full Name',
+                phoneNumber: 'Phone Number',
+                emailAddress: 'Email Address',
+                password: 'Password',
+                confirmPassword: 'Confirm Password',
+                city: 'City',
+                required: 'Required',
+                
+                // Login/Signup
+                loginToAccount: 'Login to Your Account',
+                loginSubtitle: 'Access your construction network',
+                createNewAccount: 'Create New Account',
+                signupSubtitle: 'Join the construction community',
+                personalInfo: 'Personal Information',
+                addressInfo: 'Address Information',
+                accountType: 'Account Type',
+                professionalInfo: 'Professional Information',
+                securityInfo: 'Security Information',
+                contactNumber: 'Contact Number',
+                alternativeNumber: 'Alternative Number (Optional)',
+                state: 'State',
+                landmark: 'Landmark (Optional)',
+                pincode: 'Pincode',
+                fullAddress: 'Full Address',
+                customer: 'Customer',
+                professional: 'Professional',
+                rememberMe: 'Remember me',
+                forgotPassword: 'Forgot password?',
+                signUpHere: 'Sign up here',
+                loginHere: 'Login here',
+                
+                // Buttons
+                contact: 'Contact',
+                viewProfile: 'View Profile',
+                refresh: 'Refresh',
+                createAccount: 'Create Account',
+                
+                // Messages
+                welcomeBack: 'Welcome back',
+                loginFailed: 'Login failed',
+                registrationSuccessful: 'Registration successful! Please login with your credentials.',
+                
+                // Projects
+                constructionProjects: 'Construction Projects',
+                availableProjects: 'Available Projects',
+                postNewProject: 'Post a New Project',
+                projectTitle: 'Project Title',
+                budget: 'Budget',
+                location: 'Location',
+                projectDescription: 'Project Description',
+                postProject: 'Post Project',
+                
+                // Professional Registration
+                joinAsProfessional: 'Join as a Professional',
+                serviceCategory: 'Service Category',
+                yearsExperience: 'Years of Experience',
+                serviceArea: 'Service Area/Location',
+                servicesDescription: 'Services Description',
+                ratePerDay: 'Rate per Day/Hour (Optional)',
+                registerProfessional: 'Register as Professional',
+                
+                // Additional
+                completeConstructionServices: 'Complete Construction Services',
+                
+                // Tutorial
+                tutorialWelcome: 'Welcome to Build Better! 🏗️',
+                tutorialSkip: 'Skip Tutorial',
+                tutorialNext: 'Next',
+                tutorialPrevious: 'Previous',
+                tutorialFinish: 'Get Started!',
+                tutorialStep: 'Step',
+                tutorialOf: 'of',
+                
+                // Tutorial Steps
+                tutorialStep1Title: 'Choose Your Language',
+                tutorialStep1Desc: 'First, let\'s select your preferred language to make everything easier for you.',
+                tutorialStep1Pointer: 'Click on the language dropdown',
+                
+                tutorialStep2Title: 'Create Your Account',
+                tutorialStep2Desc: 'Sign up to access all features and connect with construction professionals.',
+                tutorialStep2Pointer: 'Click Sign Up to get started',
+                
+                tutorialStep3Title: 'Explore Services',
+                tutorialStep3Desc: 'Browse through different categories to find the right professionals for your project.',
+                tutorialStep3Pointer: 'Click on any service category',
+                
+                tutorialStep4Title: 'Find Projects',
+                tutorialStep4Desc: 'Discover available construction projects or post your own requirements.',
+                tutorialStep4Pointer: 'Visit the Projects section'
+            },
+            
+            hi: {
+                // Navigation
+                home: 'होम',
+                services: 'सेवाएं',
+                labor: 'श्रमिक',
+                equipment: 'उपकरण',
+                projects: 'परियोजनाएं',
+                login: 'लॉगिन',
+                signup: 'साइन अप',
+                logout: 'लॉगआउट',
+                
+                // Hero Section
+                heroTitle: 'संपूर्ण निर्माण पारिस्थितिकी तंत्र',
+                heroSubtitle: 'कुशल पेशेवरों से लेकर भारी मशीनरी तक - अपनी निर्माण परियोजना के लिए आवश्यक सब कुछ एक ही स्थान पर खोजें!',
+                exploreServices: 'सेवाएं देखें',
+                joinProfessional: 'पेशेवर के रूप में जुड़ें',
+                
+                // Services
+                professionalServices: '🏗️ पेशेवर सेवाएं',
+                laborServices: '👷 श्रमिक सेवाएं',
+                equipmentMachinery: '🚜 उपकरण और मशीनरी',
+                
+                // Categories
+                plumbers: 'प्लंबर',
+                electricians: 'इलेक्ट्रीशियन',
+                contractors: 'ठेकेदार',
+                civilEngineers: 'सिविल इंजीनियर',
+                designers: 'डिजाइनर',
+                skilledLabor: 'कुशल श्रमिक',
+                unskilledLabor: 'अकुशल श्रमिक',
+                painters: 'पेंटर',
+                carpenters: 'बढ़ई',
+                machineryOperators: 'मशीनरी ऑपरेटर',
+                workshops: 'वर्कशॉप',
+                
+                // Forms
+                fullName: 'पूरा नाम',
+                phoneNumber: 'फोन नंबर',
+                emailAddress: 'ईमेल पता',
+                password: 'पासवर्ड',
+                confirmPassword: 'पासवर्ड की पुष्टि करें',
+                city: 'शहर',
+                required: 'आवश्यक',
+                
+                // Login/Signup
+                loginToAccount: 'अपने खाते में लॉगिन करें',
+                loginSubtitle: 'अपने निर्माण नेटवर्क तक पहुंचें',
+                createNewAccount: 'नया खाता बनाएं',
+                signupSubtitle: 'निर्माण समुदाय में शामिल हों',
+                personalInfo: 'व्यक्तिगत जानकारी',
+                addressInfo: 'पता जानकारी',
+                accountType: 'खाता प्रकार',
+                professionalInfo: 'पेशेवर जानकारी',
+                securityInfo: 'सुरक्षा जानकारी',
+                contactNumber: 'संपर्क नंबर',
+                alternativeNumber: 'वैकल्पिक नंबर (वैकल्पिक)',
+                state: 'राज्य',
+                landmark: 'लैंडमार्क (वैकल्पिक)',
+                pincode: 'पिनकोड',
+                fullAddress: 'पूरा पता',
+                customer: 'ग्राहक',
+                professional: 'पेशेवर',
+                rememberMe: 'मुझे याद रखें',
+                forgotPassword: 'पासवर्ड भूल गए?',
+                signUpHere: 'यहाँ साइन अप करें',
+                loginHere: 'यहाँ लॉगिन करें',
+                
+                // Buttons
+                contact: 'संपर्क करें',
+                viewProfile: 'प्रोफाइल देखें',
+                refresh: 'रीफ्रेश',
+                createAccount: 'खाता बनाएं',
+                
+                // Messages
+                welcomeBack: 'वापस स्वागत है',
+                loginFailed: 'लॉगिन असफल',
+                registrationSuccessful: 'पंजीकरण सफल! कृपया अपनी साख के साथ लॉगिन करें।',
+                
+                // Projects
+                constructionProjects: 'निर्माण परियोजनाएं',
+                availableProjects: 'उपलब्ध परियोजनाएं',
+                postNewProject: 'नई परियोजना पोस्ट करें',
+                projectTitle: 'परियोजना शीर्षक',
+                budget: 'बजट',
+                location: 'स्थान',
+                projectDescription: 'परियोजना विवरण',
+                postProject: 'परियोजना पोस्ट करें',
+                
+                // Professional Registration
+                joinAsProfessional: 'एक पेशेवर के रूप में जुड़ें',
+                serviceCategory: 'सेवा श्रेणी',
+                yearsExperience: 'अनुभव के वर्ष',
+                serviceArea: 'सेवा क्षेत्र/स्थान',
+                servicesDescription: 'सेवाओं का विवरण',
+                ratePerDay: 'दैनिक/घंटे की दर (वैकल्पिक)',
+                registerProfessional: 'पेशेवर के रूप में पंजीकरण करें',
+                
+                // Additional
+                completeConstructionServices: 'संपूर्ण निर्माण सेवाएं',
+                
+                // Tutorial
+                tutorialWelcome: 'Build Better में आपका स्वागत है! 🏗️',
+                tutorialSkip: 'ट्यूटोरियल छोड़ें',
+                tutorialNext: 'अगला',
+                tutorialPrevious: 'पिछला',
+                tutorialFinish: 'शुरू करें!',
+                tutorialStep: 'चरण',
+                tutorialOf: 'का',
+                
+                // Tutorial Steps
+                tutorialStep1Title: 'अपनी भाषा चुनें',
+                tutorialStep1Desc: 'पहले, आपके लिए सब कुछ आसान बनाने के लिए अपनी पसंदीदा भाषा चुनें।',
+                tutorialStep1Pointer: 'भाषा ड्रॉपडाउन पर क्लिक करें',
+                
+                tutorialStep2Title: 'अपना खाता बनाएं',
+                tutorialStep2Desc: 'सभी सुविधाओं तक पहुंचने और निर्माण पेशेवरों से जुड़ने के लिए साइन अप करें।',
+                tutorialStep2Pointer: 'शुरू करने के लिए साइन अप पर क्लिक करें',
+                
+                tutorialStep3Title: 'सेवाएं देखें',
+                tutorialStep3Desc: 'अपनी परियोजना के लिए सही पेशेवरों को खोजने के लिए विभिन्न श्रेणियों को देखें।',
+                tutorialStep3Pointer: 'किसी भी सेवा श्रेणी पर क्लिक करें',
+                
+                tutorialStep4Title: 'परियोजनाएं खोजें',
+                tutorialStep4Desc: 'उपलब्ध निर्माण परियोजनाओं की खोज करें या अपनी आवश्यकताएं पोस्ट करें।',
+                tutorialStep4Pointer: 'परियोजनाएं अनुभाग पर जाएं'
+            }
+            // Add other languages as needed...
+        };
+
+        // ==========================================
+        // APPLICATION STATE & CONFIGURATION
+        // ==========================================
+
+        const API_BASE_URL = 'https://your-backend-api.com/api'; // Replace with your actual API URL
+
+        let appState = {
+            currentLanguage: localStorage.getItem('selectedLanguage') || 'en',
+            currentUser: null,
+            authToken: localStorage.getItem('authToken'),
+            isLoading: false,
+            tutorialCompleted: localStorage.getItem('tutorialCompleted') === 'true',
+            currentTutorialStep: 1
+        };
+
+        // Tutorial Steps Configuration
+        const TUTORIAL_STEPS = [
+            {
+                step: 1,
+                icon: '🌐',
+                title: 'Choose Your Language',
+                description: 'Click on the language dropdown to select your preferred language. You can change it anytime!',
+                targetElement: '.dropdown:first-child', // Language dropdown container
+                position: 'bottom',
+                required: false
+            },
+            {
+                step: 2,
+                icon: '👤',
+                title: 'Create Your Account',
+                description: 'Sign up to access all features and connect with construction professionals.',
+                targetElement: '#signupBtn',
+                position: 'bottom',
+                required: false
+            },
+            {
+                step: 3,
+                icon: '📋',
+                title: 'Find Projects',
+                description: 'Discover available construction projects or post your own requirements.',
+                targetElement: 'a[onclick="showPage(\'projects\')"]',
+                position: 'bottom',
+                required: false
+            }
+        ];
+
+        // ==========================================
+        // TUTORIAL SYSTEM
+        // ==========================================
+
+        function startTutorial() {
+            if (appState.tutorialCompleted) return;
+            
+            appState.currentTutorialStep = 1;
+            showTutorialStep();
+        }
+
+        function showTutorialStep() {
+            const currentStep = TUTORIAL_STEPS[appState.currentTutorialStep - 1];
+            if (!currentStep) return;
+
+            const targetElement = document.querySelector(currentStep.targetElement);
+            if (!targetElement) {
+                console.warn('Tutorial target element not found:', currentStep.targetElement);
+                return;
+            }
+
+            // Show overlay
+            const overlay = document.getElementById('tutorialOverlay');
+            overlay.style.display = 'block';
+
+            // Update tooltip content
+            document.getElementById('tutorialTitle').textContent = currentStep.title + ' ' + currentStep.icon;
+            document.getElementById('tutorialDescription').textContent = currentStep.description;
+            document.getElementById('currentStep').textContent = appState.currentTutorialStep;
+            document.getElementById('totalSteps').textContent = TUTORIAL_STEPS.length;
+
+            // Show language selection for first step
+            const languageSelection = document.getElementById('tutorialLanguageSelection');
+            if (appState.currentTutorialStep === 1) {
+                languageSelection.style.display = 'block';
+            } else {
+                languageSelection.style.display = 'none';
+            }
+
+            // Create pointer ring around target element
+            createTutorialPointer(targetElement);
+
+            // Position tooltip relative to target element
+            positionTooltip(targetElement, currentStep.position);
+
+            // Update buttons
+            const nextBtn = document.getElementById('tutorialNext');
+            if (appState.currentTutorialStep === TUTORIAL_STEPS.length) {
+                nextBtn.textContent = 'Finish';
+            } else {
+                nextBtn.textContent = 'Next';
+            }
+        }
+
+        function positionTooltip(targetElement, position) {
+            const tooltip = document.getElementById('tutorialTooltip');
+            const arrow = document.getElementById('tutorialArrow');
+            const rect = targetElement.getBoundingClientRect();
+            const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+            const scrollLeft = window.pageXOffset || document.documentElement.scrollLeft;
+
+            // Reset arrow classes
+            arrow.className = 'tutorial-arrow';
+
+            let tooltipX, tooltipY;
+
+            switch (position) {
+                case 'bottom':
+                    tooltipX = rect.left + scrollLeft + (rect.width / 2) - 150; // Center tooltip (300px width / 2)
+                    tooltipY = rect.bottom + scrollTop + 20;
+                    arrow.classList.add('top');
+                    break;
+                case 'top':
+                    tooltipX = rect.left + scrollLeft + (rect.width / 2) - 150;
+                    tooltipY = rect.top + scrollTop - tooltip.offsetHeight - 20;
+                    arrow.classList.add('bottom');
+                    break;
+                case 'left':
+                    tooltipX = rect.left + scrollLeft - 320;
+                    tooltipY = rect.top + scrollTop + (rect.height / 2) - 60;
+                    arrow.classList.add('right');
+                    break;
+                case 'right':
+                    tooltipX = rect.right + scrollLeft + 20;
+                    tooltipY = rect.top + scrollTop + (rect.height / 2) - 60;
+                    arrow.classList.add('left');
+                    break;
+                default:
+                    tooltipX = rect.left + scrollLeft + (rect.width / 2) - 150;
+                    tooltipY = rect.bottom + scrollTop + 20;
+                    arrow.classList.add('top');
+            }
+
+            // Ensure tooltip stays within viewport
+            const viewportWidth = window.innerWidth;
+            const viewportHeight = window.innerHeight;
+
+            if (tooltipX < 10) tooltipX = 10;
+            if (tooltipX + 300 > viewportWidth) tooltipX = viewportWidth - 310;
+            if (tooltipY < 10) tooltipY = 10;
+            if (tooltipY + 200 > viewportHeight + scrollTop) tooltipY = viewportHeight + scrollTop - 210;
+
+            tooltip.style.left = tooltipX + 'px';
+            tooltip.style.top = tooltipY + 'px';
+        }
+
+        function createTutorialPointer(targetElement) {
+            const rect = targetElement.getBoundingClientRect();
+            const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+            const scrollLeft = window.pageXOffset || document.documentElement.scrollLeft;
+            
+            const pointerRing = document.getElementById('tutorialPointerRing');
+            
+            // Add some padding around the element
+            const padding = 8;
+            const top = rect.top + scrollTop - padding;
+            const left = rect.left + scrollLeft - padding;
+            const width = rect.width + (padding * 2);
+            const height = rect.height + (padding * 2);
+            
+            // Position and size the pointer ring
+            pointerRing.style.top = top + 'px';
+            pointerRing.style.left = left + 'px';
+            pointerRing.style.width = width + 'px';
+            pointerRing.style.height = height + 'px';
+            pointerRing.style.display = 'block';
+        }
+
+        function scrollElementIntoView(element) {
+            // Scroll element into view if needed
+            const rect = element.getBoundingClientRect();
+            if (rect.top < 0 || rect.bottom > window.innerHeight) {
+                element.scrollIntoView({ behavior: 'smooth', block: 'center' });
+            }
+        }
+
+        function hideTutorialOverlay() {
+            const overlay = document.getElementById('tutorialOverlay');
+            const pointerRing = document.getElementById('tutorialPointerRing');
+            
+            overlay.style.display = 'none';
+            pointerRing.style.display = 'none';
+        }
+
+        function nextTutorialStep() {
+            if (appState.currentTutorialStep < TUTORIAL_STEPS.length) {
+                appState.currentTutorialStep++;
+                showTutorialStep();
+            } else {
+                completeTutorial();
+            }
+        }
+
+        function isTutorialStepCompleted(step) {
+            switch (step.step) {
+                case 1: // Language selection - always allow to proceed
+                    return true;
+                default:
+                    return true; // Other steps are optional
+            }
+        }
+
+        function skipTutorial() {
+            completeTutorial();
+        }
+
+        function completeTutorial() {
+            appState.tutorialCompleted = true;
+            localStorage.setItem('tutorialCompleted', 'true');
+            hideTutorialOverlay();
+            showNotification('Welcome to Build Better! You\'re all set to get started.', 'success');
+        }
+
+        // ==========================================
+        // LANGUAGE SYSTEM
+        // ==========================================
+
+        function toggleMoreLanguages() {
+            const moreLanguages = document.getElementById('moreLanguages');
+            const showMoreBtn = document.getElementById('showMoreLanguages');
+            
+            if (moreLanguages.style.display === 'none') {
+                moreLanguages.style.display = 'grid';
+                showMoreBtn.textContent = 'Less Languages...';
+            } else {
+                moreLanguages.style.display = 'none';
+                showMoreBtn.textContent = 'More Languages...';
+            }
+        }
+
+        function changeLanguage(langCode, langName) {
+            console.log(`🌐 Switching language from ${appState.currentLanguage} to ${langCode}`);
+            
+            appState.currentLanguage = langCode;
+            localStorage.setItem('selectedLanguage', langCode);
+            
+            document.getElementById('currentLanguage').textContent = langName;
+            updateAllTranslations();
+            
+            // Update tutorial if active
+            if (!appState.tutorialCompleted && document.getElementById('tutorialOverlay').style.display === 'block') {
+                updateTutorialStep();
+            }
+            
+            showNotification(`Language changed to ${langName}`, 'success');
+            
+            // Auto-advance tutorial if on language step
+            if (appState.currentTutorialStep === 1 && !appState.tutorialCompleted) {
+                setTimeout(() => {
+                    nextTutorialStep();
+                }, 1000);
+            }
+        }
+
+        function t(key) {
+            const translations = TRANSLATIONS[appState.currentLanguage] || TRANSLATIONS.en;
+            return translations[key] || TRANSLATIONS.en[key] || key;
+        }
+
+        function updateAllTranslations() {
+            const translatableElements = document.querySelectorAll('[data-translate]');
+            
+            translatableElements.forEach(element => {
+                const key = element.getAttribute('data-translate');
+                const translatedText = t(key);
+                
+                if (element.tagName === 'INPUT' && element.type === 'submit') {
+                    element.value = translatedText;
+                } else if (element.textContent.includes('▼')) {
+                    element.textContent = translatedText + ' ▼';
+                } else {
+                    element.textContent = translatedText;
+                }
+            });
+        }
+
+        function updateTutorialStep() {
+            if (appState.tutorialCompleted) return;
+            
+            const currentStep = TUTORIAL_STEPS[appState.currentTutorialStep - 1];
+            if (!currentStep) return;
+            
+            // Update tutorial content with current language
+            const titleKey = `tutorialStep${currentStep.step}Title`;
+            const descKey = `tutorialStep${currentStep.step}Desc`;
+            
+            document.getElementById('tutorialTitle').textContent = t(titleKey) + ' ' + currentStep.icon;
+            document.getElementById('tutorialDescription').textContent = t(descKey);
+        }
+
+        // ==========================================
+        // PAGE NAVIGATION
+        // ==========================================
+
+        function showPage(pageId) {
+            // Hide all pages
+            document.querySelectorAll('.page').forEach(page => {
+                page.classList.remove('active');
+            });
+            
+            // Show selected page
+            const targetPage = document.getElementById(pageId);
+            if (targetPage) {
+                targetPage.classList.add('active');
+            }
+            
+            // Update URL without page reload
+            window.history.pushState({page: pageId}, '', `#${pageId}`);
+        }
+
+        // ==========================================
+        // API FUNCTIONS
+        // ==========================================
+
+        async function apiCall(endpoint, method = 'GET', data = null) {
+            const config = {
+                method,
+                headers: {
+                    'Content-Type': 'application/json',
+                }
+            };
+
+            if (appState.authToken) {
+                config.headers['Authorization'] = `Bearer ${appState.authToken}`;
+            }
+
+            if (data) {
+                config.body = JSON.stringify(data);
+            }
+
+            try {
+                const response = await fetch(`${API_BASE_URL}${endpoint}`, config);
+                const result = await response.json();
+
+                if (!response.ok) {
+                    throw new Error(result.message || 'API request failed');
+                }
+
+                return result;
+            } catch (error) {
+                console.error('API Error:', error);
+                throw error;
+            }
+        }
+
+        // ==========================================
+        // AUTHENTICATION FUNCTIONS
+        // ==========================================
+
+        async function handleLogin(event) {
+            event.preventDefault();
+            
+            const email = document.getElementById('loginEmail').value;
+            const password = document.getElementById('loginPassword').value;
+            const submitBtn = document.getElementById('loginSubmitBtn');
+            
+            // Clear previous errors
+            clearFormErrors('login');
+            
+            // Validate form
+            if (!validateLoginForm(email, password)) {
+                return;
+            }
+            
+            // Set loading state
+            setButtonLoading(submitBtn, true);
+            
+            try {
+                const response = await apiCall('/auth/login', 'POST', {
+                    email,
+                    password
+                });
+                
+                // Store auth token
+                appState.authToken = response.token;
+                appState.currentUser = response.user;
+                localStorage.setItem('authToken', response.token);
+                
+                showNotification(t('welcomeBack') + ', ' + response.user.name + '!', 'success');
+                
+                // Redirect to home page
+                showPage('home');
+                updateAuthUI();
+                
+            } catch (error) {
+                showNotification(t('loginFailed') + ': ' + error.message, 'error');
+                showFormError('loginEmail', error.message);
+            } finally {
+                setButtonLoading(submitBtn, false);
+            }
+        }
+
+        async function handleSignup(event) {
+            event.preventDefault();
+            
+            const formData = collectSignupFormData();
+            const submitBtn = document.getElementById('signupSubmitBtn');
+            
+            // Clear previous errors
+            clearFormErrors('signup');
+            
+            // Validate form
+            if (!validateSignupForm(formData)) {
+                return;
+            }
+            
+            // Set loading state
+            setButtonLoading(submitBtn, true);
+            
+            try {
+                const userType = document.querySelector('input[name="userType"]:checked').value;
+                
+                if (userType === 'customer') {
+                    // Register as customer
+                    await apiCall('/auth/register', 'POST', {
+                        name: formData.name,
+                        email: formData.email,
+                        phone: formData.phone,
+                        alternativePhone: formData.altPhone,
+                        password: formData.password,
+                        address: {
+                            fullAddress: formData.address,
+                            city: formData.city,
+                            state: formData.state,
+                            pincode: formData.pincode,
+                            landmark: formData.landmark
+                        },
+                        userType: 'customer'
+                    });
+                } else {
+                    // Register as professional
+                    await apiCall('/auth/register', 'POST', {
+                        name: formData.name,
+                        email: formData.email,
+                        phone: formData.phone,
+                        alternativePhone: formData.altPhone,
+                        password: formData.password,
+                        address: {
+                            fullAddress: formData.address,
+                            city: formData.city,
+                            state: formData.state,
+                            pincode: formData.pincode,
+                            landmark: formData.landmark
+                        },
+                        userType: 'professional'
+                    });
+                    
+                    // Register professional details
+                    await apiCall('/professionals', 'POST', {
+                        email: formData.email,
+                        category: formData.professionalCategory,
+                        experience: formData.professionalExperience,
+                        description: formData.professionalDescription,
+                        rate: formData.professionalRate,
+                        serviceArea: formData.city + ', ' + formData.state
+                    });
+                }
+                
+                showNotification(t('registrationSuccessful'), 'success');
+                
+                // Redirect to login page
+                setTimeout(() => {
+                    showPage('login');
+                }, 2000);
+                
+            } catch (error) {
+                showNotification('Registration failed: ' + error.message, 'error');
+                showFormError('signupEmail', error.message);
+            } finally {
+                setButtonLoading(submitBtn, false);
+            }
+        }
+
+        // ==========================================
+        // FORM VALIDATION FUNCTIONS
+        // ==========================================
+
+        function validateLoginForm(email, password) {
+            let isValid = true;
+            
+            if (!email) {
+                showFormError('loginEmail', 'Email is required');
+                isValid = false;
+            } else if (!isValidEmail(email)) {
+                showFormError('loginEmail', 'Please enter a valid email');
+                isValid = false;
+            }
+            
+            if (!password) {
+                showFormError('loginPassword', 'Password is required');
+                isValid = false;
+            }
+            
+            return isValid;
+        }
+
+        function validateSignupForm(data) {
+            let isValid = true;
+            
+            // Name validation
+            if (!data.name || data.name.length < 2) {
+                showFormError('signupName', 'Name must be at least 2 characters');
+                isValid = false;
+            }
+            
+            // Email validation
+            if (!data.email) {
+                showFormError('signupEmail', 'Email is required');
+                isValid = false;
+            } else if (!isValidEmail(data.email)) {
+                showFormError('signupEmail', 'Please enter a valid email');
+                isValid = false;
+            }
+            
+            // Phone validation
+            if (!data.phone) {
+                showFormError('signupPhone', 'Phone number is required');
+                isValid = false;
+            } else if (!isValidPhone(data.phone)) {
+                showFormError('signupPhone', 'Please enter a valid 10-digit phone number');
+                isValid = false;
+            }
+            
+            // Address validation
+            if (!data.state) {
+                showFormError('signupState', 'State is required');
+                isValid = false;
+            }
+            
+            if (!data.city) {
+                showFormError('signupCity', 'City is required');
+                isValid = false;
+            }
+            
+            if (!data.pincode) {
+                showFormError('signupPincode', 'Pincode is required');
+                isValid = false;
+            } else if (!isValidPincode(data.pincode)) {
+                showFormError('signupPincode', 'Please enter a valid 6-digit pincode');
+                isValid = false;
+            }
+            
+            if (!data.address) {
+                showFormError('signupAddress', 'Full address is required');
+                isValid = false;
+            }
+            
+            // Password validation
+            if (!data.password) {
+                showFormError('signupPassword', 'Password is required');
+                isValid = false;
+            } else if (data.password.length < 6) {
+                showFormError('signupPassword', 'Password must be at least 6 characters');
+                isValid = false;
+            }
+            
+            if (data.password !== data.confirmPassword) {
+                showFormError('signupConfirmPassword', 'Passwords do not match');
+                isValid = false;
+            }
+            
+            // Professional validation
+            const userType = document.querySelector('input[name="userType"]:checked').value;
+            if (userType === 'professional') {
+                if (!data.professionalCategory) {
+                    showFormError('professionalCategory', 'Service category is required');
+                    isValid = false;
+                }
+                
+                if (!data.professionalExperience) {
+                    showFormError('professionalExperience', 'Experience is required');
+                    isValid = false;
+                }
+            }
+            
+            return isValid;
+        }
+
+        function collectSignupFormData() {
+            return {
+                name: document.getElementById('signupName').value.trim(),
+                email: document.getElementById('signupEmail').value.trim(),
+                phone: document.getElementById('signupPhone').value.trim(),
+                altPhone: document.getElementById('signupAltPhone').value.trim(),
+                state: document.getElementById('signupState').value,
+                city: document.getElementById('signupCity').value.trim(),
+                landmark: document.getElementById('signupLandmark').value.trim(),
+                pincode: document.getElementById('signupPincode').value.trim(),
+                address: document.getElementById('signupAddress').value.trim(),
+                password: document.getElementById('signupPassword').value,
+                confirmPassword: document.getElementById('signupConfirmPassword').value,
+                professionalCategory: document.getElementById('professionalCategory').value,
+                professionalExperience: document.getElementById('professionalExperience').value,
+                professionalDescription: document.getElementById('professionalDescription').value.trim(),
+                professionalRate: document.getElementById('professionalRate').value.trim()
+            };
+        }
+
+        // ==========================================
+        // UTILITY FUNCTIONS
+        // ==========================================
+
+        function isValidEmail(email) {
+            const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            return emailRegex.test(email);
+        }
+
+        function isValidPhone(phone) {
+            const phoneRegex = /^[0-9]{10}$/;
+            return phoneRegex.test(phone);
+        }
+
+        function isValidPincode(pincode) {
+            const pincodeRegex = /^[0-9]{6}$/;
+            return pincodeRegex.test(pincode);
+        }
+
+        function showFormError(fieldId, message) {
+            const field = document.getElementById(fieldId);
+            const errorDiv = document.getElementById(fieldId + 'Error');
+            
+            if (field) {
+                field.classList.add('input-error');
+            }
+            
+            if (errorDiv) {
+                errorDiv.textContent = message;
+                errorDiv.classList.remove('hidden');
+            }
+        }
+
+        function clearFormErrors(formPrefix) {
+            const form = document.getElementById(formPrefix + 'Form');
+            if (form) {
+                const errorElements = form.querySelectorAll('.error-message');
+                const inputElements = form.querySelectorAll('.input-error');
+                
+                errorElements.forEach(el => {
+                    el.classList.add('hidden');
+                    el.textContent = '';
+                });
+                
+                inputElements.forEach(el => {
+                    el.classList.remove('input-error');
+                });
+            }
+        }
+
+        function setButtonLoading(button, isLoading) {
+            if (isLoading) {
+                button.disabled = true;
+                button.classList.add('btn-loading');
+                button.textContent = 'Loading...';
+            } else {
+                button.disabled = false;
+                button.classList.remove('btn-loading');
+                // Restore original text based on button ID
+                if (button.id === 'loginSubmitBtn') {
+                    button.textContent = t('login');
+                } else if (button.id === 'signupSubmitBtn') {
+                    button.textContent = t('createAccount');
+                }
+            }
+        }
+
+        function showNotification(message, type = 'info') {
+            const notification = document.createElement('div');
+            notification.className = `notification ${type}`;
+            notification.textContent = message;
+            
+            document.getElementById('notificationContainer').appendChild(notification);
+            
+            // Show notification
+            setTimeout(() => {
+                notification.classList.add('show');
+            }, 100);
+            
+            // Hide notification after 5 seconds
+            setTimeout(() => {
+                notification.classList.remove('show');
+                setTimeout(() => {
+                    notification.remove();
+                }, 300);
+            }, 5000);
+        }
+
+        function updateAuthUI() {
+            const loginBtn = document.getElementById('loginBtn');
+            const signupBtn = document.getElementById('signupBtn');
+            
+            if (appState.currentUser) {
+                loginBtn.textContent = appState.currentUser.name;
+                loginBtn.onclick = () => showUserMenu();
+                signupBtn.style.display = 'none';
+            } else {
+                loginBtn.textContent = t('login');
+                loginBtn.onclick = () => showPage('login');
+                signupBtn.style.display = 'block';
+            }
+        }
+
+        function scrollToSection(sectionId) {
+            const element = document.getElementById(sectionId);
+            if (element) {
+                element.scrollIntoView({ behavior: 'smooth' });
+            }
+        }
+
+        // ==========================================
+        // EVENT LISTENERS & INITIALIZATION
+        // ==========================================
+
+        document.addEventListener('DOMContentLoaded', function() {
+            // Initialize language
+            updateAllTranslations();
+            
+            // Set up form event listeners
+            const loginForm = document.getElementById('loginForm');
+            if (loginForm) {
+                loginForm.addEventListener('submit', handleLogin);
+            }
+            
+            const signupForm = document.getElementById('signupForm');
+            if (signupForm) {
+                signupForm.addEventListener('submit', handleSignup);
+            }
+            
+            // Professional details toggle
+            const userTypeRadios = document.querySelectorAll('input[name="userType"]');
+            userTypeRadios.forEach(radio => {
+                radio.addEventListener('change', function() {
+                    const professionalDetails = document.getElementById('professionalDetails');
+                    if (this.value === 'professional') {
+                        professionalDetails.classList.remove('hidden');
+                        // Make professional fields required
+                        document.getElementById('professionalCategory').required = true;
+                        document.getElementById('professionalExperience').required = true;
+                    } else {
+                        professionalDetails.classList.add('hidden');
+                        // Remove required from professional fields
+                        document.getElementById('professionalCategory').required = false;
+                        document.getElementById('professionalExperience').required = false;
+                    }
+                });
+            });
+            
+            // Handle browser back/forward
+            window.addEventListener('popstate', function(event) {
+                if (event.state && event.state.page) {
+                    showPage(event.state.page);
+                }
+            });
+            
+            // Tutorial event listeners
+            const tutorialNextBtn = document.getElementById('tutorialNext');
+            const tutorialSkipBtn = document.getElementById('skipTutorial');
+            
+            if (tutorialNextBtn) {
+                tutorialNextBtn.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    e.stopPropagation();
+                    nextTutorialStep();
+                });
+            }
+            
+            if (tutorialSkipBtn) {
+                tutorialSkipBtn.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    e.stopPropagation();
+                    skipTutorial();
+                });
+            }
+            
+            // Check if user is already logged in
+            if (appState.authToken) {
+                // Verify token with backend
+                apiCall('/auth/verify')
+                    .then(response => {
+                        appState.currentUser = response.user;
+                        updateAuthUI();
+                    })
+                    .catch(() => {
+                        // Token is invalid, clear it
+                        localStorage.removeItem('authToken');
+                        appState.authToken = null;
+                    });
+            }
+            
+            // Start tutorial for new users
+            setTimeout(() => {
+                if (!appState.tutorialCompleted) {
+                    startTutorial();
+                }
+            }, 1000);
+            
+            console.log('✅ Build Better app initialized successfully');
+        });
+    </script>
+<script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'97e85059b3d7c1ac',t:'MTc1Nzc3MzUyNi4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
 </html>
