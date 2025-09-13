@@ -1,1153 +1,597 @@
-// ==========================================
-// LANGUAGE TRANSLATIONS
-// ==========================================
+html
 
-const TRANSLATIONS = {
-    en: {
-        // Navigation
-        home: 'Home',
-        services: 'Services',
-        labor: 'Labor',
-        equipment: 'Equipment',
-        projects: 'Projects',
-        login: 'Login',
-        signup: 'Sign Up',
-        logout: 'Logout',
-        
-        // Hero Section
-        heroTitle: 'Complete Construction Ecosystem',
-        heroSubtitle: 'From skilled professionals to heavy machinery - find everything you need for your construction project in one place!',
-        exploreServices: 'Explore Services',
-        joinProfessional: 'Join as Professional',
-        
-        // Services
-        professionalServices: '🏗️ Professional Services',
-        laborServices: '👷 Labor Services',
-        equipmentMachinery: '🚜 Equipment & Machinery',
-        
-        // Categories
-        plumbers: 'Plumbers',
-        electricians: 'Electricians',
-        contractors: 'Contractors',
-        civilEngineers: 'Civil Engineers',
-        designers: 'Designers',
-        skilledLabor: 'Skilled Labor',
-        unskilledLabor: 'Unskilled Labor',
-        painters: 'Painters',
-        carpenters: 'Carpenters',
-        machineryOperators: 'Machinery Operators',
-        workshops: 'Workshops',
-        
-        // Forms
-        fullName: 'Full Name',
-        phoneNumber: 'Phone Number',
-        emailAddress: 'Email Address',
-        password: 'Password',
-        confirmPassword: 'Confirm Password',
-        city: 'City',
-        required: 'Required',
-        
-        // Buttons
-        contact: 'Contact',
-        viewProfile: 'View Profile',
-        refresh: 'Refresh',
-        createAccount: 'Create Account',
-        
-        // Messages
-        welcomeBack: 'Welcome back',
-        loginFailed: 'Login failed',
-        registrationSuccessful: 'Registration successful! Please login with your credentials.',
-        
-        // Projects
-        constructionProjects: 'Construction Projects',
-        availableProjects: 'Available Projects',
-        postNewProject: 'Post a New Project',
-        projectTitle: 'Project Title',
-        budget: 'Budget',
-        location: 'Location',
-        projectDescription: 'Project Description',
-        postProject: 'Post Project',
-        
-        // Professional Registration
-        joinAsProfessional: 'Join as a Professional',
-        serviceCategory: 'Service Category',
-        yearsExperience: 'Years of Experience',
-        serviceArea: 'Service Area/Location',
-        servicesDescription: 'Services Description',
-        ratePerDay: 'Rate per Day/Hour (Optional)',
-        registerProfessional: 'Register as Professional',
-        
-        // Additional
-        completeConstructionServices: 'Complete Construction Services'
-    },
-    hi: {
-        // Navigation
-        home: 'होम',
-        services: 'सेवाएं',
-        labor: 'श्रमिक',
-        equipment: 'उपकरण',
-        projects: 'परियोजनाएं',
-        login: 'लॉगिन',
-        signup: 'साइन अप',
-        logout: 'लॉगआउट',
-        
-        // Hero Section
-        heroTitle: 'संपूर्ण निर्माण पारिस्थितिकी तंत्र',
-        heroSubtitle: 'कुशल पेशेवरों से लेकर भारी मशीनरी तक - अपनी निर्माण परियोजना के लिए आवश्यक सब कुछ एक ही स्थान पर खोजें!',
-        exploreServices: 'सेवाएं देखें',
-        joinProfessional: 'पेशेवर के रूप में जुड़ें',
-        
-        // Services
-        professionalServices: '🏗️ पेशेवर सेवाएं',
-        laborServices: '👷 श्रमिक सेवाएं',
-        equipmentMachinery: '🚜 उपकरण और मशीनरी',
-        
-        // Categories
-        plumbers: 'प्लंबर',
-        electricians: 'इलेक्ट्रीशियन',
-        contractors: 'ठेकेदार',
-        civilEngineers: 'सिविल इंजीनियर',
-        designers: 'डिजाइनर',
-        skilledLabor: 'कुशल श्रमिक',
-        unskilledLabor: 'अकुशल श्रमिक',
-        painters: 'पेंटर',
-        carpenters: 'बढ़ई',
-        machineryOperators: 'मशीनरी ऑपरेटर',
-        workshops: 'वर्कशॉप',
-        
-        // Forms
-        fullName: 'पूरा नाम',
-        phoneNumber: 'फोन नंबर',
-        emailAddress: 'ईमेल पता',
-        password: 'पासवर्ड',
-        confirmPassword: 'पासवर्ड की पुष्टि करें',
-        city: 'शहर',
-        required: 'आवश्यक',
-        
-        // Buttons
-        contact: 'संपर्क करें',
-        viewProfile: 'प्रोफाइल देखें',
-        refresh: 'रीफ्रेश',
-        createAccount: 'खाता बनाएं',
-        
-        // Messages
-        welcomeBack: 'वापस स्वागत है',
-        loginFailed: 'लॉगिन असफल',
-        registrationSuccessful: 'पंजीकरण सफल! कृपया अपनी साख के साथ लॉगिन करें।',
-        
-        // Projects
-        constructionProjects: 'निर्माण परियोजनाएं',
-        availableProjects: 'उपलब्ध परियोजनाएं',
-        postNewProject: 'नई परियोजना पोस्ट करें',
-        projectTitle: 'परियोजना शीर्षक',
-        budget: 'बजट',
-        location: 'स्थान',
-        projectDescription: 'परियोजना विवरण',
-        postProject: 'परियोजना पोस्ट करें',
-        
-        // Professional Registration
-        joinAsProfessional: 'एक पेशेवर के रूप में जुड़ें',
-        serviceCategory: 'सेवा श्रेणी',
-        yearsExperience: 'अनुभव के वर्ष',
-        serviceArea: 'सेवा क्षेत्र/स्थान',
-        servicesDescription: 'सेवाओं का विवरण',
-        ratePerDay: 'दैनिक/घंटे की दर (वैकल्पिक)',
-        registerProfessional: 'पेशेवर के रूप में पंजीकरण करें',
-        
-        // Additional
-        completeConstructionServices: 'संपूर्ण निर्माण सेवाएं'
+    .hero-gradient {
+        background: linear-gradient(135deg, #1e3a8a 0%, #3b82f6 50%, #06b6d4 100%);
     }
-};
-
-// ==========================================
-// ENHANCED LANGUAGE SYSTEM
-// ==========================================
-
-let appState = {
-    currentLanguage: localStorage.getItem('selectedLanguage') || 'en',
-    currentUser: null,
-    authToken: localStorage.getItem('authToken'),
-    professionalData: {},
-    filteredData: {},
-    projectsData: [],
-    isLoading: false
-};
-
-// Enhanced language switching that works unlimited times
-function changeLanguage(langCode, langName) {
-    console.log(`🌐 Switching language from ${appState.currentLanguage} to ${langCode}`);
     
-    appState.currentLanguage = langCode;
-    localStorage.setItem('selectedLanguage', langCode);
+    .dark-section {
+        background: linear-gradient(135deg, #1f2937 0%, #374151 100%);
+    }
     
-    // Update the language display
-    document.getElementById('currentLanguage').textContent = langName;
+    .card-hover {
+        transition: all 0.3s ease;
+    }
     
-    // Apply translations to all elements with data-translate attribute
-    updateAllTranslations();
+    .card-hover:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1);
+    }
     
-    showNotification(`Language changed to ${langName}`, 'success');
-    console.log(`✅ Language successfully changed to ${langCode}`);
-}
-
-function t(key) {
-    const translations = TRANSLATIONS[appState.currentLanguage] || TRANSLATIONS.en;
-    return translations[key] || TRANSLATIONS.en[key] || key;
-}
-
-function updateAllTranslations() {
-    console.log(`🔄 Updating all translations to: ${appState.currentLanguage}`);
+    .service-icon {
+        transition: transform 0.3s ease;
+    }
     
-    // Find all elements with data-translate attribute
-    const translatableElements = document.querySelectorAll('[data-translate]');
+    .card-hover:hover .service-icon {
+        transform: scale(1.1);
+    }
     
-    translatableElements.forEach(element => {
-        const key = element.getAttribute('data-translate');
-        const translatedText = t(key);
-        
-        // Handle different element types
-        if (element.tagName === 'INPUT' && element.type === 'submit') {
-            element.value = translatedText;
-        } else if (element.tagName === 'INPUT' && element.placeholder) {
-            // Don't change placeholder for now, handle separately if needed
-        } else {
-            // For navigation items with dropdown arrows
-            if (element.textContent.includes('▼')) {
-                element.textContent = translatedText + ' ▼';
-            } else {
-                element.textContent = translatedText;
-            }
-        }
-    });
+    .dropdown {
+        position: relative;
+        display: inline-block;
+    }
     
-    // Handle special cases for auth buttons when user is logged in
-    updateAuthButtonsIfLoggedIn();
+    .dropdown-content {
+        display: none;
+        position: absolute;
+        background-color: white;
+        min-width: 200px;
+        box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+        z-index: 1000;
+        border-radius: 8px;
+        top: 100%;
+        left: 0;
+    }
     
-    console.log(`✅ Updated ${translatableElements.length} translatable elements`);
-}
-
-function updateAuthButtonsIfLoggedIn() {
-    if (appState.currentUser) {
-        const loginBtn = document.getElementById('loginBtn');
-        const signupBtn = document.getElementById('signupBtn');
-        
-        if (loginBtn && loginBtn.textContent.startsWith('Hi,')) {
-            // Keep the user greeting, don't translate
-            return;
-        }
-        
-        if (signupBtn && signupBtn.textContent === 'Logout') {
-            signupBtn.textContent = t('logout');
+    .dropdown:hover .dropdown-content {
+        display: block;
+    }
+    
+    .dropdown-content a {
+        color: #374151;
+        padding: 12px 16px;
+        text-decoration: none;
+        display: block;
+        border-radius: 6px;
+        margin: 4px;
+        transition: background-color 0.2s;
+    }
+    
+    .dropdown-content a:hover {
+        background-color: #f3f4f6;
+    }
+    
+    .professional-card {
+        background: white;
+        border-radius: 12px;
+        padding: 24px;
+        box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+        transition: all 0.3s ease;
+        border: 1px solid #e5e7eb;
+    }
+    
+    .professional-card:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+    }
+    
+    .filter-btn {
+        transition: all 0.2s ease;
+    }
+    
+    .filter-btn.active {
+        background-color: #2563eb;
+        color: white;
+        border-color: #2563eb;
+    }
+    
+    .loading-spinner {
+        border: 4px solid #f3f4f6;
+        border-top: 4px solid #3b82f6;
+        border-radius: 50%;
+        width: 40px;
+        height: 40px;
+        animation: spin 1s linear infinite;
+        margin: 0 auto;
+    }
+    
+    @keyframes spin {
+        0% { transform: rotate(0deg); }
+        100% { transform: rotate(360deg); }
+    }
+    
+    .error-state, .empty-state {
+        text-align: center;
+        padding: 48px 24px;
+        color: #6b7280;
+    }
+    
+    .empty-state-icon {
+        font-size: 4rem;
+        margin-bottom: 16px;
+    }
+    
+    .retry-btn {
+        background-color: #3b82f6;
+        color: white;
+        padding: 8px 16px;
+        border-radius: 6px;
+        border: none;
+        cursor: pointer;
+        transition: background-color 0.2s;
+    }
+    
+    .retry-btn:hover {
+        background-color: #2563eb;
+    }
+    
+    .btn-loading {
+        opacity: 0.7;
+        cursor: not-allowed;
+    }
+    
+    .input-error {
+        border-color: #ef4444 !important;
+        box-shadow: 0 0 0 3px rgba(239, 68, 68, 0.1) !important;
+    }
+    
+    .error-message {
+        color: #ef4444;
+        font-size: 0.875rem;
+        margin-top: 4px;
+    }
+    
+    .notification {
+        position: fixed;
+        top: 20px;
+        right: 20px;
+        padding: 16px 24px;
+        border-radius: 8px;
+        color: white;
+        font-weight: 500;
+        z-index: 9999;
+        transform: translateX(400px);
+        transition: transform 0.3s ease;
+        max-width: 400px;
+    }
+    
+    .notification.show {
+        transform: translateX(0);
+    }
+    
+    .notification.success {
+        background-color: #10b981;
+    }
+    
+    .notification.error {
+        background-color: #ef4444;
+    }
+    
+    .notification.warning {
+        background-color: #f59e0b;
+    }
+    
+    .notification.info {
+        background-color: #3b82f6;
+    }
+    
+    @media (max-width: 768px) {
+        .dropdown-content {
+            position: fixed;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 90vw;
+            max-width: 300px;
         }
     }
-}
+</style>
 
-// ==========================================
-// CONFIGURATION & GLOBAL VARIABLES
-// ==========================================
-
-const CONFIG = {
-    API_BASE_URL: 'https://build-better.onrender.com/api',
-    STORAGE_KEYS: {
-        AUTH_TOKEN: 'authToken',
-        USER_DATA: 'userData'
-    },
-    CATEGORIES: {
-        'plumbers': 'plumbers',
-        'electricians': 'electricians', 
-        'contractors': 'contractors',
-        'civilengineers': 'engineers',
-        'skilledlabor': 'skilled-labor',
-        'unskilledlabor': 'unskilled-labor',
-        'painters': 'painters',
-        'carpenters': 'carpenters',
-        'machinery': 'machinery',
-        'workshops': 'workshops',
-        'designers': 'designers'
-    },
-    CATEGORY_ICONS: {
-        plumbers: '🔧',
-        electricians: '⚡',
-        contractors: '🏗️',
-        civilengineers: '👨‍💼',
-        skilledlabor: '👷‍♂️',
-        unskilledlabor: '👷',
-        painters: '🎨',
-        carpenters: '🔨',
-        machinery: '🚜',
-        workshops: '🔧',
-        designers: '🎨'
-    },
-    CATEGORY_NAMES: {
-        plumbers: 'Plumbers',
-        electricians: 'Electricians',
-        contractors: 'Contractors',
-        civilengineers: 'Civil Engineers',
-        skilledlabor: 'Skilled Labor',
-        unskilledlabor: 'Unskilled Labor',
-        painters: 'Painters',
-        carpenters: 'Carpenters',
-        machinery: 'Machinery Operators',
-        workshops: 'Workshops',
-        designers: 'Designers'
-    }
-};
-
-// ==========================================
-// UTILITY FUNCTIONS
-// ==========================================
-
-function showNotification(message, type = 'info', duration = 5000) {
-    const container = document.getElementById('notificationContainer');
-    const notification = document.createElement('div');
-    notification.className = `notification ${type}`;
-    notification.textContent = message;
-    
-    container.appendChild(notification);
-    
-    // Trigger animation
-    setTimeout(() => notification.classList.add('show'), 100);
-    
-    // Remove notification
-    setTimeout(() => {
-        notification.classList.remove('show');
-        setTimeout(() => {
-            if (container.contains(notification)) {
-                container.removeChild(notification);
-            }
-        }, 300);
-    }, duration);
-}
-
-function scrollToSection(sectionId) {
-    const element = document.getElementById(sectionId);
-    if (element) {
-        element.scrollIntoView({ behavior: 'smooth' });
-    }
-}
-
-function setButtonLoading(buttonId, isLoading) {
-    const button = document.getElementById(buttonId);
-    if (isLoading) {
-        button.classList.add('btn-loading');
-        button.disabled = true;
-    } else {
-        button.classList.remove('btn-loading');
-        button.disabled = false;
-    }
-}
-
-function clearFieldError(fieldId) {
-    const field = document.getElementById(fieldId);
-    const errorDiv = document.getElementById(fieldId + 'Error');
-    
-    if (field) {
-        field.classList.remove('input-error');
-    }
-    if (errorDiv) {
-        errorDiv.classList.add('hidden');
-        errorDiv.textContent = '';
-    }
-}
-
-function showFieldError(fieldId, message) {
-    const field = document.getElementById(fieldId);
-    const errorDiv = document.getElementById(fieldId + 'Error');
-    
-    if (field) {
-        field.classList.add('input-error');
-    }
-    if (errorDiv) {
-        errorDiv.classList.remove('hidden');
-        errorDiv.textContent = message;
-    }
-}
-
-function validateEmail(email) {
-    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-    return emailRegex.test(email);
-}
-
-function validatePhone(phone) {
-    const phoneRegex = /^[0-9]{10}$/;
-    return phoneRegex.test(phone.replace(/\s+/g, ''));
-}
-
-// ==========================================
-// API SERVICE
-// ==========================================
-
-class ApiService {
-    static async call(endpoint, options = {}) {
-        const url = `${CONFIG.API_BASE_URL}${endpoint}`;
-        const config = {
-            headers: {
-                'Content-Type': 'application/json',
-                ...options.headers
-            },
-            signal: AbortSignal.timeout(15000),
-            ...options
-        };
-        
-        if (appState.authToken) {
-            config.headers.Authorization = `Bearer ${appState.authToken}`;
-        }
-        
-        try {
-            console.log(`🌐 Making API call to: ${url}`);
-            const response = await fetch(url, config);
-            
-            if (!response.ok) {
-                let errorMessage = `HTTP ${response.status}: ${response.statusText}`;
+            <div class="hidden md:flex space-x-6">
+                <a onclick="showPage('home')" class="nav-link text-gray-300 hover:text-blue-400 transition-colors cursor-pointer" data-translate="home">Home</a>
                 
-                try {
-                    const errorData = await response.json();
-                    errorMessage = errorData.message || errorData.error || errorMessage;
-                } catch (e) {
-                    // Ignore JSON parsing errors
-                }
-                
-                if (response.status === 401) {
-                    localStorage.removeItem(CONFIG.STORAGE_KEYS.AUTH_TOKEN);
-                    localStorage.removeItem(CONFIG.STORAGE_KEYS.USER_DATA);
-                    appState.authToken = null;
-                    appState.currentUser = null;
-                    updateAuthUI(false);
-                    showNotification('Session expired. Please login again.', 'warning');
-                    throw new Error('Session expired');
-                }
-                
-                throw new Error(errorMessage);
-            }
-            
-            const data = await response.json();
-            return data;
-            
-        } catch (error) {
-            console.error('🚨 API Error:', error);
-            
-            if (error.name === 'TypeError' && error.message.includes('fetch')) {
-                throw new Error('Network Error: Cannot connect to backend server.');
-            } else if (error.name === 'TimeoutError' || error.message.includes('timeout')) {
-                throw new Error('Request Timeout: Backend is taking too long to respond.');
-            } else {
-                throw error;
-            }
-        }
-    }
-
-    static async login(email, password) {
-        return this.call('/auth/login', {
-            method: 'POST',
-            body: JSON.stringify({ email, password })
-        });
-    }
-
-    static async register(userData) {
-        return this.call('/auth/register', {
-            method: 'POST',
-            body: JSON.stringify(userData)
-        });
-    }
-
-    static async getProfessionals(category) {
-        return this.call(`/professionals/${category}`);
-    }
-
-    static async createProfessional(professionalData) {
-        return this.call('/professionals', {
-            method: 'POST',
-            body: JSON.stringify({
-                name: professionalData.fullName,
-                category: professionalData.category,
-                experience: professionalData.experience,
-                phone: professionalData.phone,
-                email: professionalData.email,
-                serviceArea: professionalData.serviceArea,
-                description: professionalData.description,
-                rate: professionalData.rate
-            })
-        });
-    }
-
-    static async getProjects() {
-        return this.call('/projects');
-    }
-
-    static async createProject(projectData) {
-        return this.call('/projects', {
-            method: 'POST',
-            body: JSON.stringify(projectData)
-        });
-    }
-}
-
-// ==========================================
-// AUTHENTICATION FUNCTIONS
-// ==========================================
-
-function updateAuthUI(isLoggedIn) {
-    const loginBtn = document.getElementById('loginBtn');
-    const signupBtn = document.getElementById('signupBtn');
-    const createProjectSection = document.getElementById('createProjectSection');
-    
-    if (isLoggedIn && appState.currentUser) {
-        loginBtn.textContent = `Hi, ${appState.currentUser.name}`;
-        loginBtn.onclick = () => showDashboard();
-        signupBtn.textContent = t('logout');
-        signupBtn.onclick = () => logout();
-        
-        if (createProjectSection) {
-            createProjectSection.style.display = 'block';
-        }
-    } else {
-        loginBtn.textContent = t('login');
-        loginBtn.onclick = () => showLoginModal();
-        signupBtn.textContent = t('signup');
-        signupBtn.onclick = () => showSignupModal();
-        
-        if (createProjectSection) {
-            createProjectSection.style.display = 'none';
-        }
-    }
-}
-
-function showDashboard() {
-    showNotification('Dashboard: View your projects and manage your profile here!', 'info');
-}
-
-function logout() {
-    localStorage.removeItem(CONFIG.STORAGE_KEYS.AUTH_TOKEN);
-    localStorage.removeItem(CONFIG.STORAGE_KEYS.USER_DATA);
-    
-    appState.authToken = null;
-    appState.currentUser = null;
-    
-    updateAuthUI(false);
-    showNotification('Logged out successfully', 'info');
-    
-    showPage('home');
-}
-
-// ==========================================
-// MODAL FUNCTIONS
-// ==========================================
-
-function showLoginModal() {
-    document.getElementById('loginModal').classList.remove('hidden');
-}
-
-function hideLoginModal() {
-    document.getElementById('loginModal').classList.add('hidden');
-}
-
-function showSignupModal() {
-    document.getElementById('signupModal').classList.remove('hidden');
-}
-
-function hideSignupModal() {
-    document.getElementById('signupModal').classList.add('hidden');
-}
-
-// ==========================================
-// PAGE MANAGEMENT
-// ==========================================
-
-function showPage(pageId) {
-    document.querySelectorAll('.page').forEach(page => {
-        page.classList.remove('active');
-    });
-    
-    const targetPage = document.getElementById(pageId);
-    if (targetPage) {
-        targetPage.classList.add('active');
-    } else {
-        createServicePage(pageId);
-    }
-    
-    if (CONFIG.CATEGORIES[pageId]) {
-        loadProfessionals(pageId);
-    } else if (pageId === 'projects') {
-        loadProjects();
-    }
-    
-    window.scrollTo(0, 0);
-}
-
-function createServicePage(category) {
-    const apiCategory = CONFIG.CATEGORIES[category];
-    if (!apiCategory) return;
-
-    const icon = CONFIG.CATEGORY_ICONS[apiCategory];
-    const name = CONFIG.CATEGORY_NAMES[apiCategory];
-    
-    const pageHTML = `
-        <div id="${category}" class="page active">
-            <section class="hero-gradient text-white py-16">
-                <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-                    <div class="text-6xl mb-4">${icon}</div>
-                    <h1 class="text-4xl font-bold mb-4">Professional ${name}</h1>
-                    <p class="text-xl mb-6 max-w-3xl mx-auto">Expert ${name.toLowerCase()} services for all your construction needs</p>
-                </div>
-            </section>
-            
-            <section class="py-8 bg-white shadow-sm">
-                <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-                    <div class="flex flex-wrap gap-4 items-center justify-between">
-                        <div class="flex flex-wrap gap-2">
-                            <button type="button" onclick="filterByExperience('${category}', 'all')" class="filter-btn active px-4 py-2 rounded-lg border border-gray-300 hover:bg-blue-600 hover:text-white">All Experience</button>
-                            <button type="button" onclick="filterByExperience('${category}', '0-2')" class="filter-btn px-4 py-2 rounded-lg border border-gray-300 hover:bg-blue-600 hover:text-white">0-2 Years</button>
-                            <button type="button" onclick="filterByExperience('${category}', '3-5')" class="filter-btn px-4 py-2 rounded-lg border border-gray-300 hover:bg-blue-600 hover:text-white">3-5 Years</button>
-                            <button type="button" onclick="filterByExperience('${category}', '6-10')" class="filter-btn px-4 py-2 rounded-lg border border-gray-300 hover:bg-blue-600 hover:text-white">6-10 Years</button>
-                            <button type="button" onclick="filterByExperience('${category}', '10+')" class="filter-btn px-4 py-2 rounded-lg border border-gray-300 hover:bg-blue-600 hover:text-white">10+ Years</button>
-                        </div>
-                        <div class="flex items-center space-x-4">
-                            <button onclick="loadProfessionals('${category}')" class="px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700" data-translate="refresh">Refresh</button>
-                        </div>
+                <div class="dropdown">
+                    <a class="nav-link text-gray-300 hover:text-blue-400 transition-colors cursor-pointer" data-translate="services">Services ▼</a>
+                    <div class="dropdown-content">
+                        <a onclick="showPage('plumbers')">🔧 <span data-translate="plumbers">Plumbers</span></a>
+                        <a onclick="showPage('electricians')">⚡ <span data-translate="electricians">Electricians</span></a>
+                        <a onclick="showPage('contractors')">🏗️ <span data-translate="contractors">Contractors</span></a>
+                        <a onclick="showPage('civilengineers')">👨‍💼 <span data-translate="civilEngineers">Civil Engineers</span></a>
+                        <a onclick="showPage('designers')">🎨 <span data-translate="designers">Designers</span></a>
                     </div>
                 </div>
-            </section>
-            
-            <section class="py-12 bg-gray-50">
-                <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-                    <div class="flex justify-between items-center mb-8">
-                        <h2 class="text-3xl font-bold text-gray-800">Available ${name}</h2>
-                        <div class="text-gray-600">
-                            <span id="${category}Count">0</span> professionals found
-                        </div>
-                    </div>
-                    <div id="${category}Grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                        <!-- Content will be loaded by JavaScript -->
+                
+                <div class="dropdown">
+                    <a class="nav-link text-gray-300 hover:text-blue-400 transition-colors cursor-pointer" data-translate="labor">Labor ▼</a>
+                    <div class="dropdown-content">
+                        <a onclick="showPage('skilledlabor')">👷‍♂️ <span data-translate="skilledLabor">Skilled Labor</span></a>
+                        <a onclick="showPage('unskilledlabor')">👷 <span data-translate="unskilledLabor">Unskilled Labor</span></a>
+                        <a onclick="showPage('painters')">🎨 <span data-translate="painters">Painters</span></a>
+                        <a onclick="showPage('carpenters')">🔨 <span data-translate="carpenters">Carpenters</span></a>
                     </div>
                 </div>
-            </section>
-        </div>
-    `;
-    
-    const footer = document.querySelector('footer');
-    footer.insertAdjacentHTML('beforebegin', pageHTML);
-}
+                
+                <div class="dropdown">
+                    <a class="nav-link text-gray-300 hover:text-blue-400 transition-colors cursor-pointer" data-translate="equipment">Equipment ▼</a>
+                    <div class="dropdown-content">
+                        <a onclick="showPage('machinery')">🚜 <span data-translate="machineryOperators">Machinery Operators</span></a>
+                        <a onclick="showPage('workshops')">🔧 <span data-translate="workshops">Workshops</span></a>
+                    </div>
+                </div>
 
-// ==========================================
-// PROFESSIONAL MANAGEMENT
-// ==========================================
-
-async function loadProfessionals(category) {
-    try {
-        const apiCategory = CONFIG.CATEGORIES[category];
-        if (!apiCategory) {
-            console.error('Invalid category:', category);
-            return;
-        }
-        
-        showLoadingState(category + 'Grid');
-        
-        const data = await ApiService.getProfessionals(apiCategory);
-        
-        appState.professionalData[apiCategory] = data;
-        appState.filteredData[category] = [...data];
-        
-        renderProfessionals(category);
-        updateCount(category);
-        
-    } catch (error) {
-        console.error('Error loading professionals:', error);
-        showErrorState(category + 'Grid', error.message, () => loadProfessionals(category));
-        appState.filteredData[category] = [];
-        updateCount(category);
-    }
-}
-
-function showLoadingState(containerId) {
-    const container = document.getElementById(containerId);
-    if (container) {
-        container.innerHTML = `
-            <div class="col-span-full text-center py-8">
-                <div class="loading-spinner"></div>
-                <div class="text-lg mt-4 text-gray-600">Loading professionals...</div>
+                <a onclick="showPage('projects')" class="nav-link text-gray-300 hover:text-blue-400 transition-colors cursor-pointer" data-translate="projects">Projects</a>
             </div>
-        `;
-    }
-}
-
-function showErrorState(containerId, errorMessage, retryFunction) {
-    const container = document.getElementById(containerId);
-    if (container) {
-        container.innerHTML = `
-            <div class="error-state col-span-full">
-                <div class="text-4xl mb-4">⚠️</div>
-                <h3 class="text-xl font-semibold mb-2">Failed to Load Data</h3>
-                <p class="mb-4">${errorMessage}</p>
-                <button onclick="(${retryFunction.toString()})()" class="retry-btn">Try Again</button>
+            
+            <div class="flex space-x-4 items-center">
+                <div class="dropdown">
+                    <button class="bg-gray-700 text-white px-3 py-2 rounded-lg hover:bg-gray-600 transition-colors cursor-pointer text-sm">
+                        🌐 <span id="currentLanguage">English</span> ▼
+                    </button>
+                    <div class="dropdown-content" style="min-width: 180px; max-height: 300px; overflow-y: auto;">
+                        <a onclick="changeLanguage('en', 'English')">🇬🇧 English</a>
+                        <a onclick="changeLanguage('hi', 'हिंदी')">🇮🇳 हिंदी (Hindi)</a>
+                        <a onclick="changeLanguage('bn', 'বাংলা')">🇧🇩 বাংলা (Bengali)</a>
+                        <a onclick="changeLanguage('te', 'తెలుగు')">📍 తెలుగు (Telugu)</a>
+                        <a onclick="changeLanguage('mr', 'मराठी')">📍 मराठी (Marathi)</a>
+                        <a onclick="changeLanguage('ta', 'தமிழ்')">📍 தமிழ் (Tamil)</a>
+                        <a onclick="changeLanguage('gu', 'ગુજરાતી')">📍 ગુજરાતી (Gujarati)</a>
+                        <a onclick="changeLanguage('ur', 'اردو')">📍 اردو (Urdu)</a>
+                        <a onclick="changeLanguage('kn', 'ಕನ್ನಡ')">📍 ಕನ್ನಡ (Kannada)</a>
+                        <a onclick="changeLanguage('or', 'ଓଡ଼ିଆ')">📍 ଓଡ଼ିଆ (Odia)</a>
+                        <a onclick="changeLanguage('pa', 'ਪੰਜਾਬੀ')">📍 ਪੰਜਾਬੀ (Punjabi)</a>
+                        <a onclick="changeLanguage('ml', 'മലയാളം')">📍 മലയാളം (Malayalam)</a>
+                    </div>
+                </div>
+                <button id="loginBtn" onclick="showLoginModal()" class="bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700 transition-colors" data-translate="login">Login</button>
+                <button id="signupBtn" onclick="showSignupModal()" class="bg-blue-500 text-white px-4 py-2 rounded-lg hover:bg-blue-600 transition-colors" data-translate="signup">Sign Up</button>
             </div>
-        `;
-    }
-}
-
-function renderProfessionals(category) {
-    const grid = document.getElementById(category + 'Grid');
-    const data = appState.filteredData[category] || [];
-    
-    if (!grid) return;
-    
-    if (data.length === 0) {
-        renderEmptyState(grid, category);
-        return;
-    }
-    
-    grid.innerHTML = data.map(professional => createProfessionalCard(professional)).join('');
-}
-
-function renderEmptyState(container, category) {
-    const apiCategory = CONFIG.CATEGORIES[category];
-    const icon = CONFIG.CATEGORY_ICONS[apiCategory];
-    const name = CONFIG.CATEGORY_NAMES[apiCategory];
-    
-    container.innerHTML = `
-        <div class="empty-state col-span-full">
-            <div class="empty-state-icon">${icon}</div>
-            <h3 class="text-xl font-semibold mb-2">No ${name} Available Yet</h3>
-            <p>Be the first professional to join this category!</p>
-            <button onclick="showPage('home'); setTimeout(() => scrollToSection('join'), 100);" class="mt-4 bg-blue-600 text-white px-6 py-2 rounded-lg hover:bg-blue-700 transition-colors" data-translate="joinProfessional">Join as Professional</button>
         </div>
-    `;
-}
+    </div>
+</nav>
 
-function createProfessionalCard(professional) {
-    const phone = professional.phone || '+91 98765 43210';
-    const rate = professional.rate || '₹500/day';
-    const experience = professional.experience || '2-5 years';
-    const serviceArea = professional.serviceArea || 'Multiple locations';
-    const name = professional.name || professional.fullName || 'Professional';
-    
-    return `
-        <div class="professional-card">
-            <div class="flex justify-between items-start mb-4">
+<!-- HOME PAGE -->
+<div id="home" class="page active">
+    <!-- Hero Section -->
+    <section class="hero-gradient text-white py-20">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+            <h1 class="text-5xl font-bold mb-6" data-translate="heroTitle">Complete Construction Ecosystem</h1>
+            <p class="text-xl mb-8 max-w-3xl mx-auto" data-translate="heroSubtitle">From skilled professionals to heavy machinery - find everything you need for your construction project in one place!</p>
+            <div class="flex flex-col sm:flex-row gap-4 justify-center">
+                <button onclick="scrollToSection('services')" class="bg-white text-blue-600 px-8 py-3 rounded-lg font-semibold hover:bg-gray-100 transition-colors" data-translate="exploreServices">Explore Services</button>
+                <button onclick="scrollToSection('join')" class="border-2 border-white text-white px-8 py-3 rounded-lg font-semibold hover:bg-white hover:text-blue-600 transition-colors" data-translate="joinProfessional">Join as Professional</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section id="services" class="py-16 dark-section">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <h2 class="text-4xl font-bold text-center text-white mb-12" data-translate="completeConstructionServices">Complete Construction Services</h2>
+            
+            <!-- Professional Services -->
+            <div class="mb-12">
+                <h3 class="text-2xl font-bold text-white mb-6" data-translate="professionalServices">🏗️ Professional Services</h3>
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-6">
+                    <div onclick="showPage('plumbers')" class="text-center p-6 bg-gray-800 rounded-xl card-hover border border-gray-700 cursor-pointer">
+                        <div class="service-icon text-5xl mb-3">🔧</div>
+                        <h4 class="text-lg font-semibold mb-2 text-white" data-translate="plumbers">Plumbers</h4>
+                        <p class="text-gray-300 text-sm">Water supply, drainage, pipe repairs</p>
+                    </div>
+                    <div onclick="showPage('electricians')" class="text-center p-6 bg-gray-800 rounded-xl card-hover border border-gray-700 cursor-pointer">
+                        <div class="service-icon text-5xl mb-3">⚡</div>
+                        <h4 class="text-lg font-semibold mb-2 text-white" data-translate="electricians">Electricians</h4>
+                        <p class="text-gray-300 text-sm">Wiring, electrical repairs, installations</p>
+                    </div>
+                    <div onclick="showPage('contractors')" class="text-center p-6 bg-gray-800 rounded-xl card-hover border border-gray-700 cursor-pointer">
+                        <div class="service-icon text-5xl mb-3">🏗️</div>
+                        <h4 class="text-lg font-semibold mb-2 text-white" data-translate="contractors">Contractors</h4>
+                        <p class="text-gray-300 text-sm">Complete construction projects</p>
+                    </div>
+                    <div onclick="showPage('civilengineers')" class="text-center p-6 bg-gray-800 rounded-xl card-hover border border-gray-700 cursor-pointer">
+                        <div class="service-icon text-5xl mb-3">👨‍💼</div>
+                        <h4 class="text-lg font-semibold mb-2 text-white" data-translate="civilEngineers">Civil Engineers</h4>
+                        <p class="text-gray-300 text-sm">Design, planning, project supervision</p>
+                    </div>
+                    <div onclick="showPage('designers')" class="text-center p-6 bg-gray-800 rounded-xl card-hover border border-gray-700 cursor-pointer">
+                        <div class="service-icon text-5xl mb-3">🎨</div>
+                        <h4 class="text-lg font-semibold mb-2 text-white" data-translate="designers">Designers</h4>
+                        <p class="text-gray-300 text-sm">Architectural & interior design</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Labor Services -->
+            <div class="mb-12">
+                <h3 class="text-2xl font-bold text-white mb-6" data-translate="laborServices">👷 Labor Services</h3>
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+                    <div onclick="showPage('skilledlabor')" class="text-center p-6 bg-gray-800 rounded-xl card-hover border border-gray-700 cursor-pointer">
+                        <div class="service-icon text-5xl mb-3">👷‍♂️</div>
+                        <h4 class="text-lg font-semibold mb-2 text-white" data-translate="skilledLabor">Skilled Labor</h4>
+                        <p class="text-gray-300 text-sm">Masonry, welding, specialized work</p>
+                    </div>
+                    <div onclick="showPage('unskilledlabor')" class="text-center p-6 bg-gray-800 rounded-xl card-hover border border-gray-700 cursor-pointer">
+                        <div class="service-icon text-5xl mb-3">👷</div>
+                        <h4 class="text-lg font-semibold mb-2 text-white" data-translate="unskilledLabor">Unskilled Labor</h4>
+                        <p class="text-gray-300 text-sm">General labor, loading, cleaning</p>
+                    </div>
+                    <div onclick="showPage('painters')" class="text-center p-6 bg-gray-800 rounded-xl card-hover border border-gray-700 cursor-pointer">
+                        <div class="service-icon text-5xl mb-3">🎨</div>
+                        <h4 class="text-lg font-semibold mb-2 text-white" data-translate="painters">Painters</h4>
+                        <p class="text-gray-300 text-sm">Interior, exterior, decorative painting</p>
+                    </div>
+                    <div onclick="showPage('carpenters')" class="text-center p-6 bg-gray-800 rounded-xl card-hover border border-gray-700 cursor-pointer">
+                        <div class="service-icon text-5xl mb-3">🔨</div>
+                        <h4 class="text-lg font-semibold mb-2 text-white" data-translate="carpenters">Carpenters</h4>
+                        <p class="text-gray-300 text-sm">Woodwork, furniture, installations</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Equipment & Machinery -->
+            <div>
+                <h3 class="text-2xl font-bold text-white mb-6" data-translate="equipmentMachinery">🚜 Equipment & Machinery</h3>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <div onclick="showPage('machinery')" class="text-center p-6 bg-gray-800 rounded-xl card-hover border border-gray-700 cursor-pointer">
+                        <div class="service-icon text-5xl mb-3">🚜</div>
+                        <h4 class="text-lg font-semibold mb-2 text-white" data-translate="machineryOperators">Machinery Operators</h4>
+                        <p class="text-gray-300 text-sm">JCB, excavators, cranes, heavy equipment</p>
+                    </div>
+                    <div onclick="showPage('workshops')" class="text-center p-6 bg-gray-800 rounded-xl card-hover border border-gray-700 cursor-pointer">
+                        <div class="service-icon text-5xl mb-3">🔧</div>
+                        <h4 class="text-lg font-semibold mb-2 text-white" data-translate="workshops">Workshops</h4>
+                        <p class="text-gray-300 text-sm">Tool rental, equipment repair, fabrication</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Join as Professional Section -->
+    <section id="join" class="py-16 bg-white">
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+            <h2 class="text-4xl font-bold text-center text-gray-800 mb-12" data-translate="joinAsProfessional">Join as a Professional</h2>
+            <div class="bg-gray-50 p-8 rounded-xl">
+                <form id="professionalForm" class="space-y-6">
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700 mb-2" data-translate="fullName">Full Name *</label>
+                            <input type="text" id="fullName" required class="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent">
+                        </div>
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700 mb-2" data-translate="phoneNumber">Phone Number *</label>
+                            <input type="tel" id="phone" required class="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent">
+                        </div>
+                    </div>
+                    
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700 mb-2" data-translate="emailAddress">Email Address *</label>
+                        <input type="email" id="email" required class="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent">
+                    </div>
+                    
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700 mb-2" data-translate="serviceCategory">Service Category *</label>
+                            <select id="category" required class="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent">
+                                <option value="">Select Category</option>
+                                <option value="plumbers">Plumber</option>
+                                <option value="electricians">Electrician</option>
+                                <option value="contractors">Contractor</option>
+                                <option value="civilengineers">Civil Engineer</option>
+                                <option value="designers">Designer</option>
+                                <option value="skilledlabor">Skilled Labor</option>
+                                <option value="unskilledlabor">Unskilled Labor</option>
+                                <option value="painters">Painter</option>
+                                <option value="carpenters">Carpenter</option>
+                                <option value="machinery">Machinery Operator</option>
+                                <option value="workshops">Workshop Owner</option>
+                            </select>
+                        </div>
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700 mb-2" data-translate="yearsExperience">Years of Experience *</label>
+                            <select id="experience" required class="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent">
+                                <option value="">Select Experience</option>
+                                <option value="0-1 years">0-1 years</option>
+                                <option value="2-5 years">2-5 years</option>
+                                <option value="6-10 years">6-10 years</option>
+                                <option value="10+ years">10+ years</option>
+                            </select>
+                        </div>
+                    </div>
+                    
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700 mb-2" data-translate="serviceArea">Service Area/Location *</label>
+                        <input type="text" id="serviceArea" required placeholder="City, District, or Areas you serve" class="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent">
+                    </div>
+                    
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700 mb-2" data-translate="servicesDescription">Services Description</label>
+                        <textarea id="description" rows="4" placeholder="Describe your services, specializations, and what makes you unique..." class="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"></textarea>
+                    </div>
+                    
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700 mb-2" data-translate="ratePerDay">Rate per Day/Hour (Optional)</label>
+                        <input type="text" id="rate" placeholder="e.g., ₹500/day or ₹50/hour" class="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent">
+                    </div>
+                    
+                    <div class="flex items-center">
+                        <input type="checkbox" id="terms" required class="h-4 w-4 text-blue-600 focus:ring-blue-500 border-gray-300 rounded">
+                        <label for="terms" class="ml-2 block text-sm text-gray-700">I agree to the Terms of Service and Privacy Policy</label>
+                    </div>
+                    
+                    <button type="submit" id="professionalSubmitBtn" class="w-full bg-green-600 text-white p-3 rounded-lg hover:bg-green-700 transition-colors font-semibold" data-translate="registerProfessional">Register as Professional</button>
+                </form>
+            </div>
+        </div>
+    </section>
+</div>
+
+<!-- PROJECTS PAGE -->
+<div id="projects" class="page">
+    <section class="hero-gradient text-white py-16">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+            <div class="text-6xl mb-4">🏗️</div>
+            <h1 class="text-4xl font-bold mb-4" data-translate="constructionProjects">Construction Projects</h1>
+            <p class="text-xl mb-6 max-w-3xl mx-auto">Browse available projects or post your own construction needs</p>
+        </div>
+    </section>
+
+    <!-- Create Project Section -->
+    <section id="createProjectSection" class="py-8 bg-white shadow-sm" style="display: none;">
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+            <h3 class="text-2xl font-bold mb-6" data-translate="postNewProject">Post a New Project</h3>
+            <form id="projectForm" class="space-y-4">
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700 mb-2" data-translate="projectTitle">Project Title *</label>
+                        <input type="text" id="projectTitle" required class="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500">
+                    </div>
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700 mb-2" data-translate="budget">Budget (₹)</label>
+                        <input type="number" id="projectBudget" class="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500">
+                    </div>
+                </div>
                 <div>
-                    <h3 class="text-xl font-bold text-gray-800">${name}</h3>
-                    <p class="text-gray-600">${experience} experience</p>
-                    <p class="text-gray-600">📍 ${serviceArea}</p>
+                    <label class="block text-sm font-medium text-gray-700 mb-2" data-translate="location">Location</label>
+                    <input type="text" id="projectLocation" class="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500">
                 </div>
-                <div class="text-right">
-                    <div class="flex items-center mb-1">
-                        <span class="text-yellow-500">⭐</span>
-                        <span class="font-semibold ml-1">4.5</span>
-                        <span class="text-gray-500 text-sm ml-1">(12)</span>
-                    </div>
-                    <p class="text-lg font-bold text-green-600">${rate}</p>
+                <div>
+                    <label class="block text-sm font-medium text-gray-700 mb-2" data-translate="projectDescription">Project Description *</label>
+                    <textarea id="projectDescription" required rows="4" class="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500"></textarea>
                 </div>
-            </div>
-            
-            <div class="mb-4">
-                <p class="text-gray-700 text-sm">${professional.description || 'Experienced professional ready to help with your project.'}</p>
-            </div>
-            
-            <div class="flex justify-between items-center pt-4 border-t border-gray-200">
-                <div class="text-sm text-gray-600">
-                    <p>📞 ${phone}</p>
-                    <p>📧 ${professional.email}</p>
-                </div>
-                <div class="flex space-x-2">
-                    <span class="bg-green-100 text-green-800 text-xs px-2 py-1 rounded-full">✓ Verified</span>
+                <button type="submit" id="projectSubmitBtn" class="bg-blue-600 text-white px-6 py-3 rounded-lg hover:bg-blue-700 transition-colors font-semibold" data-translate="postProject">Post Project</button>
+            </form>
+        </div>
+    </section>
+
+    <!-- Projects List -->
+    <section class="py-12 bg-gray-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center mb-8">
+                <h2 class="text-3xl font-bold text-gray-800" data-translate="availableProjects">Available Projects</h2>
+                <div class="text-gray-600">
+                    <span id="projectsCount">0</span> projects found
                 </div>
             </div>
-            
-            <div class="mt-4 flex space-x-2">
-                <button onclick="contactProfessional('${phone}')" class="flex-1 bg-blue-600 text-white py-2 px-4 rounded-lg hover:bg-blue-700 transition-colors" data-translate="contact">Contact</button>
-                <button onclick="viewProfile('${professional._id}')" class="flex-1 border border-blue-600 text-blue-600 py-2 px-4 rounded-lg hover:bg-blue-50 transition-colors" data-translate="viewProfile">View Profile</button>
+            <div id="projectsGrid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Content will be loaded by JavaScript -->
             </div>
         </div>
-    `;
-}
+    </section>
+</div>
 
-function updateCount(category) {
-    const countElement = document.getElementById(category + 'Count');
-    if (countElement) {
-        countElement.textContent = appState.filteredData[category]?.length || 0;
-    }
-}
-
-function filterByExperience(category, experience) {
-    const filterButtons = document.querySelectorAll(`#${category} .filter-btn`);
-    filterButtons.forEach(btn => btn.classList.remove('active'));
-    event.target.classList.add('active');
-    
-    const apiCategory = CONFIG.CATEGORIES[category];
-    const data = appState.professionalData[apiCategory] || [];
-    
-    if (experience === 'all') {
-        appState.filteredData[category] = [...data];
-    } else {
-        appState.filteredData[category] = data.filter(professional => {
-            const exp = professional.experience || '';
-            switch(experience) {
-                case '0-2': return exp.includes('0-1') || exp.includes('1-2');
-                case '3-5': return exp.includes('2-5') || exp.includes('3-5');
-                case '6-10': return exp.includes('6-10');
-                case '10+': return exp.includes('10+');
-                default: return true;
-            }
-        });
-    }
-    
-    renderProfessionals(category);
-    updateCount(category);
-}
-
-function contactProfessional(phone) {
-    window.open(`tel:${phone}`, '_self');
-}
-
-function viewProfile(id) {
-    showNotification('Profile viewing feature will be available soon!', 'info');
-}
-
-// ==========================================
-// PROJECT MANAGEMENT
-// ==========================================
-
-async function loadProjects() {
-    try {
-        showLoadingState('projectsGrid');
-        
-        const data = await ApiService.getProjects();
-        appState.projectsData = data;
-        
-        renderProjects();
-        updateProjectsCount();
-        
-    } catch (error) {
-        console.error('Error loading projects:', error);
-        showErrorState('projectsGrid', error.message, loadProjects);
-        appState.projectsData = [];
-        updateProjectsCount();
-    }
-}
-
-function renderProjects() {
-    const grid = document.getElementById('projectsGrid');
-    const data = appState.projectsData || [];
-    
-    if (!grid) return;
-    
-    if (data.length === 0) {
-        grid.innerHTML = `
-            <div class="empty-state col-span-full">
-                <div class="empty-state-icon">🏗️</div>
-                <h3 class="text-xl font-semibold mb-2">No Projects Available</h3>
-                <p>Be the first to post a construction project!</p>
-                ${appState.currentUser ? '<p class="mt-2 text-blue-600">Use the form above to create a new project.</p>' : '<p class="mt-2 text-blue-600">Login to post your project.</p>'}
+<!-- Login Modal -->
+<div id="loginModal" class="fixed inset-0 bg-black bg-opacity-50 hidden z-50 flex items-center justify-center">
+    <div class="bg-white p-8 rounded-xl max-w-md w-full mx-4">
+        <div class="flex justify-between items-center mb-6">
+            <h3 class="text-2xl font-bold" data-translate="login">Login</h3>
+            <button onclick="hideLoginModal()" class="text-gray-500 hover:text-gray-700 text-2xl">&times;</button>
+        </div>
+        <form id="loginForm" class="space-y-4">
+            <div>
+                <label class="block text-sm font-medium text-gray-700 mb-2" data-translate="emailAddress">Email</label>
+                <input type="email" id="loginEmail" required class="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent">
             </div>
-        `;
-        return;
-    }
-    
-    grid.innerHTML = data.map(project => createProjectCard(project)).join('');
-}
-
-function createProjectCard(project) {
-    const userName = project.userId?.name || project.userId?.username || 'Anonymous';
-    const budget = project.budget ? `₹${project.budget.toLocaleString()}` : 'Budget not specified';
-    const location = project.location || 'Location not specified';
-    
-    return `
-        <div class="professional-card">
-            <div class="mb-4">
-                <h3 class="text-xl font-bold text-gray-800 mb-2">${project.title}</h3>
-                <p class="text-gray-600 text-sm mb-2">Posted by: ${userName}</p>
-                <p class="text-gray-700">${project.description}</p>
+            <div>
+                <label class="block text-sm font-medium text-gray-700 mb-2" data-translate="password">Password</label>
+                <input type="password" id="loginPassword" required class="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent">
             </div>
-            
-            <div class="flex justify-between items-center pt-4 border-t border-gray-200">
-                <div class="text-sm text-gray-600">
-                    <p>💰 ${budget}</p>
-                    <p>📍 ${location}</p>
+            <button type="submit" id="loginSubmitBtn" class="w-full bg-blue-600 text-white p-3 rounded-lg hover:bg-blue-700 transition-colors font-semibold" data-translate="login">Login</button>
+        </form>
+        <p class="text-center mt-4 text-gray-600">Don't have an account? <button type="button" onclick="hideLoginModal(); showSignupModal();" class="text-blue-600 hover:underline">Sign up</button></p>
+    </div>
+</div>
+
+<!-- Signup Modal -->
+<div id="signupModal" class="fixed inset-0 bg-black bg-opacity-50 hidden z-50 flex items-center justify-center">
+    <div class="bg-white p-8 rounded-xl max-w-lg w-full mx-4 max-h-[90vh] overflow-y-auto">
+        <div class="flex justify-between items-center mb-6">
+            <h3 class="text-2xl font-bold" data-translate="createAccount">Create Account</h3>
+            <button onclick="hideSignupModal()" class="text-gray-500 hover:text-gray-700 text-2xl">&times;</button>
+        </div>
+        <form id="signupForm" class="space-y-4">
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                <div>
+                    <label class="block text-sm font-medium text-gray-700 mb-2" data-translate="fullName">Full Name *</label>
+                    <input type="text" id="signupName" required class="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent">
+                    <div id="signupNameError" class="error-message hidden"></div>
                 </div>
-                <div class="text-xs text-gray-500">
-                    ${new Date(project.createdAt || Date.now()).toLocaleDateString()}
+                <div>
+                    <label class="block text-sm font-medium text-gray-700 mb-2" data-translate="phoneNumber">Phone Number *</label>
+                    <input type="tel" id="signupPhone" required pattern="[0-9]{10}" class="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent">
+                    <div id="signupPhoneError" class="error-message hidden"></div>
                 </div>
             </div>
-            
-            <div class="mt-4">
-                <button onclick="contactForProject('${project._id}')" class="w-full bg-green-600 text-white py-2 px-4 rounded-lg hover:bg-green-700 transition-colors">Express Interest</button>
+            <div>
+                <label class="block text-sm font-medium text-gray-700 mb-2" data-translate="emailAddress">Email Address *</label>
+                <input type="email" id="signupEmail" required class="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent">
+                <div id="signupEmailError" class="error-message hidden"></div>
+            </div>
+            <div>
+                <label class="block text-sm font-medium text-gray-700 mb-2" data-translate="city">City *</label>
+                <input type="text" id="signupCity" required class="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent">
+                <div id="signupCityError" class="error-message hidden"></div>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                <div>
+                    <label class="block text-sm font-medium text-gray-700 mb-2" data-translate="password">Password *</label>
+                    <input type="password" id="signupPassword" required minlength="6" class="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent">
+                    <div id="signupPasswordError" class="error-message hidden"></div>
+                    <div class="text-xs text-gray-500 mt-1">Minimum 6 characters</div>
+                </div>
+                <div>
+                    <label class="block text-sm font-medium text-gray-700 mb-2" data-translate="confirmPassword">Confirm Password *</label>
+                    <input type="password" id="signupConfirmPassword" required minlength="6" class="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent">
+                    <div id="signupConfirmPasswordError" class="error-message hidden"></div>
+                </div>
+            </div>
+            <div class="flex items-center">
+                <input type="checkbox" id="signupTerms" required class="h-4 w-4 text-blue-600 focus:ring-blue-500 border-gray-300 rounded">
+                <label for="signupTerms" class="ml-2 block text-sm text-gray-700">I agree to the Terms of Service and Privacy Policy *</label>
+            </div>
+            <button type="submit" id="signupSubmitBtn" class="w-full bg-green-600 text-white p-3 rounded-lg hover:bg-green-700 transition-colors font-semibold" data-translate="createAccount">Create Account</button>
+        </form>
+        <p class="text-center mt-4 text-gray-600">Already have an account? <button type="button" onclick="hideSignupModal(); showLoginModal();" class="text-blue-600 hover:underline">Login</button></p>
+    </div>
+</div>
+
+<!-- Footer -->
+<footer class="bg-gray-900 text-white py-12">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+            <div>
+                <h3 class="text-xl font-bold mb-4">🏗️ Build Better</h3>
+                <p class="text-gray-300">Complete construction ecosystem connecting professionals with customers across India.</p>
+            </div>
+            <div>
+                <h4 class="font-semibold mb-4">For Customers</h4>
+                <ul class="space-y-2 text-gray-300">
+                    <li><a href="#" class="hover:text-white">Find Professionals</a></li>
+                    <li><a href="#" class="hover:text-white">Post a Job</a></li>
+                    <li><a href="#" class="hover:text-white">Safety Tips</a></li>
+                </ul>
+            </div>
+            <div>
+                <h4 class="font-semibold mb-4">For Professionals</h4>
+                <ul class="space-y-2 text-gray-300">
+                    <li><a href="#" class="hover:text-white">Join Platform</a></li>
+                    <li><a href="#" class="hover:text-white">Manage Profile</a></li>
+                    <li><a href="#" class="hover:text-white">Success Stories</a></li>
+                </ul>
+            </div>
+            <div>
+                <h4 class="font-semibold mb-4">Support</h4>
+                <ul class="space-y-2 text-gray-300">
+                    <li><a href="#" class="hover:text-white">Help Center</a></li>
+                    <li><a href="#" class="hover:text-white">Contact Us</a></li>
+                    <li><a href="#" class="hover:text-white">Report Issue</a></li>
+                </ul>
             </div>
         </div>
-    `;
-}
+        <div class="border-t border-gray-700 mt-8 pt-8 text-center text-gray-300">
+            <p>&copy; 2024 Build Better. All rights reserved.</p>
+        </div>
+    </div>
+</footer>
 
-function updateProjectsCount() {
-    const countElement = document.getElementById('projectsCount');
-    if (countElement) {
-        countElement.textContent = appState.projectsData?.length || 0;
-    }
-}
+<!-- Notification Container -->
+<div id="notificationContainer"></div>
 
-function contactForProject(projectId) {
-    showNotification('Contact feature will be available soon! Project ID: ' + projectId, 'info');
-}
-
-// ==========================================
-// FORM VALIDATION & HANDLERS
-// ==========================================
-
-function validateSignupForm() {
-    let isValid = true;
-    
-    ['signupName', 'signupPhone', 'signupEmail', 'signupCity', 'signupPassword', 'signupConfirmPassword'].forEach(clearFieldError);
-    
-    const name = document.getElementById('signupName').value.trim();
-    const phone = document.getElementById('signupPhone').value.trim();
-    const email = document.getElementById('signupEmail').value.trim();
-    const city = document.getElementById('signupCity').value.trim();
-    const password = document.getElementById('signupPassword').value;
-    const confirmPassword = document.getElementById('signupConfirmPassword').value;
-    
-    if (!name || name.length < 2) {
-        showFieldError('signupName', 'Name must be at least 2 characters long');
-        isValid = false;
-    }
-    
-    if (!phone) {
-        showFieldError('signupPhone', 'Phone number is required');
-        isValid = false;
-    } else if (!validatePhone(phone)) {
-        showFieldError('signupPhone', 'Please enter a valid 10-digit phone number');
-        isValid = false;
-    }
-    
-    if (!email) {
-        showFieldError('signupEmail', 'Email is required');
-        isValid = false;
-    } else if (!validateEmail(email)) {
-        showFieldError('signupEmail', 'Please enter a valid email address');
-        isValid = false;
-    }
-    
-    if (!city || city.length < 2) {
-        showFieldError('signupCity', 'City is required');
-        isValid = false;
-    }
-    
-    if (!password) {
-        showFieldError('signupPassword', 'Password is required');
-        isValid = false;
-    } else if (password.length < 6) {
-        showFieldError('signupPassword', 'Password must be at least 6 characters long');
-        isValid = false;
-    }
-    
-    if (!confirmPassword) {
-        showFieldError('signupConfirmPassword', 'Please confirm your password');
-        isValid = false;
-    } else if (password !== confirmPassword) {
-        showFieldError('signupConfirmPassword', 'Passwords do not match');
-        isValid = false;
-    }
-    
-    return isValid;
-}
-
-function initializeForms() {
-    // Login Form
-    document.getElementById('loginForm').addEventListener('submit', async function(e) {
-        e.preventDefault();
-        
-        const email = document.getElementById('loginEmail').value;
-        const password = document.getElementById('loginPassword').value;
-        
-        setButtonLoading('loginSubmitBtn', true);
-        
-        try {
-            const response = await ApiService.login(email, password);
-            
-            appState.authToken = response.token;
-            appState.currentUser = response.user;
-            
-            localStorage.setItem(CONFIG.STORAGE_KEYS.AUTH_TOKEN, appState.authToken);
-            localStorage.setItem(CONFIG.STORAGE_KEYS.USER_DATA, JSON.stringify(appState.currentUser));
-            
-            updateAuthUI(true);
-            showNotification(`${t('welcomeBack')}, ${appState.currentUser.name}!`, 'success');
-            hideLoginModal();
-            this.reset();
-            
-        } catch (error) {
-            showNotification(t('loginFailed') + ': ' + error.message, 'error');
-        } finally {
-            setButtonLoading('loginSubmitBtn', false);
-        }
-    });
-
-    // Signup Form
-    document.getElementById('signupForm').addEventListener('submit', async function(e) {
-        e.preventDefault();
-        
-        if (!validateSignupForm()) {
-            return;
-        }
-        
-        const userData = {
-            name: document.getElementById('signupName').value.trim(),
-            phone: document.getElementById('signupPhone').value.trim(),
-            email: document.getElementById('signupEmail').value.trim(),
-            city: document.getElementById('signupCity').value.trim(),
-            password: document.getElementById('signupPassword').value
-        };
-        
-        setButtonLoading('signupSubmitBtn', true);
-        
-        try {
-            await ApiService.register(userData);
-            showNotification(t('registrationSuccessful'), 'success');
-            hideSignupModal();
-            showLoginModal();
-            this.reset();
-            
-        } catch (error) {
-            showNotification('Registration failed: ' + error.message, 'error');
-        } finally {
-            setButtonLoading('signupSubmitBtn', false);
-        }
-    });
-
-    // Professional Registration Form
-    document.getElementById('professionalForm').addEventListener('submit', async function(e) {
-        e.preventDefault();
-        
-        const formData = {
-            fullName: document.getElementById('fullName').value,
-            phone: document.getElementById('phone').value,
-            email: document.getElementById('email').value,
-            category: document.getElementById('category').value,
-            experience: document.getElementById('experience').value,
-            serviceArea: document.getElementById('serviceArea').value,
-            description: document.getElementById('description').value,
-            rate: document.getElementById('rate').value
-        };
-        
-        setButtonLoading('professionalSubmitBtn', true);
-        
-        try {
-            await ApiService.createProfessional(formData);
-            showNotification('Professional registration successful! You can now be found by customers.', 'success');
-            this.reset();
-            
-        } catch (error) {
-            showNotification('Registration failed: ' + error.message, 'error');
-        } finally {
-            setButtonLoading('professionalSubmitBtn', false);
-        }
-    });
-
-    // Project Form
-    const projectForm = document.getElementById('projectForm');
-    if (projectForm) {
-        projectForm.addEventListener('submit', async function(e) {
-            e.preventDefault();
-            
-            if (!appState.currentUser) {
-                showNotification('Please login to create a project', 'warning');
-                showLoginModal();
-                return;
-            }
-            
-            const projectData = {
-                title: document.getElementById('projectTitle').value,
-                description: document.getElementById('projectDescription').value,
-                budget: document.getElementById('projectBudget').value ? parseInt(document.getElementById('projectBudget').value) : undefined,
-                location: document.getElementById('projectLocation').value
-            };
-            
-            setButtonLoading('projectSubmitBtn', true);
-            
-            try {
-                await ApiService.createProject(projectData);
-                showNotification('Project created successfully!', 'success');
-                this.reset();
-                loadProjects();
-                
-            } catch (error) {
-                showNotification('Failed to create project: ' + error.message, 'error');
-            } finally {
-                setButtonLoading('projectSubmitBtn', false);
-            }
-        });
-    }
-}
-
-// ==========================================
-// INITIALIZATION
-// ==========================================
-
-function initializeApp() {
-    // Initialize language
-    const savedLanguage = localStorage.getItem('selectedLanguage') || 'en';
-    const languageNames = {
-        'en': 'English',
-        'hi': 'हिंदी',
-        'bn': 'বাংলা',
-        'te': 'తెలుగు',
-        'mr': 'मराठी',
-        'ta': 'தமிழ்',
-        'gu': 'ગુજરાતી',
-        'ur': 'اردو',
-        'kn': 'ಕನ್ನಡ',
-        'or': 'ଓଡ଼ିଆ',
-        'pa': 'ਪੰਜਾਬੀ',
-        'ml': 'മലയാളം',
-        'as': 'অসমীয়া',
-        'mai': 'मैथिली',
-        'mag': 'मगही',
-        'bho': 'भोजपुरी',
-        'ne': 'नेपाली',
-        'sa': 'संस्कृत',
-        'sd': 'سنڌي',
-        'ks': 'कॉशुर',
-        'doi': 'डोगरी',
-        'mni': 'মৈতৈলোন্',
-        'sat': 'ᱥᱟᱱᱛᱟᱲᱤ'
-    };
-    
-    appState.currentLanguage = savedLanguage;
-    document.getElementById('currentLanguage').textContent = languageNames[savedLanguage] || 'English';
-    
-    // Apply translations if not English
-    if (savedLanguage !== 'en') {
-        setTimeout(() => updateAllTranslations(), 100);
-    }
-    
-    // Check for existing authentication
-    if (appState.authToken) {
-        try {
-            const userData = localStorage.getItem(CONFIG.STORAGE_KEYS.USER_DATA);
-            if (userData) {
-                appState.currentUser = JSON.parse(userData);
-                updateAuthUI(true);
-            }
-        } catch (error) {
-            console.error('Error parsing user data:', error);
-            localStorage.removeItem(CONFIG.STORAGE_KEYS.AUTH_TOKEN);
-            localStorage.removeItem(CONFIG.STORAGE_KEYS.USER_DATA);
-        }
-    }
-    
-    // Initialize forms
-    initializeForms();
-}
-
-// ==========================================
-// EVENT LISTENERS
-// ==========================================
-
-document.addEventListener('DOMContentLoaded', function() {
-    initializeApp();
-});
-
-document.addEventListener('visibilitychange', function() {
-    if (!document.hidden) {
-        const activePage = document.querySelector('.page.active');
-        if (activePage && activePage.id === 'projects') {
-            loadProjects();
-        }
-    }
-});
+<script src="app.js"></script>
